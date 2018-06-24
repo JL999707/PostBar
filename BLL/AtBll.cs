@@ -1,0 +1,81 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Model;
+
+namespace BLL
+{
+    public class AtBll
+    {
+        DAL.AtDao dao = new DAL.AtDao();
+
+        //增加
+        public OperationResult atAdd(At at)
+        {
+            At temp = dao.Query(at.beAtUserID);
+            if (temp == null)
+            {
+                return OperationResult.exist;
+            }
+            else
+            {
+                int rowCount = dao.Add(at);
+                if (rowCount == 1)
+                {
+                    return OperationResult.success;
+                }
+                return OperationResult.failure;
+            }
+        }
+
+        //更新
+        public bool Update(At at)
+        {
+            int rowCount = dao.Update(at);
+            return rowCount == 1 ? true : false;
+        }
+
+        //删除
+        public bool deletAt(int T_BeAtUserID)
+        {
+            At temp = dao.Query(T_BeAtUserID);
+            if (temp == null)
+            {
+                return false;
+            }
+            else
+            {
+                int rowCount = dao.Delete(T_BeAtUserID);
+                if (rowCount == 1)
+                {
+                    return true;
+                }
+                return false;
+            }
+        }
+
+        //检索单个所有信息
+        public Model.At checkAllAt(int T_BeAtUserID)
+        {
+            Model.At checkAllAt = dao.Query(T_BeAtUserID);
+
+            //不需要访问数据源，直接执行业务逻辑
+            if (checkAllAt != null)
+            {
+                return checkAllAt;
+            }
+            else
+            {
+                return checkAllAt;
+            }
+        }
+
+        //模糊查询
+        public List<At> CheckAt(int T_BeAtUserID, bool isAccurate)
+        {
+            return dao.Query(T_BeAtUserID, isAccurate);
+        }
+    }
+}
