@@ -9,7 +9,7 @@ namespace BLL
 {
     public class AtBll
     {
-        DAL.AtDao dao = new DAL.AtDao();
+        DAL.AtDao dao = new DAL.AtDao();//ffffffffff
 
         //增加
         public OperationResult atAdd(At at)
