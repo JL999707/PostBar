@@ -78,6 +78,8 @@
             <asp:Label ID="labRestPwd" runat="server" Text="重置的密码"></asp:Label>
             <br />
             <br />
+            <asp:TextBox ID="txtGetUserID" runat="server"></asp:TextBox>
+            <asp:Button ID="btnGetUserID" runat="server" OnClick="btnGetUserID_Click" Text="获取用户ID" />
             <br />
             <br />
             <br />

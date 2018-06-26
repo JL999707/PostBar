@@ -128,4 +128,20 @@ public partial class index : System.Web.UI.Page
         }
     }
 
+    //根据用户姓名得到用户ID
+    protected void btnGetUserID_Click(object sender, EventArgs e)
+    {
+        string userName = txtGetUserID.Text.Trim();
+        BLL.AtBll mgr = new BLL.AtBll();
+        Model.UserInfo getUserID = mgr.getUserID(userName);
+
+        if (getUserID != null)
+        {
+            this.tishi.Text = getUserID.userID.ToString();
+        }
+        else
+        {
+            this.tishi.Text = "查找不到";
+        }
+    }
 }
