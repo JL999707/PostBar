@@ -21,6 +21,12 @@ namespace Model
 
         public UserInfo() { }
 
+        //根据用户用户姓名获得用户ID
+        public UserInfo(int userID)
+        {
+            this.userID = userID;
+        }
+
         //修改密码
         public UserInfo(string pwd)
         {

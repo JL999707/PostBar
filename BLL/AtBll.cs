@@ -9,7 +9,7 @@ namespace BLL
 {
     public class AtBll
     {
-        DAL.AtDao dao = new DAL.AtDao();//ffffffffff
+        DAL.AtDao dao = new DAL.AtDao();//oooooooo
 
         //增加
         public OperationResult atAdd(At at)
@@ -76,6 +76,22 @@ namespace BLL
         public List<At> CheckAt(int T_BeAtUserID, bool isAccurate)
         {
             return dao.Query(T_BeAtUserID, isAccurate);
+        }
+
+        //根据用户姓名得到用户ID获取AT表的信息
+        public Model.UserInfo getUserID(string userName)
+        {
+            Model.UserInfo getUserID = dao.getUserID(userName);
+            //int getUserID1 = Convert.ToInt32(getUserID);
+            //不需要访问数据源，直接执行业务逻辑
+            if (getUserID != null)
+            {
+                return getUserID;
+            }
+            else
+            {
+                return getUserID;
+            }
         }
     }
 }
