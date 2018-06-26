@@ -1,0 +1,60 @@
+﻿*{
+    margin:0;
+    padding:0;
+}
+
+.body{
+    width:1002px;
+    height:auto;
+    margin:0 auto;
+}
+
+.top{
+    height:30px;
+    width:100%;
+    border-bottom:1px solid gray;
+    line-height:30px;
+    font-size:14px;
+    text-align:right;
+}
+
+.top a{
+    color:black;
+    margin-right:10px;
+}
+
+.head{
+    height:150px;
+    width:100%;
+    position:relative;
+}
+
+.search{
+    height:45px;
+    width:800px;
+    margin: auto;  
+    top: 0; 
+    left: 0; 
+    bottom: 0; 
+    right: 0; 
+    position:absolute;
+    line-height:45px;
+}
+
+.search img{
+    width:135px;
+    height:45px;
+    margin-right:10px;
+    margin-bottom:10px;
+}
+
+.input-group input{
+    margin-top:10px;
+}
+
+.map{
+    height:30px;
+    width:100%;
+    line-height:30px;
+    font-size:12px;
+}
