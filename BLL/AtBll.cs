@@ -77,5 +77,7 @@ namespace BLL
         {
             return dao.Query(T_BeAtUserID, isAccurate);
         }
+
+        //根据用户姓名得到用户ID
     }
 }
