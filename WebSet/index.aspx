@@ -80,6 +80,8 @@
             <br />
             <asp:TextBox ID="txtGetUserID" runat="server"></asp:TextBox>
             <asp:Button ID="btnGetUserID" runat="server" OnClick="btnGetUserID_Click" Text="获取用户ID" />
+            <asp:Label ID="lbGetUserID" runat="server" Text="Label"></asp:Label>
+            <asp:Label ID="labIDTiShi" runat="server" Text="Label"></asp:Label>
             <br />
             <br />
             <br />

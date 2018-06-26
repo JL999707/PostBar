@@ -56,7 +56,7 @@ namespace BLL
             }
         }
 
-        //检索单个所有信息
+        //检索单个所有信息        //获取AT表的信息
         public Model.At checkAllAt(int T_BeAtUserID)
         {
             Model.At checkAllAt = dao.Query(T_BeAtUserID);
@@ -78,7 +78,7 @@ namespace BLL
             return dao.Query(T_BeAtUserID, isAccurate);
         }
 
-        //根据用户姓名得到用户ID获取AT表的信息
+        //根据用户姓名得到用户ID
         public Model.UserInfo getUserID(string userName)
         {
             Model.UserInfo getUserID = dao.getUserID(userName);
@@ -93,5 +93,6 @@ namespace BLL
                 return getUserID;
             }
         }
+
     }
 }

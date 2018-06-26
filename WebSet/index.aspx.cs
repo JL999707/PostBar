@@ -128,7 +128,7 @@ public partial class index : System.Web.UI.Page
         }
     }
 
-    //根据用户姓名得到用户ID
+    //根据用户姓名得到用户ID并且获取到该用户在At表里面的所有信息
     protected void btnGetUserID_Click(object sender, EventArgs e)
     {
         string userName = txtGetUserID.Text.Trim();
@@ -137,11 +137,22 @@ public partial class index : System.Web.UI.Page
 
         if (getUserID != null)
         {
-            this.tishi.Text = getUserID.userID.ToString();
+            this.lbGetUserID.Text = getUserID.userID.ToString();
         }
         else
         {
-            this.tishi.Text = "查找不到";
+            this.lbGetUserID.Text = "查找不到";
+        }
+
+        Model.At checkAllAt = mgr.checkAllAt(getUserID.userID);
+
+        if (checkAllAt != null)
+        {
+            this.labIDTiShi.Text = checkAllAt.atID.ToString()+ checkAllAt.replyID.ToString()+ checkAllAt.atUserID.ToString()+ checkAllAt.beAtUserID.ToString()+ checkAllAt.atContent+ checkAllAt.atTime;
+        }
+        else
+        {
+            this.labIDTiShi.Text = "查找不到";
         }
     }
 }
