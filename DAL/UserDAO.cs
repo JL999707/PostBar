@@ -145,43 +145,6 @@ namespace DAL
             return userList;
         }
 
-        //查询用户个数
-        public int checkCount(string userName)
-        {
-            string cmdText = "select * from T_User where userName=@userName";
-            string[] paramList = { "@userName" };
-            object[] valueList = { userName };
-            SqlDataReader reader = db.ExecuteReader(cmdText, paramList, valueList);
-            UserInfo user = new UserInfo();
-            if (reader.Read())
-            {
-                user.userName = userName;
-                user.userID = Convert.ToInt32(reader["userID"]);
-                user.pwd = reader["pwd"].ToString();
-                user.userSex = reader["userSex"].ToString();
-                user.userContactInfo = reader["userContactInfo"].ToString();
-                user.userTime = reader["userTime"].ToString();
-
-                if (!reader.IsDBNull(5))
-                {
-                    user.autoGraph = reader["autoGraph"].ToString();
-                }
-                if (!reader.IsDBNull(6))
-                {
-                    user.userHeadImg = reader["userHeadImg"].ToString();
-                }
-                if (!reader.IsDBNull(7))
-                {
-                    user.userTopImg = reader["userTopImg"].ToString();
-                }
-                if (!reader.IsDBNull(8))
-                {
-                    user.userBGImg = reader["userBGImg"].ToString();
-                }
-            }
-            reader.Close();
-            return user;
-        }
 
         //public UserInfo checkAllUser(int T_UserID, string userName, string pwd, string userSex, string userContactInfo, string autoGraph, string userHeadPho, string userTopImg, string userBGImg)
         //{
