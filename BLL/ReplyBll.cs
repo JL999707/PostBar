@@ -38,16 +38,16 @@ namespace BLL
         }
 
         //删除
-        public bool deletReply(string replyTitle)
+        public bool deletReply(string replyName)
         {
-            Reply temp = dao.Query(replyTitle);
+            Reply temp = dao.Query(replyName);
             if (temp == null)
             {
                 return false;
             }
             else
             {
-                int rowCount = dao.Delete(replyTitle);
+                int rowCount = dao.Delete(replyName);
                 if (rowCount == 1)
                 {
                     return true;
@@ -57,9 +57,9 @@ namespace BLL
         }
 
         //检索单个所有信息
-        public Model.Reply checkAllReply(string replyTitle)
+        public Model.Reply checkAllReply(string replyName)
         {
-            Model.Reply checkAllReply = dao.Query(replyTitle);
+            Model.Reply checkAllReply = dao.Query(replyName);
 
             //不需要访问数据源，直接执行业务逻辑
             if (checkAllReply != null)
@@ -73,9 +73,9 @@ namespace BLL
         }
 
         //模糊查询
-        public List<Reply> CheckReply(string replyTitle, bool isAccurate)
+        public List<Reply> CheckReply(string replyName, bool isAccurate)
         {
-            return dao.Query(replyTitle, isAccurate);
+            return dao.Query(replyName, isAccurate);
         }
     }
 }

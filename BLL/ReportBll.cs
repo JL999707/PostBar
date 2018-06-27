@@ -38,16 +38,16 @@ namespace BLL
         }
 
         //删除
-        public bool deletReport(string reportTitle)
+        public bool deletReport(string reportName)
         {
-            Report temp = dao.Query(reportTitle);
+            Report temp = dao.Query(reportName);
             if (temp == null)
             {
                 return false;
             }
             else
             {
-                int rowCount = dao.Delete(reportTitle);
+                int rowCount = dao.Delete(reportName);
                 if (rowCount == 1)
                 {
                     return true;
@@ -57,9 +57,9 @@ namespace BLL
         }
 
         //检索单个所有信息
-        public Model.Report checkAllReport(string reportTitle)
+        public Model.Report checkAllReport(string reportName)
         {
-            Model.Report checkAllReport = dao.Query(reportTitle);
+            Model.Report checkAllReport = dao.Query(reportName);
 
             //不需要访问数据源，直接执行业务逻辑
             if (checkAllReport != null)
@@ -73,9 +73,9 @@ namespace BLL
         }
 
         //模糊查询
-        public List<Report> CheckReport(string reportTitle, bool isAccurate)
+        public List<Report> CheckReport(string reportName, bool isAccurate)
         {
-            return dao.Query(reportTitle, isAccurate);
+            return dao.Query(reportName, isAccurate);
         }
     }
 }

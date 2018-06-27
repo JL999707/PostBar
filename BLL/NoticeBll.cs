@@ -39,16 +39,16 @@ namespace BLL
         }
 
         //删除
-        public bool deletNotice(string notiTitle)
+        public bool deletNotice(string noticeName)
         {
-            Notice temp = dao.Query(notiTitle);
+            Notice temp = dao.Query(noticeName);
             if (temp == null)
             {
                 return false;
             }
             else
             {
-                int rowCount = dao.Delete(notiTitle);
+                int rowCount = dao.Delete(noticeName);
                 if (rowCount == 1)
                 {
                     return true;
@@ -58,9 +58,9 @@ namespace BLL
         }
 
         //检索单个所有信息
-        public Model.Notice checkAllNotice(string notiTitle)
+        public Model.Notice checkAllNotice(string noticeName)
         {
-            Model.Notice checkAllNotice = dao.Query(notiTitle);
+            Model.Notice checkAllNotice = dao.Query(noticeName);
 
             //不需要访问数据源，直接执行业务逻辑
             if (checkAllNotice != null)
@@ -74,9 +74,9 @@ namespace BLL
         }
 
         //模糊查询
-        public List<Notice> CheckLikeNotice(string notiTitle, bool isAccurate)
+        public List<Notice> CheckLikeNotice(string noticeName, bool isAccurate)
         {
-            return dao.Query(notiTitle, isAccurate);
+            return dao.Query(noticeName, isAccurate);
         }
     }
 }
