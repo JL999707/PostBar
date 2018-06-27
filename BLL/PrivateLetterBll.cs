@@ -55,6 +55,12 @@ namespace BLL
             }
         }
 
+        //模糊查询
+        public List<Model.PrivateLetter> CheckLikePrivLet(string privLetName, bool isAccurate)
+        {
+            return dao.Query(privLetName, isAccurate);
+        }
+
         //检索单个所有信息
         public Model.PrivateLetter checkAllPrivLet(string privLetName)
         {
@@ -70,11 +76,62 @@ namespace BLL
                 return checkAllPrivLet;
             }
         }
-
-        //模糊查询
-        public List<Model.PrivateLetter> CheckLikePrivLet(string privLetName, bool isAccurate)
+        //根据贴吧名称检索单个所有信息
+        public Model.PrivateLetter checkAllPrivLet1(string privName)
         {
-            return dao.Query(privLetName, isAccurate);
+            Model.PrivateLetter checkAllPrivLet1 = dao.Query(privName);
+
+            //不需要访问数据源，直接执行业务逻辑
+            if (checkAllPrivLet1 != null)
+            {
+                return checkAllPrivLet1;
+            }
+            else
+            {
+                return checkAllPrivLet1;
+            }
+        }
+        //根据主动私信者IDprivUserID检索单个所有信息
+        public Model.PrivateLetter checkAllPrivLet2(int privUserID)
+        {
+            Model.PrivateLetter checkAllPrivLet2 = dao.Query(privUserID);
+
+            //不需要访问数据源，直接执行业务逻辑
+            if (checkAllPrivLet2 != null)
+            {
+                return checkAllPrivLet2;
+            }
+            else
+            {
+                return checkAllPrivLet2;
+            }
+        }
+        //根据用户姓名得到用户ID
+        public Model.UserInfo getUserID(string priveName)
+        {
+            Model.UserInfo getUserID = dao.getUserID(priveName);
+            //int getUserID1 = Convert.ToInt32(getUserID);
+            //不需要访问数据源，直接执行业务逻辑
+            if (getUserID != null)
+            {
+                return getUserID;
+            }
+            else
+            {
+                return getUserID;
+            }
+        }
+        //根据贴吧名称查询某项符合某记录的数量
+        public int checkCountName(string priveName)
+        {
+            int checkCountName = dao.checkCountName(priveName);
+            return checkCountName;
+        }
+        //根据userID查询某项符合某记录的数量
+        public int checkCountID(int PrivUserID)
+        {
+            int checkCountID = dao.checkCountID(PrivUserID);
+            return checkCountID;
         }
     }
 }

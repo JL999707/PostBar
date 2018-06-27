@@ -36,25 +36,6 @@ namespace DAL
             return db.ExecuteNoneQuery(cmdText, paramList, valuesList);
         }
 
-        public Model.UserAttention Query(string userAttName)
-        {
-            string cmdText = "select * from T_UserAttention where userAttName=@userAttName";
-            string[] paramList = { "@userAttName" };
-            object[] valueList = { userAttName };
-            SqlDataReader reader = db.ExecuteReader(cmdText, paramList, valueList);
-            Model.UserAttention userAtt = new Model.UserAttention();
-            if (reader.Read())
-            {
-                userAtt.userAttName = userAttName;
-                userAtt.userAttID = Convert.ToInt32(reader["userAttID"]);
-                userAtt.userID = Convert.ToInt32(reader["userID"]);
-                userAtt.beUserID = Convert.ToInt32(reader["beUserID"]);
-                userAtt.userAttTime = reader["userAttTime"].ToString();
-            }
-            reader.Close();
-            return userAtt;
-        }
-
         public List<Model.UserAttention> Query(string userAttName, bool isAccurate = false)
         {
             List<Model.UserAttention> userAttList = new List<Model.UserAttention>();
@@ -80,6 +61,97 @@ namespace DAL
                 userAttList.Add(userAtt);
             }
             return userAttList;
+        }
+        //public Model.UserAttention Query(string userAttName)
+        //{
+        //    string cmdText = "select * from T_UserAttention where userAttName=@userAttName";
+        //    string[] paramList = { "@userAttName" };
+        //    object[] valueList = { userAttName };
+        //    SqlDataReader reader = db.ExecuteReader(cmdText, paramList, valueList);
+        //    Model.UserAttention userAtt = new Model.UserAttention();
+        //    if (reader.Read())
+        //    {
+        //        userAtt.userAttName = userAttName;
+        //        userAtt.userAttID = Convert.ToInt32(reader["userAttID"]);
+        //        userAtt.userID = Convert.ToInt32(reader["userID"]);
+        //        userAtt.beUserID = Convert.ToInt32(reader["beUserID"]);
+        //        userAtt.userAttTime = reader["userAttTime"].ToString();
+        //    }
+        //    reader.Close();
+        //    return userAtt;
+        //}
+
+        public UserAttention Query(string userAttName)//根据被关注者名字查询
+        {
+            string cmdText = "select * from T_UserAttention where userAttName=@userAttName";
+            string[] paramList = { "@userAttName" };
+            object[] valueList = { userAttName };
+            SqlDataReader reader = db.ExecuteReader(cmdText, paramList, valueList);
+            Model.UserAttention userAtt = new Model.UserAttention();
+            if (reader.Read())
+            {
+                userAtt.userAttName = userAttName;
+                userAtt.userAttID = Convert.ToInt32(reader["userAttID"]);
+                userAtt.userID = Convert.ToInt32(reader["userID"]);
+                userAtt.beUserID = Convert.ToInt32(reader["beUserID"]);
+                userAtt.userAttTime = reader["userAttTime"].ToString();
+            }
+            reader.Close();
+            return userAtt;
+        }
+        public UserAttention Query(int userID)//根据关注者ID，userID查询
+        {
+            string cmdText = "select * from T_UserAttention where userID=@userID";
+            string[] paramList = { "@userID" };
+            object[] valueList = { userID };
+            SqlDataReader reader = db.ExecuteReader(cmdText, paramList, valueList);
+            Model.UserAttention userAtt = new Model.UserAttention();
+            if (reader.Read())
+            {
+                userAtt.userID = userID;
+                userAtt.userAttID = Convert.ToInt32(reader["userAttID"]);
+                userAtt.userAttName = reader["userAttName"].ToString();
+                userAtt.beUserID = Convert.ToInt32(reader["beUserID"]);
+                userAtt.userAttTime = reader["userAttTime"].ToString();
+            }
+            reader.Close();
+            return userAtt;
+        }
+        //根据用户姓名得到用户ID
+        public UserInfo getUserID(string userName)
+        {
+            string cmdText = "select * from T_User where userName=@userName";
+            string[] paramList = { "@userName" };
+            object[] valueList = { userName };
+            SqlDataReader reader = db.ExecuteReader(cmdText, paramList, valueList);
+            UserInfo user = new UserInfo();
+            if (reader.Read())
+            {
+                user.userName = userName;
+                user.userID = Convert.ToInt32(reader["userID"]);
+            }
+            reader.Close();
+            return user;
+        }
+
+        //根据被关注者名字查询某项符合某记录的数量
+        //select count(*) from table where 字段 = "";
+        public int checkCountName(string userAttName)
+        {
+            string cmdText = "select count(*) from T_UserAttention where userAttName=@userAttName";
+            string[] paramList = { "@userAttName" };
+            object[] valueList = { userAttName };
+            return Convert.ToInt32(db.ExecuteScalar(cmdText, paramList, valueList));
+        }
+
+        //根据关注者ID，userID查询某项符合某记录的数量
+        //select count(*) from table where 字段 = "";
+        public int checkCountID(int userID)
+        {
+            string cmdText = "select count(*) from  T_UserAttention where userID=@userID";
+            string[] paramList = { "@userID" };
+            object[] valueList = { userID };
+            return Convert.ToInt32(db.ExecuteScalar(cmdText, paramList, valueList));
         }
     }
 }

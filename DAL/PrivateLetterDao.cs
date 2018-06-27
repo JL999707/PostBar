@@ -36,25 +36,6 @@ namespace DAL
             return db.ExecuteNoneQuery(cmdText, paramList, valuesList);
         }
 
-        public PrivateLetter Query(string privName)
-        {
-            string cmdText = "select * from T_PrivateLetter where privName=@privName";
-            string[] paramList = { "@privName" };
-            object[] valueList = { privName };
-            SqlDataReader reader = db.ExecuteReader(cmdText, paramList, valueList);
-            PrivateLetter privLetUser = new PrivateLetter();
-            if (reader.Read())
-            {
-                privLetUser.privName = privName;
-                privLetUser.privLetID = Convert.ToInt32(reader["privLetID"]);
-                privLetUser.privUserID = Convert.ToInt32(reader["privUserID"]);
-                privLetUser.bePrivUserID = Convert.ToInt32(reader["bePrivUserID"]);
-                privLetUser.privTime = reader["privTime"].ToString();
-            }
-            reader.Close();
-            return privLetUser;
-        }
-
         public List<PrivateLetter> Query(string privName, bool isAccurate = false)
         {
             List<PrivateLetter> privLetUserList = new List<PrivateLetter>();
@@ -80,6 +61,79 @@ namespace DAL
                 privLetUserList.Add(privLetUser);
             }
             return privLetUserList;
+        }
+
+        public PrivateLetter Query(string privName)//根据被私信者名字查询
+        {
+            string cmdText = "select * from T_PrivateLetter where privName=@privName";
+            string[] paramList = { "@privName" };
+            object[] valueList = { privName };
+            SqlDataReader reader = db.ExecuteReader(cmdText, paramList, valueList);
+            PrivateLetter privLetUser = new PrivateLetter();
+            if (reader.Read())
+            {
+                privLetUser.privName = privName;
+                privLetUser.privLetID = Convert.ToInt32(reader["privLetID"]);
+                privLetUser.privUserID = Convert.ToInt32(reader["privUserID"]);
+                privLetUser.bePrivUserID = Convert.ToInt32(reader["bePrivUserID"]);
+                privLetUser.privTime = reader["privTime"].ToString();
+            }
+            reader.Close();
+            return privLetUser;
+        }
+        public PrivateLetter Query(int privUserID)//根据主动私信者IDprivUserID查询
+        {
+            string cmdText = "select * from T_PrivateLetter where privUserID=@privUserID";
+            string[] paramList = { "@privUserID" };
+            object[] valueList = { privUserID };
+            SqlDataReader reader = db.ExecuteReader(cmdText, paramList, valueList);
+            PrivateLetter privLetUser = new PrivateLetter();
+            if (reader.Read())
+            {
+                privLetUser.privUserID = privUserID;
+                privLetUser.privLetID = Convert.ToInt32(reader["privLetID"]);
+                privLetUser.privName = reader["privName"].ToString();
+                privLetUser.bePrivUserID = Convert.ToInt32(reader["bePrivUserID"]);
+                privLetUser.privTime = reader["privTime"].ToString();
+            }
+            reader.Close();
+            return privLetUser;
+        }
+        //根据用户姓名得到用户ID
+        public UserInfo getUserID(string userName)
+        {
+            string cmdText = "select * from T_User where userName=@userName";
+            string[] paramList = { "@userName" };
+            object[] valueList = { userName };
+            SqlDataReader reader = db.ExecuteReader(cmdText, paramList, valueList);
+            UserInfo user = new UserInfo();
+            if (reader.Read())
+            {
+                user.userName = userName;
+                user.userID = Convert.ToInt32(reader["userID"]);
+            }
+            reader.Close();
+            return user;
+        }
+
+        //根据被私信者名称查询某项符合某记录的数量
+        //select count(*) from table where 字段 = "";
+        public int checkCountName(string privName)
+        {
+            string cmdText = "select count(*) from  T_PrivateLetter  where privName=@privName";
+            string[] paramList = { "@privName" };
+            object[] valueList = { privName };
+            return Convert.ToInt32(db.ExecuteScalar(cmdText, paramList, valueList));
+        }
+
+        //根据主动私信者IDprivUserID查询某项符合某记录的数量
+        //select count(*) from table where 字段 = "";
+        public int checkCountID(int privUserID)
+        {
+            string cmdText = "select count(*) from  T_PrivateLetter  where privUserID=@privUserID";
+            string[] paramList = { "@privUserID" };
+            object[] valueList = { privUserID };
+            return Convert.ToInt32(db.ExecuteScalar(cmdText, paramList, valueList));
         }
     }
 }
