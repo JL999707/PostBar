@@ -36,7 +36,7 @@ namespace DAL
             return db.ExecuteNoneQuery(cmdText, paramList, valuesList);
         }
 
-        public BarAttention Query(string barAttName)
+        public BarAttention Query(string barAttName)//根据贴吧名字查询
         {
             string cmdText = "select * from T_BarAttention where barAttName=@barAttName";
             string[] paramList = { "@barAttName" };
@@ -48,6 +48,24 @@ namespace DAL
                 barAtt.barAttName = barAttName;
                 barAtt.barAttID = Convert.ToInt32(reader["barAttID"]);
                 barAtt.userID = Convert.ToInt32(reader["userID"]);
+                barAtt.barID = Convert.ToInt32(reader["barID"]);
+                barAtt.barAttTime = reader["barAttTime"].ToString();
+            }
+            reader.Close();
+            return barAtt;
+        }
+        public BarAttention Query(int userID)//根据userID查询
+        {
+            string cmdText = "select * from T_BarAttention where userID=@userID";
+            string[] paramList = { "@userID" };
+            object[] valueList = { userID };
+            SqlDataReader reader = db.ExecuteReader(cmdText, paramList, valueList);
+            BarAttention barAtt = new BarAttention();
+            if (reader.Read())
+            {
+                barAtt.userID = userID;
+                barAtt.barAttID = Convert.ToInt32(reader["barAttID"]);
+                barAtt.barAttName = reader["barAttName"].ToString();
                 barAtt.barID = Convert.ToInt32(reader["barID"]);
                 barAtt.barAttTime = reader["barAttTime"].ToString();
             }
@@ -81,5 +99,41 @@ namespace DAL
             }
             return barAttList;
         }
-    }
+        //根据用户姓名得到用户ID
+        public UserInfo getUserID(string userName)
+        {
+            string cmdText = "select * from T_User where userName=@userName";
+            string[] paramList = { "@userName" };
+            object[] valueList = { userName };
+            SqlDataReader reader = db.ExecuteReader(cmdText, paramList, valueList);
+            UserInfo user = new UserInfo();
+            if (reader.Read())
+            {
+                user.userName = userName;
+                user.userID = Convert.ToInt32(reader["userID"]);
+            }
+            reader.Close();
+            return user;
+        }
+
+        //根据贴吧名称查询某项符合某记录的数量
+        //select count(*) from table where 字段 = "";
+        public int checkCountName(string barAttName)
+        {
+            string cmdText = "select count(*) from  T_BarAttention where barAttName=@barAttName";
+            string[] paramList = { "@barAttName" };
+            object[] valueList = { barAttName };
+            return Convert.ToInt32(db.ExecuteScalar(cmdText, paramList, valueList));
+        }
+
+        //根据userID查询某项符合某记录的数量
+        //select count(*) from table where 字段 = "";
+        public int checkCountID(int userID)
+        {
+            string cmdText = "select count(*) from  T_BarAttention where userID=@userID";
+            string[] paramList = { "@userID" };
+            object[] valueList = { userID };
+            return Convert.ToInt32(db.ExecuteScalar(cmdText, paramList, valueList));
+        }
+    }      
 }

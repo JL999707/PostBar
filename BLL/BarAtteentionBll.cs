@@ -39,16 +39,16 @@ namespace BLL
         }
 
         //删除
-        public bool deletBarAtt(string barAttTitle)
+        public bool deletBarAtt(string barAttName)
         {
-            BarAttention temp = dao.Query(barAttTitle);
+            BarAttention temp = dao.Query(barAttName);
             if (temp == null)
             {
                 return false;
             }
             else
             {
-                int rowCount = dao.Delete(barAttTitle);
+                int rowCount = dao.Delete(barAttName);
                 if (rowCount == 1)
                 {
                     return true;
@@ -57,19 +57,34 @@ namespace BLL
             }
         }
 
-        //检索单个所有信息
-        public Model.BarAttention checkAllBarAtt(string barAttTitle)
+        //根据贴吧名称检索单个所有信息
+        public Model.BarAttention checkAllBarAtt1(string barAttName)
         {
-            Model.BarAttention checkAllBarAtt = dao.Query(barAttTitle);
+            Model.BarAttention checkAllBarAtt1 = dao.Query(barAttName);
 
             //不需要访问数据源，直接执行业务逻辑
-            if (checkAllBarAtt != null)
+            if (checkAllBarAtt1 != null)
             {
-                return checkAllBarAtt;
+                return checkAllBarAtt1;
             }
             else
             {
-                return checkAllBarAtt;
+                return checkAllBarAtt1;
+            }
+        }
+        //根据userID检索单个所有信息
+        public Model.BarAttention checkAllBarAtt2(int userID)
+        {
+            Model.BarAttention checkAllBarAtt2 = dao.Query(userID);
+
+            //不需要访问数据源，直接执行业务逻辑
+            if (checkAllBarAtt2 != null)
+            {
+                return checkAllBarAtt2;
+            }
+            else
+            {
+                return checkAllBarAtt2;
             }
         }
 
@@ -77,6 +92,33 @@ namespace BLL
         public List<BarAttention> CheckBarAtt(string barAttTitle, bool isAccurate)
         {
             return dao.Query(barAttTitle, isAccurate);
+        }
+        //根据用户姓名得到用户ID
+        public Model.UserInfo getUserID(string userName)
+        {
+            Model.UserInfo getUserID = dao.getUserID(userName);
+            //int getUserID1 = Convert.ToInt32(getUserID);
+            //不需要访问数据源，直接执行业务逻辑
+            if (getUserID != null)
+            {
+                return getUserID;
+            }
+            else
+            {
+                return getUserID;
+            }
+        }
+        //根据贴吧名称查询某项符合某记录的数量
+        public int checkCountName(string barAttName)
+        {
+            int checkCountName = dao.checkCountName(barAttName);
+            return checkCountName;
+        }
+        //根据userID查询某项符合某记录的数量
+        public int checkCountID(int userID)
+        {
+            int checkCountID = dao.checkCountID(userID);
+            return checkCountID;
         }
     }
 }

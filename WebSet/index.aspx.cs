@@ -128,6 +128,7 @@ public partial class index : System.Web.UI.Page
         }
     }
 
+    //At表
     //根据用户姓名得到用户ID并且获取到该用户在At表里面的所有信息
     protected void btnGetUserID_Click(object sender, EventArgs e)
     {
@@ -155,4 +156,85 @@ public partial class index : System.Web.UI.Page
             this.labIDTiShi.Text = "查找不到";
         }
     }
+
+    //bar表
+    //
+
+    //barAtt表
+    //根据barNAme
+    protected void btnByBarName_Click(object sender, EventArgs e)
+    {
+        string barName = this.txtByBarName.Text.Trim();
+        BLL.BarAttBll mgr = new BLL.BarAttBll();
+        Model.BarAttention checkAllBarAtt1 = mgr.checkAllBarAtt1(barName);
+
+        if (checkAllBarAtt1 != null)
+        {
+            this.labBarAtt.Text = checkAllBarAtt1.barAttName+ checkAllBarAtt1.barAttID+ checkAllBarAtt1.barID+ checkAllBarAtt1.userID+ checkAllBarAtt1.barAttTime;
+        }
+        else
+        {
+            this.labBarAtt.Text = "查找不到";
+        }
+    }
+    //根据userID
+    protected void btnByUserID_Click(object sender, EventArgs e)
+    {
+        int userID = Convert.ToInt32(this.txtByUserID.Text.Trim());
+        BLL.BarAttBll mgr = new BLL.BarAttBll();
+        Model.BarAttention checkAllBarAtt2 = mgr.checkAllBarAtt2(userID);
+
+        if (checkAllBarAtt2 != null)
+        {
+            this.labBarAtt.Text = checkAllBarAtt2.userID.ToString()+ checkAllBarAtt2.barAttID + checkAllBarAtt2.barID + checkAllBarAtt2.barAttName+ checkAllBarAtt2.barAttTime;
+        }
+        else
+        {
+            this.labBarAtt.Text = "查找不到";
+        }
+    }
+    //根据贴吧名称查询某项符合某记录的数量
+    protected void btnBarAttCountName_Click(object sender, EventArgs e)
+    {
+        string name = this.txtBarAttCountName.Text.Trim();
+        BLL.BarAttBll mgr = new BLL.BarAttBll();
+        int checkCountName = mgr.checkCountName(name);
+        this.labBarAttCount.Text = checkCountName.ToString();
+    }
+    //根据userID查询某项符合某记录的数量
+    protected void btnBarAttCountID_Click(object sender, EventArgs e)
+    {
+        string userName = this.txtBarAttCountID.Text.Trim();
+        BLL.BarAttBll mgr = new BLL.BarAttBll();
+        Model.UserInfo getUserID = mgr.getUserID(userName);
+        int checkCountID = mgr.checkCountID(getUserID.userID);
+        this.labBarAttCount.Text = checkCountID.ToString();
+    }
+
+    //barType表
+    //
+    //notice表
+    //
+    //picture表
+    //
+    //post表
+    //
+    //postCollection表
+    //
+    //privateLetter表
+    //
+    //reply表
+    //
+    //report表
+    //
+    //rotation表
+    //
+    //rule表
+    //
+    //userAtt表
+    //
+
+
+
+
 }

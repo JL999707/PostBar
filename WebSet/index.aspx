@@ -84,7 +84,19 @@
             <asp:Label ID="labIDTiShi" runat="server" Text="Label"></asp:Label>
             <br />
             <br />
+            <asp:Label ID="Label8" runat="server" Text="查询所有信息"></asp:Label>
+            <asp:TextBox ID="txtByBarName" runat="server"></asp:TextBox>
+            <asp:Button ID="btnByBarName" runat="server" OnClick="btnByBarName_Click" Text="btnByBarName" />
+            <asp:TextBox ID="txtByUserID" runat="server"></asp:TextBox>
+            <asp:Button ID="btnByUserID" runat="server" OnClick="btnByUserID_Click" Text="btnByUserID" />
+            <asp:Label ID="labBarAtt" runat="server" Text="Label"></asp:Label>
             <br />
+            <asp:Label ID="Label9" runat="server" Text="查询相关个数"></asp:Label>
+            <asp:TextBox ID="txtBarAttCountName" runat="server"></asp:TextBox>
+            <asp:Button ID="btnBarAttCountName" runat="server" OnClick="btnBarAttCountName_Click" Text="name" />
+            <asp:TextBox ID="txtBarAttCountID" runat="server"></asp:TextBox>
+            <asp:Button ID="btnBarAttCountID" runat="server" OnClick="btnBarAttCountID_Click" Text="id" />
+            <asp:Label ID="labBarAttCount" runat="server" Text="Label"></asp:Label>
             <br />
             <br />
         </div>

@@ -15,6 +15,15 @@ namespace Model
         public string barAttTime { get; set; }
         public BarAttention() { }
 
+        public BarAttention(string barAttName)
+        {
+            this.barAttName = barAttName;
+        }
+        public BarAttention(int userID)
+        {
+            this.userID = userID;
+        }
+
         public BarAttention(int barAttID, int userID, int barID, string barAttName, string barAttTime)
         {
             this.barAttID = barAttID;
