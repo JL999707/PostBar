@@ -285,7 +285,55 @@ public partial class index : System.Web.UI.Page
     //post表
     //
     //postCollection表
-    //
+    //根据colNAme
+    protected void btnByCollName_Click(object sender, EventArgs e)
+    {
+        string collName = this.txtByCollName.Text.Trim();
+        BLL.PostCollectionBll mgr = new BLL.PostCollectionBll();
+        Model.PostCollection checkAllPostColl1 = mgr.checkAllPostColl1(collName);
+
+        if (checkAllPostColl1 != null)
+        {
+            this.labPostColl.Text = checkAllPostColl1.collID.ToString()+ checkAllPostColl1.userID.ToString()+ checkAllPostColl1.collName+ checkAllPostColl1.collTime;
+        }
+        else
+        {
+            this.labPostColl.Text = "查找不到";
+        }
+    }
+    //根据userID
+    protected void btnCollByUserID_Click(object sender, EventArgs e)
+    {
+        int userID = Convert.ToInt32(this.txtCollByUserID.Text.Trim());
+        BLL.PostCollectionBll mgr = new BLL.PostCollectionBll();
+        Model.PostCollection checkAllPostColl2= mgr.checkAllPostColl2(userID);
+
+        if (checkAllPostColl2 != null)
+        {
+            this.labPostColl.Text = checkAllPostColl2.collID.ToString()+ checkAllPostColl2.userID.ToString()+ checkAllPostColl2.collName+ checkAllPostColl2.collTime;
+        }
+        else
+        {
+            this.labPostColl.Text = "查找不到";
+        }
+    }
+    //根据贴子名称查询某项符合某记录的数量
+    protected void btnPostCollCountName_Click(object sender, EventArgs e)
+    {
+        string name = this.txtPostCollCountName.Text.Trim();
+        BLL.PostCollectionBll mgr = new BLL.PostCollectionBll();
+        int checkCountName = mgr.checkCountName(name);
+        this.labPostCollCount.Text = checkCountName.ToString();
+    }
+    //根据userID查询某项符合某记录的数量
+    protected void btnPostCollCountID_Click(object sender, EventArgs e)
+    {
+        string userName = this.txtPostCollCountID.Text.Trim();
+        BLL.PostCollectionBll mgr = new BLL.PostCollectionBll();
+        Model.UserInfo getUserID = mgr.getUserID(userName);
+        int checkCountID = mgr.checkCountID(getUserID.userID);
+        this.labPostCollCount.Text = checkCountID.ToString();
+    }
     //privateLetter表
     //
     //reply表
@@ -298,6 +346,8 @@ public partial class index : System.Web.UI.Page
     //
     //userAtt表
     //
+
+
 
 
 

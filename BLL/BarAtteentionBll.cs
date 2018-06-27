@@ -56,7 +56,11 @@ namespace BLL
                 return false;
             }
         }
-
+        //模糊查询
+        public List<BarAttention> CheckBarAtt(string barAttTitle, bool isAccurate)
+        {
+            return dao.Query(barAttTitle, isAccurate);
+        }
         //根据贴吧名称检索单个所有信息
         public Model.BarAttention checkAllBarAtt1(string barAttName)
         {
@@ -86,12 +90,6 @@ namespace BLL
             {
                 return checkAllBarAtt2;
             }
-        }
-
-        //模糊查询
-        public List<BarAttention> CheckBarAtt(string barAttTitle, bool isAccurate)
-        {
-            return dao.Query(barAttTitle, isAccurate);
         }
         //根据用户姓名得到用户ID
         public Model.UserInfo getUserID(string userName)

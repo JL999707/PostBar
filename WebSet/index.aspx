@@ -116,6 +116,29 @@
             <asp:Label ID="labNotice" runat="server" Text="Label"></asp:Label>
             <br />
             <br />
+            <asp:Label ID="labIDTiShi4" runat="server" Text="postColl表："></asp:Label>
+            <br />
+            <asp:Label ID="Label10" runat="server" Text="查询所有信息"></asp:Label>
+            <asp:TextBox ID="txtByCollName" runat="server"></asp:TextBox>
+            <asp:Button ID="btnByCollName" runat="server" OnClick="btnByCollName_Click" Text="ByCollName" />
+            <asp:TextBox ID="txtCollByUserID" runat="server"></asp:TextBox>
+            <asp:Button ID="btnCollByUserID" runat="server" OnClick="btnCollByUserID_Click" Text="CollByUserID" />
+            <asp:Label ID="labPostColl" runat="server" Text="Label"></asp:Label>
+            <br />
+            <asp:Label ID="Label11" runat="server" Text="查询相关个数"></asp:Label>
+            <asp:TextBox ID="txtPostCollCountName" runat="server"></asp:TextBox>
+            <asp:Button ID="btnPostCollCountName" runat="server" OnClick="btnPostCollCountName_Click" Text="name" />
+            <asp:TextBox ID="txtPostCollCountID" runat="server"></asp:TextBox>
+            <asp:Button ID="btnPostCollCountID" runat="server" OnClick="btnPostCollCountID_Click" Text="ID" />
+            <asp:Label ID="labPostCollCount" runat="server" Text="Label"></asp:Label>
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
             <br />
             <br />
         </div>

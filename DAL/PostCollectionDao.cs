@@ -35,26 +35,6 @@ namespace DAL
             object[] valuesList = { postColl.collID, postColl.userID, postColl.postID, postColl.collName, postColl.collTime };
             return db.ExecuteNoneQuery(cmdText, paramList, valuesList);
         }
-
-        public PostCollection Query(string collName)
-        {
-            string cmdText = "select * from T_PostCollection where collName=@collName";
-            string[] paramList = { "@collName" };
-            object[] valueList = { collName };
-            SqlDataReader reader = db.ExecuteReader(cmdText, paramList, valueList);
-            PostCollection postColl = new PostCollection();
-            if (reader.Read())
-            {
-                postColl.collName = collName;
-                postColl.collID = Convert.ToInt32(reader["collID"]);
-                postColl.postID = Convert.ToInt32(reader["postID"]);
-                postColl.collTime = reader["collTime"].ToString();
-                postColl.userID = Convert.ToInt32(reader["userID"]);
-            }
-            reader.Close();
-            return postColl;
-        }
-
         public List<PostCollection> Query(string collName, bool isAccurate = false)
         {
             List<PostCollection> postCollList = new List<PostCollection>();
@@ -80,6 +60,78 @@ namespace DAL
                 postCollList.Add(postColl);
             }
             return postCollList;
+        }
+        public PostCollection Query(string collName)//根据贴子名字查询
+        {
+            string cmdText = "select * from T_PostCollection where collName=@collName";
+            string[] paramList = { "@collName" };
+            object[] valueList = { collName };
+            SqlDataReader reader = db.ExecuteReader(cmdText, paramList, valueList);
+            PostCollection postColl = new PostCollection();
+            if (reader.Read())
+            {
+                postColl.collName = collName;
+                postColl.collID = Convert.ToInt32(reader["collID"]);
+                postColl.postID = Convert.ToInt32(reader["postID"]);
+                postColl.collTime = reader["collTime"].ToString();
+                postColl.userID = Convert.ToInt32(reader["userID"]);
+            }
+            reader.Close();
+            return postColl;
+        }
+        public PostCollection Query(int userID)//根据userID查询
+        {
+            string cmdText = "select * from T_PostCollection where userID=@userID";
+            string[] paramList = { "@userID" };
+            object[] valueList = { userID };
+            SqlDataReader reader = db.ExecuteReader(cmdText, paramList, valueList);
+            PostCollection postColl = new PostCollection();
+            if (reader.Read())
+            {
+                postColl.userID = userID;
+                postColl.collName = reader["collName"].ToString();
+                postColl.collID = Convert.ToInt32(reader["collID"]);
+                postColl.postID = Convert.ToInt32(reader["postID"]);
+                postColl.collTime = reader["collTime"].ToString();
+            }
+            reader.Close();
+            return postColl;
+        }
+        //根据用户姓名得到用户ID
+        public UserInfo getUserID(string userName)
+        {
+            string cmdText = "select * from T_User where userName=@userName";
+            string[] paramList = { "@userName" };
+            object[] valueList = { userName };
+            SqlDataReader reader = db.ExecuteReader(cmdText, paramList, valueList);
+            UserInfo user = new UserInfo();
+            if (reader.Read())
+            {
+                user.userName = userName;
+                user.userID = Convert.ToInt32(reader["userID"]);
+            }
+            reader.Close();
+            return user;
+        }
+
+        //根据贴子名称查询某项符合某记录的数量
+        //select count(*) from table where 字段 = "";
+        public int checkCountName(string collName)
+        {
+            string cmdText = "select count(*) from  T_PostCollection where collName=@collName";
+            string[] paramList = { "@collName" };
+            object[] valueList = { collName };
+            return Convert.ToInt32(db.ExecuteScalar(cmdText, paramList, valueList));
+        }
+
+        //根据userID查询某项符合某记录的数量
+        //select count(*) from table where 字段 = "";
+        public int checkCountID(int userID)
+        {
+            string cmdText = "select count(*) from  T_PostCollection where userID=@userID";
+            string[] paramList = { "@userID" };
+            object[] valueList = { userID };
+            return Convert.ToInt32(db.ExecuteScalar(cmdText, paramList, valueList));
         }
     }
 }

@@ -36,6 +36,32 @@ namespace DAL
             return db.ExecuteNoneQuery(cmdText, paramList, valuesList);
         }
 
+        public List<BarAttention> Query(string barAttName, bool isAccurate = false)
+        {
+            List<BarAttention> barAttList = new List<BarAttention>();
+            DataSet ds = new DataSet();
+            if (isAccurate)
+            {
+                string cmdText = "select * from T_BarAttention where barAttName=@barAttName";
+                string[] paramList = { "@barAttName" };
+                object[] valueList = { barAttName };
+                ds = db.FillDataSet(cmdText, paramList, valueList);
+            }
+            else
+            {
+                string cmdText = "select * from T_BarAttention where barAttName like @barAttName";
+                string[] paramList = { "@barAttName" };
+                object[] valueList = { "%" + barAttName + "%" };
+                ds = db.FillDataSet(cmdText, paramList, valueList);
+            }
+            for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
+            {
+                DataRow dr = ds.Tables[0].Rows[i];
+                BarAttention barAtt = new BarAttention(Convert.ToInt32(dr["barAttID"]), Convert.ToInt32(dr["userID"]), Convert.ToInt32(dr["barID"]), dr["barAttName"].ToString(), dr["barAttTime"].ToString());
+                barAttList.Add(barAtt);
+            }
+            return barAttList;
+        }
         public BarAttention Query(string barAttName)//根据贴吧名字查询
         {
             string cmdText = "select * from T_BarAttention where barAttName=@barAttName";
@@ -71,33 +97,6 @@ namespace DAL
             }
             reader.Close();
             return barAtt;
-        }
-
-        public List<BarAttention> Query(string barAttName, bool isAccurate = false)
-        {
-            List<BarAttention> barAttList = new List<BarAttention>();
-            DataSet ds = new DataSet();
-            if (isAccurate)
-            {
-                string cmdText = "select * from T_BarAttention where barAttName=@barAttName";
-                string[] paramList = { "@barAttName" };
-                object[] valueList = { barAttName };
-                ds = db.FillDataSet(cmdText, paramList, valueList);
-            }
-            else
-            {
-                string cmdText = "select * from T_BarAttention where barAttName like @barAttName";
-                string[] paramList = { "@barAttName" };
-                object[] valueList = { "%" + barAttName + "%" };
-                ds = db.FillDataSet(cmdText, paramList, valueList);
-            }
-            for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
-            {
-                DataRow dr = ds.Tables[0].Rows[i];
-                BarAttention barAtt = new BarAttention(Convert.ToInt32(dr["barAttID"]), Convert.ToInt32(dr["userID"]), Convert.ToInt32(dr["barID"]), dr["barAttName"].ToString(), dr["barAttTime"].ToString());
-                barAttList.Add(barAtt);
-            }
-            return barAttList;
         }
         //根据用户姓名得到用户ID
         public UserInfo getUserID(string userName)
