@@ -23,11 +23,12 @@
             <p>用户名·密码登录</p>
             <div class="login_content">
                 <%--<input type="text" class="userName" placeholder="手机/邮箱/用户名"/>--%>
-                <asp:TextBox ID="TextBox1" runat="server" class="userName" placeholder="手机/邮箱/用户名"></asp:TextBox>
+                <asp:TextBox ID="userName_txt" runat="server" class="userName" placeholder="手机/邮箱/用户名"></asp:TextBox>
                 <%--<input type="password" class="pwd" placeholder="密码"/>--%>
-                <asp:TextBox ID="TextBox2" type="password" runat="server" class="pwd" placeholder="密码"></asp:TextBox>
+                <asp:TextBox ID="pwd_txt" type="password" runat="server" class="pwd" placeholder="密码"></asp:TextBox>
                 <input type="checkbox" class="remember"/>下次自动登录
-                <button type="button" class="btn btn-primary sure">登录</button>
+                <%--<button type="button" class="btn btn-primary sure">登录</button>--%>
+                <asp:Button ID="Login_btn" runat="server" class="btn btn-primary sure" Text="登录" OnClick="Login_btn_Click"/>
             </div>
         </div>
         <div class="register">
