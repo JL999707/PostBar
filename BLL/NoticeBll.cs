@@ -74,7 +74,7 @@ namespace BLL
         }
 
         //模糊查询
-        public List<Notice> CheckNotice(string notiTitle, bool isAccurate)
+        public List<Notice> CheckLikeNotice(string notiTitle, bool isAccurate)
         {
             return dao.Query(notiTitle, isAccurate);
         }

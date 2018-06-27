@@ -73,7 +73,7 @@ namespace BLL
         }
 
         //模糊查询
-        public List<BarType> CheckBarType(string barTypeName, bool isAccurate)
+        public List<BarType> CheckLikeBarType(string barTypeName, bool isAccurate)
         {
             return dao.Query(barTypeName, isAccurate);
         }

@@ -78,11 +78,14 @@
             <asp:Label ID="labRestPwd" runat="server" Text="重置的密码"></asp:Label>
             <br />
             <br />
+            <asp:Label ID="labIDTiShi0" runat="server" Text="at表获取用户ID"></asp:Label>
             <asp:TextBox ID="txtGetUserID" runat="server"></asp:TextBox>
             <asp:Button ID="btnGetUserID" runat="server" OnClick="btnGetUserID_Click" Text="获取用户ID" />
             <asp:Label ID="lbGetUserID" runat="server" Text="Label"></asp:Label>
             <asp:Label ID="labIDTiShi" runat="server" Text="Label"></asp:Label>
             <br />
+            <br />
+            <asp:Label ID="labIDTiShi1" runat="server" Text="barAtt表："></asp:Label>
             <br />
             <asp:Label ID="Label8" runat="server" Text="查询所有信息"></asp:Label>
             <asp:TextBox ID="txtByBarName" runat="server"></asp:TextBox>
@@ -97,6 +100,22 @@
             <asp:TextBox ID="txtBarAttCountID" runat="server"></asp:TextBox>
             <asp:Button ID="btnBarAttCountID" runat="server" OnClick="btnBarAttCountID_Click" Text="id" />
             <asp:Label ID="labBarAttCount" runat="server" Text="Label"></asp:Label>
+            <br />
+            <br />
+            <br />
+            <asp:Label ID="labIDTiShi2" runat="server" Text="barType表:"></asp:Label>
+            <asp:TextBox ID="txtBarType" runat="server"></asp:TextBox>
+            <asp:Button ID="btnBarType" runat="server" OnClick="btnBarType_Click" Text="查询barType" />
+            <asp:Button ID="btnCheckLike" runat="server" OnClick="btnCheckLike_Click" Text="模糊查询Bartype" />
+            <asp:Label ID="labBarType" runat="server" Text="Label"></asp:Label>
+            <br />
+            <asp:Label ID="labIDTiShi3" runat="server" Text="notice表:"></asp:Label>
+            <asp:TextBox ID="txtNotice" runat="server"></asp:TextBox>
+            <asp:Button ID="btntxtNotice" runat="server" OnClick="btntxtNotice_Click" Text="   精确查询" />
+            <asp:Button ID="txtNoticeLikeCheck" runat="server" OnClick="txtNoticeLikeCheck_Click" Text="模糊查询" />
+            <asp:Label ID="labNotice" runat="server" Text="Label"></asp:Label>
+            <br />
+            <br />
             <br />
             <br />
         </div>

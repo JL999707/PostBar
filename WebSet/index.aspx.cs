@@ -212,9 +212,74 @@ public partial class index : System.Web.UI.Page
     }
 
     //barType表
-    //
+    //精确查询
+    protected void btnBarType_Click(object sender, EventArgs e)
+    {
+        string barTypeName = this.txtBarType.Text.Trim();
+        BLL.BarTypeBll mgr = new BLL.BarTypeBll();
+        Model.BarType checkAllBarType = mgr.checkAllBarType(barTypeName);
+
+        if (checkAllBarType != null)
+        {
+            this.labBarType.Text = Convert.ToInt32(checkAllBarType.barTypeID)+ checkAllBarType.barTypeName;
+        }
+        else
+        {
+            this.labBarType.Text = "查找不到";
+        }
+    }
+    //模糊查询
+    protected void btnCheckLike_Click(object sender, EventArgs e)
+    {
+        string barTypeName =txtBarType.Text.Trim();
+        bool isAccurate = false;
+        BLL.BarTypeBll mgr = new BLL.BarTypeBll();
+        List<BarType> barTypeList = mgr.CheckLikeBarType(barTypeName, isAccurate);
+        if (barTypeList != null && isAccurate == false)
+        {
+            this.GridView2.DataSource = barTypeList;
+            this.GridView2.DataBind();
+        }
+        else
+        {
+            this.labBarType.Text = "查找不到";
+        }
+    }
+
     //notice表
-    //
+    //精确查询
+    protected void btntxtNotice_Click(object sender, EventArgs e)
+    {
+        string noticeName = this.txtNotice.Text.Trim();
+        BLL.NoticeBll mgr = new BLL.NoticeBll();
+        Model.Notice checkAllNotice = mgr.checkAllNotice(noticeName);
+
+        if (checkAllNotice != null)
+        {
+            this.labNotice.Text = Convert.ToInt32(checkAllNotice.noticeID) + checkAllNotice.noticeName+ checkAllNotice.noticeTime;
+        }
+        else
+        {
+            this.labNotice.Text = "查找不到";
+        }
+    }
+    //模糊查询
+    protected void txtNoticeLikeCheck_Click(object sender, EventArgs e)
+    {
+        string noticeName = this.txtNotice.Text.Trim();
+        bool isAccurate = false;
+        BLL.NoticeBll mgr = new BLL.NoticeBll();
+        List<Notice> noticeList = mgr.CheckLikeNotice(noticeName, isAccurate);
+        if (noticeList != null && isAccurate == false)
+        {
+            this.GridView2.DataSource = noticeList;
+            this.GridView2.DataBind();
+        }
+        else
+        {
+            this.labNotice.Text = "查找不到";
+        }
+    }
     //picture表
     //
     //post表
@@ -233,6 +298,7 @@ public partial class index : System.Web.UI.Page
     //
     //userAtt表
     //
+
 
 
 
