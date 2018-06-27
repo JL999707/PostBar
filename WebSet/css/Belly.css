@@ -1,0 +1,63 @@
+﻿.fakeimg {
+    height: 150px;
+    width: 150px;
+    background-image: url(../imgs/20160516220714_AeHNF.png);
+    background-size:150px 150px;
+    float:left;
+    margin-top: -75px;
+    margin-left: 40px;
+}
+        
+.functionbar1{
+    width: 1000px;
+    height: 75px;
+    background-color:gray;
+}
+
+.functionbar2{
+    width: 775px;
+    height: 50px;
+    background-color:#aaa;
+}
+    
+.lunimg{
+    height:250px;
+    width: 1000px;
+}
+    
+.deliver{
+    height: auto;
+    width: 1000px;
+    overflow:hidden;
+}
+ 
+ .contain_left{
+    height:auto;
+    width:215px;
+    margin-left:785px;
+    margin-top:10px;
+}
+
+.contain_left a{
+    color:black;
+    font-size:12px;
+}
+
+.contain_left li{
+    list-style:none;
+    height:22px;
+    line-height:22px;
+    margin-top:5px;
+}
+
+.panel{
+    padding:0;
+    margin:0;
+}
+
+.deliver-contain{
+    height: auto;
+    width: 775px;
+    float:left;
+    margin-top:10px;
+}

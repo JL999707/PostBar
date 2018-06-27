@@ -1,0 +1,323 @@
+﻿.picture{
+    width:100%;
+    height:210px;
+}
+
+.rotation{
+    width:620px;
+    height:210px;
+}
+
+.rotation_img{
+    width:620px;
+    height:210px;
+}
+
+.rotation_img img{
+    width:620px;
+    height:210px;
+}
+
+.sumBar{
+    padding:0;
+    margin:0;
+    width:372px;
+    height:210px;
+    margin-top:-211px;
+    margin-left:630px;
+    background-image: url(../imgs/num.png);
+    background-repeat:no-repeat;
+    background-size:372px 210px;
+    overflow:hidden;
+}
+
+.num{
+    width:260px;
+    height:29px;
+    margin-left:55px;
+    margin-top:87px;
+}
+
+.num_show{
+    padding:0;
+    margin:0;
+    width:20px;
+    height:29px;
+    text-align:center;
+    line-height:29px;
+    background-image:url('../imgs/num副本 3.png');
+    float:left;
+    margin-left:11px;
+}
+
+.content{
+    width:100%;
+    height:auto;
+    margin-top:10px;
+    overflow:hidden;
+}
+
+.myselfInfo{
+    width:215px;
+    height:auto;
+    border:1px solid gray;
+    position:absolute;
+}
+
+.info{
+    width:100%;
+    height:70px;
+    background-color:#e4e6eb;
+    font-size:12px;
+}
+
+.info_div{
+    margin-left:120px;
+}
+
+.img_head{
+    height:100px;
+    width:100px;
+    margin-left:10px;
+    margin-top:-50px;
+    background-image:url(../imgs/20160516220714_AeHNF.png);
+    background-size:100px 100px;
+}
+
+.operation{
+    width:100%;
+    height:auto;
+    background-color:#e4e6eb;
+}
+
+.operation button{
+    padding:0;
+    font-size:12px;
+    height:30px;
+    width:90px;
+    margin-left:20px;
+    margin-top:20px;
+}
+
+.operation span{
+    float:right;
+    margin-right:80px;
+    margin-top:25px;
+}
+
+.calendar{
+    width:auto;
+    height:auto;
+    margin-top:20px;
+}
+
+.barType{
+    width:774px;
+    height:277px;
+    border:1px solid gray;
+    position:absolute;
+    margin-left:227px;
+}
+
+.qipaBar{
+    width:100%;
+    height:150px;
+}
+
+.barTitle{
+    width:auto;
+    height:30px;
+    margin-left:10px;
+    line-height:30px;
+}
+
+.oneBar{
+    height:120px;
+    width:50%;
+}
+
+.onebar_img{
+    height:100px;
+    width:100px;
+    background-image:url(../imgs/qipa_one.jpeg);
+    background-size:100px 100px;
+    position:absolute;
+    margin-top:10px;
+    margin-left:10px;
+}
+
+.onebar_txt{
+    height:100px;
+    width:257px;
+    position:absolute;
+    margin-top:10px;
+    margin-left:120px;
+}
+
+.twobar_img{
+    height:100px;
+    width:100px;
+    background-image:url(../imgs/qipa_two.jpg);
+    background-size:100px 100px;
+    position:absolute;
+    margin-top:10px;
+    margin-left:10px;
+}
+
+.twobar_txt{
+    height:100px;
+    width:257px;
+    position:absolute;
+    margin-top:10px;
+    margin-left:120px;
+}
+
+.twoBar{
+    height:120px;
+    width:50%;
+    margin-left:50%;
+    margin-top:-120px;
+}
+
+.hotBar{
+    width:100%;
+    height:125px;
+}
+
+.hotBar_bar{
+    height:95px;
+    width:100%;
+    background-color:azure;
+    line-height:95px;
+}
+
+.hotBar_show{
+    height:95px;
+    width:1400px;
+    background-color:crimson;
+    position:absolute;
+}
+
+/*.hotBar span{
+    border:1px solid black;
+    height:45px;
+    width:25px;
+    background-color:antiquewhite;
+    font-size:20px;
+}
+
+.hotBar_next{
+    margin-left:720px;
+}*/
+
+/*.hotbar_div{
+    padding:0;
+    margin:0;
+    height:95px;
+    width:100%;
+}
+
+.hotbar_div_div{
+    height:91px;
+    width:191px;
+    float:left;
+    margin-top:2px;
+    margin-left:1px;
+    background-color:black;
+}*/
+
+/*#demo a{
+    background-color:white;
+    height:40px;
+    width:40px;
+}
+
+#demo span{
+    background-color:blue;
+}
+
+#demo .glyphicon-chevron-left{
+    margin-bottom:-10px;
+}*/
+
+.dynamic{
+    width:550px;
+    height:auto;
+    position:absolute;
+    margin-left:227px;
+    margin-top:289px;
+}
+
+.dynamic_hot,.dynamic_own{
+    width:100%;
+    height:auto;
+}
+
+.dynamic a{
+    color:black;
+}
+
+.charts{
+    width:215px;
+    height:auto;
+    margin-left:787px;
+    margin-top:289px;
+}
+
+.charts a{
+    color:black;
+    font-size:12px;
+}
+
+/*.charts_charts li{
+    list-style:none;
+    height:22px;
+    line-height:22px;
+    margin-top:5px;
+}*/
+
+/*.charts_num{
+    height:20px;
+    width:20px;
+    text-align:center;
+    position:absolute;
+    margin-top:1px;
+}
+
+.charts_content{
+    height:20px;
+    width:100px;
+    position:absolute;
+    margin-top:1px;
+    margin-left:25px;
+}
+
+.charts_people{
+    height:20px;
+    width:58px;
+    text-align:right;
+    position:absolute;
+    margin-top:1px;
+    margin-left:125px;
+}*/
+
+.charts_notice{
+    margin-top:-10px;
+}
+
+.charts_notice .panel-body{
+    padding:0;
+    margin:0;
+}
+
+.charts_notice li{
+    margin-left:15px;
+}
+
+.notice_img{
+    margin-left:-2px;
+    height:90px;
+    width:215px;
+    background-image:url(../imgs/111公告板.png);
+    background-size:100% 100%;
+}
