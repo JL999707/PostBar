@@ -84,5 +84,103 @@ namespace DAL
             }
             return barList;
         }
+
+        public Bar Query(int userID)//根据userID查询
+        {
+            string cmdText = "select * from T_Bar where userID=@userID";
+            string[] paramList = { "@userID" };
+            object[] valueList = { userID };
+            SqlDataReader reader = db.ExecuteReader(cmdText, paramList, valueList);
+            Bar bar = new Bar();
+            if (reader.Read())
+            {
+                bar.userID = userID;
+                bar.barName = reader["barName"].ToString();
+                bar.barTime = reader["barTime"].ToString();
+                //bar.barName = reader["barName"].ToString();
+                bar.barAutoGraph = reader["barAutoGraph"].ToString();
+                bar.barHeadImg = reader["barHeadImg"].ToString();
+                bar.barTopImg = reader["barTopImg"].ToString();
+                bar.barBGImg = reader["barBGImg"].ToString();
+            }
+            reader.Close();
+            return bar;
+        }
+        public Bar Query(int barTypeID, bool isAccurate = true)//根据barTypeID查询
+        {
+            Bar bar = new Bar();
+            if (isAccurate)
+            {
+                string cmdText = "select * from T_Bar where postID=@barTypeID";
+                string[] paramList = { "@barTypeID" };
+                object[] valueList = { barTypeID };
+                SqlDataReader reader = db.ExecuteReader(cmdText, paramList, valueList);
+                if (reader.Read())
+                {
+                    bar.barTypeID = barTypeID;
+                    bar.userID = Convert.ToInt32(reader["user"]);
+                    bar.barName = reader["barName"].ToString();
+                    bar.barTime = reader["barTime"].ToString();
+                    //bar.barName = reader["barName"].ToString();
+                    bar.barAutoGraph = reader["barAutoGraph"].ToString();
+                    bar.barHeadImg = reader["barHeadImg"].ToString();
+                    bar.barTopImg = reader["barTopImg"].ToString();
+                    bar.barBGImg = reader["barBGImg"].ToString();
+                }
+                reader.Close();
+            }
+            return bar;
+        }
+        //根据用户姓名得到用户ID
+        public UserInfo getUserID(string userName)
+        {
+            string cmdText = "select * from T_User where userName=@userName";
+            string[] paramList = { "@userName" };
+            object[] valueList = { userName };
+            SqlDataReader reader = db.ExecuteReader(cmdText, paramList, valueList);
+            UserInfo user = new UserInfo();
+            if (reader.Read())
+            {
+                user.userName = userName;
+                user.userID = Convert.ToInt32(reader["userID"]);
+            }
+            reader.Close();
+            return user;
+        }
+        //根据贴吧类型名称得到贴吧类型ID
+        public BarType getBarTypeID(string barTypeName)
+        {
+            string cmdText = "select * from T_BarType where barTypeName=@barTypeName";
+            string[] paramList = { "@barTypeName" };
+            object[] valueList = { barTypeName };
+            SqlDataReader reader = db.ExecuteReader(cmdText, paramList, valueList);
+            BarType barType = new BarType();
+            if (reader.Read())
+            {
+                barType.barTypeName = barTypeName;
+                barType.barTypeID = Convert.ToInt32(reader["barTypeID"]);
+            }
+            reader.Close();
+            return barType;
+        }
+        //根据userID查询某项符合某记录的数量
+        //select count(*) from table where 字段 = "";
+        public int checkCountUserID(int userID)
+        {
+            string cmdText = "select count(*) from  T_Bar where userID=@userID";
+            string[] paramList = { "@userID" };
+            object[] valueList = { userID };
+            return Convert.ToInt32(db.ExecuteScalar(cmdText, paramList, valueList));
+        }
+        //根据barTypeID查询某项符合某记录的数量
+        //select count(*) from table where 字段 = "";
+        public int checkCountBarTypeID(int barTypeID)
+        {
+            string cmdText = "select count(*) from  T_Bar where barTypeID=@barTypeID";
+            string[] paramList = { "@barTypeID" };
+            object[] valueList = { barTypeID };
+            return Convert.ToInt32(db.ExecuteScalar(cmdText, paramList, valueList));
+        }
+
     }
 }

@@ -87,5 +87,30 @@ namespace DAL
             }
             return postList;
         }
+        //根据贴吧名称barName得到贴吧ID，barID
+        public Bar getBarID(string barName)
+        {
+            string cmdText = "select * from T_User where barName=@barName";
+            string[] paramList = { "@barName" };
+            object[] valueList = { barName };
+            SqlDataReader reader = db.ExecuteReader(cmdText, paramList, valueList);
+            Bar bar = new Bar();
+            if (reader.Read())
+            {
+                bar.barName = barName;
+                bar.barID = Convert.ToInt32(reader["barID"]);
+            }
+            reader.Close();
+            return bar;
+        }
+        //根据barID查询某项符合某记录的数量
+        //select count(*) from table where 字段 = "";
+        public int checkCountID(int barID)
+        {
+            string cmdText = "select count(*) from  T_Post where barID=@barID";
+            string[] paramList = { "@barID" };
+            object[] valueList = { barID };
+            return Convert.ToInt32(db.ExecuteScalar(cmdText, paramList, valueList));
+        }
     }
 }

@@ -79,10 +79,150 @@ namespace DAL
             for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
             {
                 DataRow dr = ds.Tables[0].Rows[i];
-                Report report = new Report(Convert.ToInt32(dr["reportID"]), Convert.ToInt32(dr["userID"]), Convert.ToInt32(dr["postID"]), Convert.ToInt32(dr["ruleID"]), dr["reportName"].ToString(), dr["reportReason"].ToString(), dr["reportResult"].ToString(), dr["reportTime"].ToString());
+                Report report = new Report(Convert.ToInt32(dr["reportID"]), Convert.ToInt32(dr["userID"]), Convert.ToInt32(dr["postID"]),Convert.ToInt32(dr["ruleID"]), dr["reportName"].ToString(), dr["reportReason"].ToString(), dr["reportResult"].ToString(), dr["reportTime"].ToString());
                 reportList.Add(report);
             }
             return reportList;
+        }
+
+        public Report QueryUser(int userID)//根据userID查询
+        {
+            string cmdText = "select * from T_Report where userID=@userID";
+            string[] paramList = { "@userID" };
+            object[] valueList = { userID };
+            SqlDataReader reader = db.ExecuteReader(cmdText, paramList, valueList);
+            Report report = new Report();
+            if (reader.Read())
+            {
+                report.userID = userID;
+                report.reportID = Convert.ToInt32(reader["reportID"]);
+                report.reportName = reader["reportName"].ToString();
+                report.postID = Convert.ToInt32(reader["postID"]);
+                report.ruleID = Convert.ToInt32(reader["ruleID"]);
+                report.reportReason = reader["reportReason"].ToString();
+                report.reportTime = reader["reportTime"].ToString();
+                report.reportResult = reader["reportResult"].ToString();
+            }
+            reader.Close();
+            return report;
+        }
+        public Report QueryPost(int postID)//根据postID查询
+        {
+            Report report = new Report();
+            string cmdText = "select * from T_Report where postID=@postID";
+            string[] paramList = { "@postID" };
+            object[] valueList = { postID };
+            SqlDataReader reader = db.ExecuteReader(cmdText, paramList, valueList);
+            if (reader.Read())
+            {
+                report.postID = postID;
+                report.reportID = Convert.ToInt32(reader["reportID"]);
+                report.reportName = reader["reportName"].ToString();
+                report.userID = Convert.ToInt32(reader["userID"]);
+                report.ruleID = Convert.ToInt32(reader["ruleID"]);
+                report.reportReason = reader["reportReason"].ToString();
+                report.reportTime = reader["reportTime"].ToString();
+                report.reportResult = reader["reportResult"].ToString();
+            }
+            reader.Close();
+            return report;
+        }
+        public Report QueryRule(int ruleID)//根据ruleID查询
+        {
+            Report report = new Report();
+            string cmdText = "select * from T_Report where ruleID=@ruleID";
+            string[] paramList = { "@ruleID" };
+            object[] valueList = { ruleID };
+            SqlDataReader reader = db.ExecuteReader(cmdText, paramList, valueList);
+            if (reader.Read())
+            {
+                report.ruleID = ruleID;
+                report.reportID = Convert.ToInt32(reader["reportID"]);
+                report.reportName = reader["reportName"].ToString();
+                report.userID = Convert.ToInt32(reader["userID"]);
+                report.postID = Convert.ToInt32(reader["postID"]);
+                report.reportReason = reader["reportReason"].ToString();
+                report.reportTime = reader["reportTime"].ToString();
+                report.reportResult = reader["reportResult"].ToString();
+            }
+            reader.Close();
+            return report;
+        }
+            
+        //根据用户姓名得到用户ID
+        public UserInfo getUserID(string userName)
+        {
+            string cmdText = "select * from T_User where userName=@userName";
+            string[] paramList = { "@userName" };
+            object[] valueList = { userName };
+            SqlDataReader reader = db.ExecuteReader(cmdText, paramList, valueList);
+            UserInfo user = new UserInfo();
+            if (reader.Read())
+            {
+                user.userName = userName;
+                user.userID = Convert.ToInt32(reader["userID"]);
+            }
+            reader.Close();
+            return user;
+        }
+        //根据贴子名称得到贴子ID
+        public Post getPostID(string postName)
+        {
+            string cmdText = "select * from T_Post where postName=@postName";
+            string[] paramList = { "@postName" };
+            object[] valueList = { postName };
+            SqlDataReader reader = db.ExecuteReader(cmdText, paramList, valueList);
+            Post post = new Post();
+            if (reader.Read())
+            {
+                post.postName = postName;
+                post.postID = Convert.ToInt32(reader["postID"]);
+            }
+            reader.Close();
+            return post;
+        }
+        //根据贴子名称得到贴子ID
+        public Model.Rule getRuleID(string ruleItem)
+        {
+            string cmdText = "select * from T_Rule where ruleItem=@ruleItem";
+            string[] paramList = { "@ruleItem" };
+            object[] valueList = { ruleItem };
+            SqlDataReader reader = db.ExecuteReader(cmdText, paramList, valueList);
+            Model.Rule rule = new Model.Rule();
+            if (reader.Read())
+            {
+                rule.ruleItem = ruleItem;
+                rule.ruleID = Convert.ToInt32(reader["ruleID"]);
+            }
+            reader.Close();
+            return rule;
+        }
+        //根据userID查询某项符合某记录的数量
+        //select count(*) from table where 字段 = "";
+        public int checkCountUserID(int userID)
+        {
+            string cmdText = "select count(*) from  T_Report where userID=@userID";
+            string[] paramList = { "@userID" };
+            object[] valueList = { userID };
+            return Convert.ToInt32(db.ExecuteScalar(cmdText, paramList, valueList));
+        }
+        //根据postID查询某项符合某记录的数量
+        //select count(*) from table where 字段 = "";
+        public int checkCountPostID(int postID)
+        {
+            string cmdText = "select count(*) from  T_Report where postID=@postID";
+            string[] paramList = { "@postID" };
+            object[] valueList = { postID };
+            return Convert.ToInt32(db.ExecuteScalar(cmdText, paramList, valueList));
+        }
+        //根据ruleID查询某项符合某记录的数量
+        //select count(*) from table where 字段 = "";
+        public int checkCountRuleID(int ruleID)
+        {
+            string cmdText = "select count(*) from  T_Report where ruleID=@ruleID";
+            string[] paramList = { "@ruleID" };
+            object[] valueList = { ruleID };
+            return Convert.ToInt32(db.ExecuteScalar(cmdText, paramList, valueList));
         }
     }
 }

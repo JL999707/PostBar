@@ -91,7 +91,7 @@ namespace BLL
                 return checkAllBarAtt2;
             }
         }
-        //根据用户姓名得到用户ID
+        //根据用户姓名得到用户ID,userID
         public Model.UserInfo getUserID(string userName)
         {
             Model.UserInfo getUserID = dao.getUserID(userName);

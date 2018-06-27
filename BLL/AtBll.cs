@@ -94,5 +94,21 @@ namespace BLL
             }
         }
 
+        //根据回复名称ReplyName得到回复ID，replyID
+        public Model.Reply getReplyID(string replyName)
+        {
+            Model.Reply getReplyID = dao.getReplyID(replyName);
+            //int getUserID1 = Convert.ToInt32(getUserID);
+            //不需要访问数据源，直接执行业务逻辑
+            if (getReplyID != null)
+            {
+                return getReplyID;
+            }
+            else
+            {
+                return getReplyID;
+            }
+        }
+
     }
 }

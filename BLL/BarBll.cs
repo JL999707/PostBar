@@ -77,5 +77,81 @@ namespace BLL
         {
             return dao.Query(userName, isAccurate);
         }
+
+        //根据userID检索单个所有信息
+        public Model.Bar checkAllReply1(int userID)
+        {
+            Model.Bar checkAllReply1 = dao.Query(userID);
+
+            //不需要访问数据源，直接执行业务逻辑
+            if (checkAllReply1 != null)
+            {
+                return checkAllReply1;
+            }
+            else
+            {
+                return checkAllReply1;
+            }
+        }
+        //根据barTypeID检索单个所有信息
+        public Model.Bar checkAllReply2(int barTypeID, bool isAccurate = true)
+        {
+            Model.Bar checkAllReply2 = dao.Query(barTypeID, isAccurate);
+
+            //不需要访问数据源，直接执行业务逻辑
+            if (checkAllReply2 != null)
+            {
+                return checkAllReply2;
+            }
+            else
+            {
+                return checkAllReply2;
+            }
+        }
+        //根据用户姓名得到用户ID,userID
+        public Model.UserInfo getUserID(string userName)
+        {
+            Model.UserInfo getUserID = dao.getUserID(userName);
+            //int getUserID1 = Convert.ToInt32(getUserID);
+            //不需要访问数据源，直接执行业务逻辑
+            if (getUserID != null)
+            {
+                return getUserID;
+            }
+            else
+            {
+                return getUserID;
+            }
+        }
+        //根据贴吧类型名称得到贴吧类型ID
+        public Model.BarType getBarTypeID(string barTypeName)
+        {
+            Model.BarType getBarTypeID = dao.getBarTypeID(barTypeName);
+            //int getUserID1 = Convert.ToInt32(getUserID);
+            //不需要访问数据源，直接执行业务逻辑
+            if (getBarTypeID != null)
+            {
+                return getBarTypeID;
+            }
+            else
+            {
+                return getBarTypeID;
+            }
+        }
+        //根据userID查询某项符合某记录的数量
+        public int checkCountUserID(int userID)
+        {
+            int checkCountUserID = dao.checkCountUserID(userID);
+            return checkCountUserID;
+        }
+        //根据barTypeID查询某项符合某记录的数量
+        public int checkCountPostID(int barTypeID)
+        {
+            int checkCountBarTypeID = dao.checkCountBarTypeID(barTypeID);
+            return checkCountBarTypeID;
+        }
+
+
+
     }
 }

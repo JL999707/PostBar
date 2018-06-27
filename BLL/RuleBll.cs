@@ -77,5 +77,9 @@ namespace BLL
         {
             return dao.Query(ruleItem, isAccurate);
         }
+
+
+
+
     }
 }

@@ -99,5 +99,21 @@ namespace DAL
             reader.Close();
             return user;
         }
+        //根据回复名称ReplyName得到回复ID，replyID
+        public Reply getReplyID(string replyName)
+        {
+            string cmdText = "select * from T_Reply where replyName=@replyName";
+            string[] paramList = { "@replyName" };
+            object[] valueList = { replyName };
+            SqlDataReader reader = db.ExecuteReader(cmdText, paramList, valueList);
+            Reply reply = new Reply();
+            if (reader.Read())
+            {
+                reply.replyName = replyName;
+                reply.replyID = Convert.ToInt32(reader["replyID"]);
+            }
+            reader.Close();
+            return reply;
+        }
     }
 }
