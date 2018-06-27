@@ -63,7 +63,7 @@ namespace DAL
             return privLetUserList;
         }
 
-        public PrivateLetter Query(string privName)//根据被私信者名字查询
+        public PrivateLetter QueryPrivName(string privName)//根据被私信者名字查询
         {
             string cmdText = "select * from T_PrivateLetter where privName=@privName";
             string[] paramList = { "@privName" };
@@ -81,7 +81,7 @@ namespace DAL
             reader.Close();
             return privLetUser;
         }
-        public PrivateLetter Query(int privUserID)//根据主动私信者IDprivUserID查询
+        public PrivateLetter QueryPrivUserID(int privUserID)//根据主动私信者IDprivUserID查询
         {
             string cmdText = "select * from T_PrivateLetter where privUserID=@privUserID";
             string[] paramList = { "@privUserID" };

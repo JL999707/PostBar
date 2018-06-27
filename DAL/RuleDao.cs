@@ -36,7 +36,7 @@ namespace DAL
             return db.ExecuteNoneQuery(cmdText, paramList, valuesList);
         }
 
-        public Model.Rule Query(string ruleItem)
+        public Model.Rule QueryRuleItme(string ruleItem)
         {
             string cmdText = "select * from T_Rule where ruleItem=@ruleItem";
             string[] paramList = { "@ruleItem" };

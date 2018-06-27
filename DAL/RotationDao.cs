@@ -36,7 +36,7 @@ namespace DAL
             return db.ExecuteNoneQuery(cmdText, paramList, valuesList);
         }
 
-        public Rotation Query(string rotName)
+        public Rotation QueryRotName(string rotName)
         {
             string cmdText = "select * from T_Rotation where rotName=@rotName";
             string[] paramList = { "@rotName" };

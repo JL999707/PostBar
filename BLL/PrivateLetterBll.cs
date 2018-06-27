@@ -79,7 +79,7 @@ namespace BLL
         //根据贴吧名称检索单个所有信息
         public Model.PrivateLetter checkAllPrivLet1(string privName)
         {
-            Model.PrivateLetter checkAllPrivLet1 = dao.Query(privName);
+            Model.PrivateLetter checkAllPrivLet1 = dao.QueryPrivName(privName);
 
             //不需要访问数据源，直接执行业务逻辑
             if (checkAllPrivLet1 != null)
@@ -94,7 +94,7 @@ namespace BLL
         //根据主动私信者IDprivUserID检索单个所有信息
         public Model.PrivateLetter checkAllPrivLet2(int privUserID)
         {
-            Model.PrivateLetter checkAllPrivLet2 = dao.Query(privUserID);
+            Model.PrivateLetter checkAllPrivLet2 = dao.QueryPrivUserID(privUserID);
 
             //不需要访问数据源，直接执行业务逻辑
             if (checkAllPrivLet2 != null)

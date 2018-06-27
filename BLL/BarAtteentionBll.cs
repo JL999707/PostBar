@@ -64,7 +64,7 @@ namespace BLL
         //根据贴吧名称检索单个所有信息
         public Model.BarAttention checkAllBarAtt1(string barAttName)
         {
-            Model.BarAttention checkAllBarAtt1 = dao.Query(barAttName);
+            Model.BarAttention checkAllBarAtt1 = dao.QueryBarAttName(barAttName);
 
             //不需要访问数据源，直接执行业务逻辑
             if (checkAllBarAtt1 != null)
@@ -79,7 +79,7 @@ namespace BLL
         //根据userID检索单个所有信息
         public Model.BarAttention checkAllBarAtt2(int userID)
         {
-            Model.BarAttention checkAllBarAtt2 = dao.Query(userID);
+            Model.BarAttention checkAllBarAtt2 = dao.QueryUserID(userID);
 
             //不需要访问数据源，直接执行业务逻辑
             if (checkAllBarAtt2 != null)

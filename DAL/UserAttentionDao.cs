@@ -81,7 +81,7 @@ namespace DAL
         //    return userAtt;
         //}
 
-        public UserAttention Query(string userAttName)//根据被关注者名字查询
+        public UserAttention QueryUserAttName(string userAttName)//根据被关注者名字查询
         {
             string cmdText = "select * from T_UserAttention where userAttName=@userAttName";
             string[] paramList = { "@userAttName" };
@@ -99,7 +99,7 @@ namespace DAL
             reader.Close();
             return userAtt;
         }
-        public UserAttention Query(int userID)//根据关注者ID，userID查询
+        public UserAttention QueryUserID(int userID)//根据关注者ID，userID查询
         {
             string cmdText = "select * from T_UserAttention where userID=@userID";
             string[] paramList = { "@userID" };

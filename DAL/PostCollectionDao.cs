@@ -61,7 +61,7 @@ namespace DAL
             }
             return postCollList;
         }
-        public PostCollection Query(string collName)//根据贴子名字查询
+        public PostCollection QueryCollName(string collName)//根据贴子名字查询
         {
             string cmdText = "select * from T_PostCollection where collName=@collName";
             string[] paramList = { "@collName" };
@@ -79,7 +79,7 @@ namespace DAL
             reader.Close();
             return postColl;
         }
-        public PostCollection Query(int userID)//根据userID查询
+        public PostCollection QueryUserID(int userID)//根据userID查询
         {
             string cmdText = "select * from T_PostCollection where userID=@userID";
             string[] paramList = { "@userID" };

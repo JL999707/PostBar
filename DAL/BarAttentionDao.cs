@@ -62,7 +62,7 @@ namespace DAL
             }
             return barAttList;
         }
-        public BarAttention Query(string barAttName)//根据贴吧名字查询
+        public BarAttention QueryBarAttName(string barAttName)//根据贴吧名字查询
         {
             string cmdText = "select * from T_BarAttention where barAttName=@barAttName";
             string[] paramList = { "@barAttName" };
@@ -80,7 +80,7 @@ namespace DAL
             reader.Close();
             return barAtt;
         }
-        public BarAttention Query(int userID)//根据userID查询
+        public BarAttention QueryUserID(int userID)//根据userID查询
         {
             string cmdText = "select * from T_BarAttention where userID=@userID";
             string[] paramList = { "@userID" };

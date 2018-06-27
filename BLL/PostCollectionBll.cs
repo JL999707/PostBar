@@ -79,7 +79,7 @@ namespace BLL
         //根据贴吧名称检索单个所有信息
         public Model.PostCollection checkAllPostColl1(string collName)
         {
-            Model.PostCollection checkAllPostColl1 = dao.Query(collName);
+            Model.PostCollection checkAllPostColl1 = dao.QueryCollName(collName);
 
             //不需要访问数据源，直接执行业务逻辑
             if (checkAllPostColl1 != null)
@@ -94,7 +94,7 @@ namespace BLL
         //根据userID检索单个所有信息
         public Model.PostCollection checkAllPostColl2(int userID)
         {
-            Model.PostCollection checkAllPostColl2 = dao.Query(userID);
+            Model.PostCollection checkAllPostColl2 = dao.QueryUserID(userID);
 
             //不需要访问数据源，直接执行业务逻辑
             if (checkAllPostColl2 != null)
