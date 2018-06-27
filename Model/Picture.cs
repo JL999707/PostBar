@@ -15,7 +15,10 @@ namespace Model
         public string picTime { get; set; }
 
         public Picture() { }
-
+        public Picture(int picID)
+        {
+            this.picID = picID;
+        }
         public Picture(int picID, int postID, string picName, string picAddr, string picTime)
         { 
             this.picID = picID;

@@ -13,7 +13,10 @@ namespace Model
         public string rotImg { get; set; }
 
         public Rotation() { }
-
+        public Rotation(int rotID)
+        {
+            this.rotID = rotID;
+        }
         public Rotation(int rotID, string rotName, string rotImg)
         {
             this.rotID = rotID;

@@ -15,6 +15,10 @@ namespace Model
 
         public Notice() { }
 
+        public Notice(int noticeID)
+        {
+            this.noticeID = noticeID;
+        }
         public Notice(int noticeID, string noticeName, string noticeContent, string noticeTime)
         {
             this.noticeID = noticeID;

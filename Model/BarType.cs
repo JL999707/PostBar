@@ -13,6 +13,10 @@ namespace Model
 
         public BarType() { }
 
+        public BarType(int barTypeID)
+        {
+            this.barTypeID = barTypeID;
+        }
         public BarType(int barTypeID, string barTypeName)
         {
             this.barTypeID = barTypeID;

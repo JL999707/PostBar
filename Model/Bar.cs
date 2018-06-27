@@ -20,6 +20,11 @@ namespace Model
 
         public Bar() { }
 
+        public Bar(int barID)
+        {
+            this.barID = barID;
+        }
+
         public Bar(int barID, int barTypeID, int userID, string barName, string barTime, string barAutoGraph, string barHeadImg, string barTopImg, string barBGImg)
         {
             this.barID = barID;

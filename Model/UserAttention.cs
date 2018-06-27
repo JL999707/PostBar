@@ -16,6 +16,7 @@ namespace Model
 
         public UserAttention() { }
 
+
         public UserAttention(int userAttID, int userID, int beUserID, string userAttName, string userAttTime)
         {
             this.userAttID = userAttID;

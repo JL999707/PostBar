@@ -12,7 +12,10 @@ namespace Model
         public string ruleItem { get; set; }
 
         public Rule() { }
-
+        public Rule(int ruleID)
+        {
+            this.ruleID = ruleID;
+        }
         public Rule(int ruleID, string ruleItem)
         {
             this.ruleID = ruleID;

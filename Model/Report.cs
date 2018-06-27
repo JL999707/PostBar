@@ -19,7 +19,10 @@ namespace Model
 
 
         public Report() { }
-
+        public Report(int reportID)
+        {
+            this.reportID = reportID;
+        }
         public Report(int reportID, int userID, int postID, int ruleID, string reportName, string reportReason, string reportResult, string reportTime)
         {
             this.reportID = reportID;

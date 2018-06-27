@@ -20,7 +20,10 @@ namespace Model
         public string postBGImg { get; set; }
 
         public Post() { }
-
+        public Post(int postID)
+        {
+            this.postID = postID;
+        }
         public Post(int postID, int barID, string postName, string postContent, string postTime, string judge, string postAutoGraph, string postHeadImg, string postTopImg, string postBGImg)
         {
             this.postID = postID;

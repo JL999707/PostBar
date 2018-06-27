@@ -16,7 +16,10 @@ namespace Model
         public string replyTime { get; set; }
 
         public Reply() { }
-
+        public Reply(int replyID)
+        {
+            this.replyID = replyID;
+        }
         public Reply(int replyID, int userID, int postID, string replyName, string replyContent, string replyTime)
         {
             this.replyID = replyID;
