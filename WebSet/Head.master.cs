@@ -37,7 +37,10 @@ public partial class Head : System.Web.UI.MasterPage
         }
         else
         {
-            Response.Write(user.userName);
+            //Response.Write(user.userName);
+            this.Session["userName"] = this.userName_txt.Text;
+            this.Login_link.Text = this.Session["userName"].ToString();
         }
+        
     }
 }

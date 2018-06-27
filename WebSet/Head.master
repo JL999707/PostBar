@@ -38,7 +38,8 @@
     </div>
     <div class="body">
         <div class="top">
-            <button class="btn btn-link top_login">登录</button>
+            <%--<button class="btn btn-link top_login">登录</button>--%>
+            <asp:LinkButton ID="Login_link" runat="server"  class="btn btn-link top_login">登录</asp:LinkButton>
             <button class="btn btn-link">消息</button>
             <button class="btn btn-link">更多</button>
         </div>
