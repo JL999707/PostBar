@@ -77,5 +77,12 @@ namespace BLL
         {
             return dao.Query(rotName, isAccurate);
         }
+
+        //根据轮播名称查询某项符合某记录的数量
+        public int checkCountRotName(string rotName)
+        {
+            int checkCountRotName = dao.checkCountRotName(rotName);
+            return checkCountRotName;
+        }
     }
 }

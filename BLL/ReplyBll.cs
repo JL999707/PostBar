@@ -78,33 +78,33 @@ namespace BLL
             return dao.Query(replyName, isAccurate);
         }
         //根据userID检索单个所有信息
-        public Model.Reply checkAllReply1(int userID)
+        public Model.Reply checkAllReplyUserID(int userID)
         {
-            Model.Reply checkAllReply1= dao.QueryUserID(userID);
+            Model.Reply checkAllReplyUserID = dao.QueryUserID(userID);
 
             //不需要访问数据源，直接执行业务逻辑
-            if (checkAllReply1 != null)
+            if (checkAllReplyUserID != null)
             {
-                return checkAllReply1;
+                return checkAllReplyUserID;
             }
             else
             {
-                return checkAllReply1;
+                return checkAllReplyUserID;
             }
         }
         //根据postID检索单个所有信息
-        public Model.Reply checkAllReply2(int postID)
+        public Model.Reply checkAllReplyPostID(int postID)
         {
-            Model.Reply checkAllReply2 = dao.QueryPost(postID);
+            Model.Reply checkAllReplyPostID = dao.QueryPost(postID);
 
             //不需要访问数据源，直接执行业务逻辑
-            if (checkAllReply2 != null)
+            if (checkAllReplyPostID != null)
             {
-                return checkAllReply2;
+                return checkAllReplyPostID;
             }
             else
             {
-                return checkAllReply2;
+                return checkAllReplyPostID;
             }
         }
         //根据用户姓名得到用户ID,userID

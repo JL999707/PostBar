@@ -116,7 +116,7 @@ namespace DAL
 
         //根据贴子名称查询某项符合某记录的数量
         //select count(*) from table where 字段 = "";
-        public int checkCountName(string collName)
+        public int checkCountCollName(string collName)
         {
             string cmdText = "select count(*) from  T_PostCollection where collName=@collName";
             string[] paramList = { "@collName" };
@@ -126,7 +126,7 @@ namespace DAL
 
         //根据userID查询某项符合某记录的数量
         //select count(*) from table where 字段 = "";
-        public int checkCountID(int userID)
+        public int checkCountUserID(int userID)
         {
             string cmdText = "select count(*) from  T_PostCollection where userID=@userID";
             string[] paramList = { "@userID" };

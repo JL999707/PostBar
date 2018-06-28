@@ -87,6 +87,17 @@ namespace DAL
             }
             return postList;
         }
+
+        //根据postName查询某项符合某记录的数量
+        //select count(*) from table where 字段 = "";
+        public int checkCountPostName(string postName)
+        {
+            string cmdText = "select count(*) from  T_Post where postName=@postName";
+            string[] paramList = { "@postName" };
+            object[] valueList = { postName };
+            return Convert.ToInt32(db.ExecuteScalar(cmdText, paramList, valueList));
+        }
+
         //根据贴吧名称barName得到贴吧ID，barID
         public Bar getBarID(string barName)
         {
@@ -103,9 +114,10 @@ namespace DAL
             reader.Close();
             return bar;
         }
+
         //根据barID查询某项符合某记录的数量
         //select count(*) from table where 字段 = "";
-        public int checkCountID(int barID)
+        public int checkCountBarID(int barID)
         {
             string cmdText = "select count(*) from  T_Post where barID=@barID";
             string[] paramList = { "@barID" };

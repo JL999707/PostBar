@@ -109,13 +109,13 @@ namespace BLL
         //根据贴吧名称查询某项符合某记录的数量
         public int checkCountName(string barAttName)
         {
-            int checkCountName = dao.checkCountName(barAttName);
+            int checkCountName = dao.checkCountBarName(barAttName);
             return checkCountName;
         }
         //根据userID查询某项符合某记录的数量
         public int checkCountID(int userID)
         {
-            int checkCountID = dao.checkCountID(userID);
+            int checkCountID = dao.checkCountUserID(userID);
             return checkCountID;
         }
     }

@@ -115,5 +115,15 @@ namespace DAL
             reader.Close();
             return reply;
         }
+
+        //根据被at者ID查询某项符合某记录的数量
+        //select count(*) from table where 字段 = "";
+        public int checkCountBeAtUserID(int beAtUserID)
+        {
+            string cmdText = "select count(*) from  T_At where beAtUserID=@beAtUserID";
+            string[] paramList = { "@beAtUserID" };
+            object[] valueList = { beAtUserID };
+            return Convert.ToInt32(db.ExecuteScalar(cmdText, paramList, valueList));
+        }
     }
 }

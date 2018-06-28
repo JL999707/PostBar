@@ -118,7 +118,7 @@ namespace DAL
 
         //根据被私信者名称查询某项符合某记录的数量
         //select count(*) from table where 字段 = "";
-        public int checkCountName(string privName)
+        public int checkCountUserName(string privName)
         {
             string cmdText = "select count(*) from  T_PrivateLetter  where privName=@privName";
             string[] paramList = { "@privName" };
@@ -128,7 +128,7 @@ namespace DAL
 
         //根据主动私信者IDprivUserID查询某项符合某记录的数量
         //select count(*) from table where 字段 = "";
-        public int checkCountID(int privUserID)
+        public int checkCountUserID(int privUserID)
         {
             string cmdText = "select count(*) from  T_PrivateLetter  where privUserID=@privUserID";
             string[] paramList = { "@privUserID" };

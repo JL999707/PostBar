@@ -162,6 +162,16 @@ namespace DAL
             reader.Close();
             return barType;
         }
+        //根据贴吧名称查询某项符合某记录的数量
+        //select count(*) from table where 字段 = "";
+        public int checkCountBarName(string barName)
+        {
+            string cmdText = "select count(*) from  T_Bar where barName=@barName";
+            string[] paramList = { "@barName" };
+            object[] valueList = { barName };
+            return Convert.ToInt32(db.ExecuteScalar(cmdText, paramList, valueList));
+        }
+
         //根据userID查询某项符合某记录的数量
         //select count(*) from table where 字段 = "";
         public int checkCountUserID(int userID)

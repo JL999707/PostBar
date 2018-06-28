@@ -79,33 +79,33 @@ namespace BLL
         }
 
         //根据userID检索单个所有信息
-        public Model.Bar checkAllReply1(int userID)
+        public Model.Bar checkAllReplyUserID(int userID)
         {
-            Model.Bar checkAllReply1 = dao.QueryUserID(userID);
+            Model.Bar checkAllReplyUserID = dao.QueryUserID(userID);
 
             //不需要访问数据源，直接执行业务逻辑
-            if (checkAllReply1 != null)
+            if (checkAllReplyUserID != null)
             {
-                return checkAllReply1;
+                return checkAllReplyUserID;
             }
             else
             {
-                return checkAllReply1;
+                return checkAllReplyUserID;
             }
         }
         //根据barTypeID检索单个所有信息
-        public Model.Bar checkAllReply2(int barTypeID)
+        public Model.Bar checkAllReplyBarTypeID(int barTypeID)
         {
-            Model.Bar checkAllReply2 = dao.QueryBarTypeID(barTypeID);
+            Model.Bar checkAllReplyBarTypeID = dao.QueryBarTypeID(barTypeID);
 
             //不需要访问数据源，直接执行业务逻辑
-            if (checkAllReply2 != null)
+            if (checkAllReplyBarTypeID != null)
             {
-                return checkAllReply2;
+                return checkAllReplyBarTypeID;
             }
             else
             {
-                return checkAllReply2;
+                return checkAllReplyBarTypeID;
             }
         }
         //根据用户姓名得到用户ID,userID
@@ -138,6 +138,13 @@ namespace BLL
                 return getBarTypeID;
             }
         }
+        //根据贴吧名称查询某项符合某记录的数量
+        public int checkCountBarName(string barName)
+        {
+            int checkCountBarName = dao.checkCountBarName(barName);
+            return checkCountBarName;
+        }
+
         //根据userID查询某项符合某记录的数量
         public int checkCountUserID(int userID)
         {

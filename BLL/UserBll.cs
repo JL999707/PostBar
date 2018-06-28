@@ -87,7 +87,7 @@ namespace BLL
         //用户模糊查询
         public List<UserInfo> likeCheckUsers(string userName, bool isAccurate)
         {
-            return dao.Query(userName, isAccurate);
+            return dao.likeQueryUserName(userName, isAccurate);
         }
 
         //重置用户密码
@@ -109,6 +109,13 @@ namespace BLL
                 }
                 return false;
             }
+        }
+
+        //根据用户名称查询某项符合某记录的数量
+        public int checkCountUserName(string userName)
+        {
+            int checkCountUserName = dao.checkCountUserName(userName);
+            return checkCountUserName;
         }
     }
 }

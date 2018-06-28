@@ -81,5 +81,15 @@ namespace DAL
             }
             return picLinkList;
         }
+
+        //根据图片名称查询某项符合某记录的数量
+        //select count(*) from table where 字段 = "";
+        public int checkCountPicName(string picName)
+        {
+            string cmdText = "select count(*) from  T_Picture where picName=@picName";
+            string[] paramList = { "@picName" };
+            object[] valueList = { picName };
+            return Convert.ToInt32(db.ExecuteScalar(cmdText, paramList, valueList));
+        }
     }
 }

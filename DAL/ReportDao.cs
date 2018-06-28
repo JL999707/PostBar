@@ -181,7 +181,7 @@ namespace DAL
             reader.Close();
             return post;
         }
-        //根据贴子名称得到贴子ID
+        //根据规则名称得到规则ID
         public Model.Rule getRuleID(string ruleItem)
         {
             string cmdText = "select * from T_Rule where ruleItem=@ruleItem";

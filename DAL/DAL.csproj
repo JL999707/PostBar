@@ -44,6 +44,7 @@
     <Compile Include="AtDao.cs" />
     <Compile Include="BarAttentionDao.cs" />
     <Compile Include="BarDao.cs" />
+    <Compile Include="BarManageDao.cs" />
     <Compile Include="BarTypeDao.cs" />
     <Compile Include="DBHelper\DBFactory.cs" />
     <Compile Include="DBHelper\IDbHelper.cs" />
@@ -58,6 +59,7 @@
     <Compile Include="ReportDao.cs" />
     <Compile Include="RotationDao.cs" />
     <Compile Include="RuleDao.cs" />
+    <Compile Include="SysManageDao.cs" />
     <Compile Include="UserAttentionDao.cs" />
     <Compile Include="UserDAO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

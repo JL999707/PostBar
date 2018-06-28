@@ -43,6 +43,7 @@
     <Compile Include="At.cs" />
     <Compile Include="Bar.cs" />
     <Compile Include="BarAttention.cs" />
+    <Compile Include="BarManage.cs" />
     <Compile Include="BarType.cs" />
     <Compile Include="Notice.cs" />
     <Compile Include="Picture.cs" />
@@ -53,6 +54,7 @@
     <Compile Include="Report.cs" />
     <Compile Include="Rotation.cs" />
     <Compile Include="Rule.cs" />
+    <Compile Include="SysManage.cs" />
     <Compile Include="UserAttention.cs" />
     <Compile Include="UserInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

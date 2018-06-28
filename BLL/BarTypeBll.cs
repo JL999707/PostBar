@@ -77,5 +77,12 @@ namespace BLL
         {
             return dao.Query(barTypeName, isAccurate);
         }
+
+        //根据贴吧l类型名称查询某项符合某记录的数量
+        public int checkCountBarTypeName(string barTypeName)
+        {
+            int checkCountBarTypeName = dao.checkCountBarTypeName(barTypeName);
+            return checkCountBarTypeName;
+        }
     }
 }

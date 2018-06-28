@@ -77,5 +77,12 @@ namespace BLL
         {
             return dao.Query(picName, isAccurate);
         }
+
+        //根据图片名称查询某项符合某记录的数量
+        public int checkCountPicName(string picName)
+        {
+            int checkCountPicName = dao.checkCountPicName(picName);
+            return checkCountPicName;
+        }
     }
 }

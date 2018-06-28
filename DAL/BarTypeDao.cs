@@ -79,5 +79,15 @@ namespace DAL
             }
             return barTypeList;
         }
+
+        //根据贴吧类型名称查询某项符合某记录的数量
+        //select count(*) from table where 字段 = "";
+        public int checkCountBarTypeName(string barTypeName)
+        {
+            string cmdText = "select count(*) from  T_BarType where barTypeName=@barTypeName";
+            string[] paramList = { "@barTypeName" };
+            object[] valueList = { barTypeName };
+            return Convert.ToInt32(db.ExecuteScalar(cmdText, paramList, valueList));
+        }
     }
 }

@@ -52,7 +52,7 @@ namespace DAL
             return rule;
         }
 
-        public List<Model.Rule> Query(string ruleItem, bool isAccurate = false)
+        public List<Model.Rule> likeQueryRuleItem(string ruleItem, bool isAccurate = false)
         {
             List<Model.Rule> ruleList = new List<Model.Rule>();
             DataSet ds = new DataSet();
@@ -77,6 +77,16 @@ namespace DAL
                 ruleList.Add(rule);
             }
             return ruleList;
+        }
+
+        //根据规则相查询某项符合某记录的数量
+        //select count(*) from table where 字段 = "";
+        public int checkCountRuleItem(string RuleItem)
+        {
+            string cmdText = "select count(*) from  T_Rule where RuleItem=@RuleItem";
+            string[] paramList = { "@RuleItem" };
+            object[] valueList = { RuleItem };
+            return Convert.ToInt32(db.ExecuteScalar(cmdText, paramList, valueList));
         }
     }
 }

@@ -44,6 +44,7 @@
     <Compile Include="AtBll.cs" />
     <Compile Include="BarAtteentionBll.cs" />
     <Compile Include="BarBll.cs" />
+    <Compile Include="BarManageBll.cs" />
     <Compile Include="BarTypeBll.cs" />
     <Compile Include="Global.cs" />
     <Compile Include="NoticeBll.cs" />
@@ -55,6 +56,7 @@
     <Compile Include="ReportBll.cs" />
     <Compile Include="RotationBll.cs" />
     <Compile Include="RuleBll.cs" />
+    <Compile Include="SysManageBll.cs" />
     <Compile Include="UserAttentionBll.cs" />
     <Compile Include="UserBll.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

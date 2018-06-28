@@ -110,5 +110,12 @@ namespace BLL
             }
         }
 
+        //根据被at者ID查询某项符合某记录的数量
+        public int checkCountBeAtUserID(int beAtUserID)
+        {
+            int checkCountBeAtUserID = dao.checkCountBeAtUserID(beAtUserID);
+            return checkCountBeAtUserID;
+        }
+
     }
 }

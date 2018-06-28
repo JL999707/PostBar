@@ -75,11 +75,14 @@ namespace BLL
         //模糊查询
         public List<Rule> CheckRule(string ruleItem, bool isAccurate)
         {
-            return dao.Query(ruleItem, isAccurate);
+            return dao.likeQueryRuleItem(ruleItem, isAccurate);
         }
 
-
-
-
+        //根据规则相查询某项符合某记录的数量
+        public int checkCountRuleItem(string ruleItem)
+        {
+            int checkCountRuleItem = dao.checkCountRuleItem(ruleItem);
+            return checkCountRuleItem;
+        }
     }
 }

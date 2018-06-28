@@ -79,5 +79,15 @@ namespace DAL
             }
             return rotateList;
         }
+
+        //根据规则相查询某项符合某记录的数量
+        //select count(*) from table where 字段 = "";
+        public int checkCountRotName(string rotName)
+        {
+            string cmdText = "select count(*) from  T_Rotation where rotName=@rotName";
+            string[] paramList = { "@rotName" };
+            object[] valueList = { rotName };
+            return Convert.ToInt32(db.ExecuteScalar(cmdText, paramList, valueList));
+        }
     }
 }

@@ -71,6 +71,14 @@ namespace BLL
         {
             return dao.Query(postName, isAccurate);
         }
+
+        //根据postName查询某项符合某记录的数量
+        public int checkCountPostName(string postName)
+        {
+            int checkCountPostName = dao.checkCountPostName(postName);
+            return checkCountPostName;
+        }
+
         //根据贴吧名称barName得到贴吧ID，barID
         public Model.Bar getBarID(string barName)
         {
@@ -89,7 +97,7 @@ namespace BLL
         //根据barID查询某项符合某记录的数量
         public int checkCountID(int barID)
         {
-            int checkCountID = dao.checkCountID(barID);
+            int checkCountID = dao.checkCountBarID(barID);
             return checkCountID;
         }
     }

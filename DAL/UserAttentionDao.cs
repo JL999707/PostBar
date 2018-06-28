@@ -136,7 +136,7 @@ namespace DAL
 
         //根据被关注者名字查询某项符合某记录的数量
         //select count(*) from table where 字段 = "";
-        public int checkCountName(string userAttName)
+        public int checkCountUserAttName(string userAttName)
         {
             string cmdText = "select count(*) from T_UserAttention where userAttName=@userAttName";
             string[] paramList = { "@userAttName" };
@@ -146,7 +146,7 @@ namespace DAL
 
         //根据关注者ID，userID查询某项符合某记录的数量
         //select count(*) from table where 字段 = "";
-        public int checkCountID(int userID)
+        public int checkCountUserID(int userID)
         {
             string cmdText = "select count(*) from  T_UserAttention where userID=@userID";
             string[] paramList = { "@userID" };

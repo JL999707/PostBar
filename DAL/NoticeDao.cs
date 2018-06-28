@@ -80,5 +80,15 @@ namespace DAL
             }
             return noticeList;
         }
+
+        //根据公告名称查询某项符合某记录的数量
+        //select count(*) from table where 字段 = "";
+        public int checkCountNoticeName(string noticeName)
+        {
+            string cmdText = "select count(*) from  T_Notice where noticeName=@noticeName";
+            string[] paramList = { "@noticeName" };
+            object[] valueList = { noticeName };
+            return Convert.ToInt32(db.ExecuteScalar(cmdText, paramList, valueList));
+        }
     }
 }

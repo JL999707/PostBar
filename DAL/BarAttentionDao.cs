@@ -117,7 +117,7 @@ namespace DAL
 
         //根据贴吧名称查询某项符合某记录的数量
         //select count(*) from table where 字段 = "";
-        public int checkCountName(string barAttName)
+        public int checkCountBarName(string barAttName)
         {
             string cmdText = "select count(*) from  T_BarAttention where barAttName=@barAttName";
             string[] paramList = { "@barAttName" };
@@ -127,7 +127,7 @@ namespace DAL
 
         //根据userID查询某项符合某记录的数量
         //select count(*) from table where 字段 = "";
-        public int checkCountID(int userID)
+        public int checkCountUserID(int userID)
         {
             string cmdText = "select count(*) from  T_BarAttention where userID=@userID";
             string[] paramList = { "@userID" };

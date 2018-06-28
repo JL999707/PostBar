@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -77,6 +78,13 @@ namespace BLL
         public List<Notice> likeCheckNotice(string noticeName, bool isAccurate)
         {
             return dao.Query(noticeName, isAccurate);
+        }
+
+        //根据公告名称查询某项符合某记录的数量
+        public int checkCountNoticeName(string noticeName)
+        {
+            int checkCountNoticeName = dao.checkCountNoticeName(noticeName);
+            return checkCountNoticeName;
         }
     }
 }

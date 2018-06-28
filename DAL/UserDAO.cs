@@ -118,7 +118,7 @@ namespace DAL
         }
 
         // 先精确后模糊搜索相关用户
-        public List<UserInfo> Query(string userName, bool isAccurate = false)
+        public List<UserInfo> likeQueryUserName(string userName, bool isAccurate = false)
         {
             List<UserInfo> userList = new List<UserInfo>();
             DataSet ds = new DataSet();
@@ -143,6 +143,16 @@ namespace DAL
                 userList.Add(user);
             }
             return userList;
+        }
+
+        //根据用户名称查询某项符合某记录的数量
+        //select count(*) from table where 字段 = "";
+        public int checkCountUserName(string userName)
+        {
+            string cmdText = "select count(*) from  T_User where userName=@userName";
+            string[] paramList = { "@userName" };
+            object[] valueList = { userName };
+            return Convert.ToInt32(db.ExecuteScalar(cmdText, paramList, valueList));
         }
 
 
