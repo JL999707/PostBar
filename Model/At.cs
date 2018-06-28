@@ -20,7 +20,8 @@ namespace Model
             this.beAtUserID = beAtUserID;
         }
 
-        public At(int atUserID,  int beAtUserID, int replyID, string atContent, string atTime)
+        //增加
+        public At(int atUserID, int beAtUserID, int replyID, string atContent, string atTime)
         {
             this.atUserID = atUserID;
             this.replyID = replyID;
@@ -29,6 +30,26 @@ namespace Model
             this.atTime = atTime;
         }
 
+        //删除
+        public At(string atContent)
+        {
+            this.atUserID = atUserID;
+            this.replyID = replyID;
+            this.beAtUserID = beAtUserID;
+            this.atContent = atContent;
+        }
+        //删除
+
+        public At(int replyID, string atContent, string atTime)
+        {
+            this.atUserID = atUserID;
+            this.replyID = replyID;
+            this.beAtUserID = beAtUserID;
+            this.atContent = atContent;
+            this.atTime = atTime;
+        }
+
+        //查询
         public At(int atID, int atUserID,  int beAtUserID, int replyID, string atContent, string atTime)
         {
             this.atID = atID;
@@ -38,5 +59,9 @@ namespace Model
             this.atContent = atContent;
             this.atTime = atTime;
         }
+        //更新
+
+
+
     }
 }

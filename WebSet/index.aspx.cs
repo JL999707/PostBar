@@ -143,7 +143,7 @@ public partial class index : System.Web.UI.Page
         else
         {
             this.lbGetUserID.Text = "查找不到";
-        }
+        }//这只是查看得到的用户ID
 
         Model.At checkAllAt = mgr.checkAllAt(getUserID.userID);
 
@@ -154,14 +154,14 @@ public partial class index : System.Web.UI.Page
         else
         {
             this.labIDTiShi.Text = "查找不到";
-        }
+        }//根据用户ID得到的At表的信息
     }
 
     //bar表
     //
 
     //barAtt表
-    //根据barNAme
+    //根据barNAme查询barAtt表里面的信息
     protected void btnByBarName_Click(object sender, EventArgs e)
     {
         string barName = this.txtByBarName.Text.Trim();
@@ -177,7 +177,7 @@ public partial class index : System.Web.UI.Page
             this.labBarAtt.Text = "查找不到";
         }
     }
-    //根据userID
+    //根据userID查询barAtt表里面的信息
     protected void btnByUserID_Click(object sender, EventArgs e)
     {
         int userID = Convert.ToInt32(this.txtByUserID.Text.Trim());

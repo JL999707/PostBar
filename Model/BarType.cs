@@ -13,10 +13,24 @@ namespace Model
 
         public BarType() { }
 
+        //更新
+        //增加
+        //删除
         public BarType(int barTypeID)
         {
             this.barTypeID = barTypeID;
         }
+
+        //更新
+        //增加
+        //删除
+        public BarType(string barTypeName)
+        {
+            this.barTypeID = barTypeID;
+            this.barTypeName = barTypeName;
+        }
+
+        //查询
         public BarType(int barTypeID, string barTypeName)
         {
             this.barTypeID = barTypeID;

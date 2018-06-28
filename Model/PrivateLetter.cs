@@ -16,6 +16,38 @@ namespace Model
 
         public PrivateLetter() { }
 
+        //增加
+        public PrivateLetter(int privUserID, int bePrivUserID, string privName, string privTime)
+        {
+            this.privLetID = privLetID;
+            this.privUserID = privUserID;
+            this.bePrivUserID = bePrivUserID;
+            this.privName = privName;
+            this.privTime = privTime;
+        }
+
+        //删除,主动私信用户进行删除
+        public PrivateLetter(int privUserID)
+        {
+            this.privUserID = privUserID;
+        }
+
+        //删除,被冻死新用户进行删除
+        public PrivateLetter( string privName)
+        {
+            this.privName = privName;
+        }
+        //更新
+        public PrivateLetter(int privUserID,string privName, string privTime)
+        {
+            this.privLetID = privLetID;
+            this.privUserID = privUserID;
+            this.bePrivUserID = bePrivUserID;
+            this.privName = privName;
+            this.privTime = privTime;
+        }
+
+        //查询
         public PrivateLetter(int privLetID, int privUserID, int bePrivUserID, string privName, string privTime)
         {
             this.privLetID = privLetID;

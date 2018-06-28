@@ -21,7 +21,7 @@ namespace Model
 
         public UserInfo() { }
 
-        //根据用户用户姓名获得用户ID
+        //根据用户姓名获得用户ID//查询
         public UserInfo(int userID)
         {
             this.userID = userID;
@@ -38,7 +38,6 @@ namespace Model
             this.userName = userName;
             this.pwd = pwd;
         }
-
         //注册基本信息
         public UserInfo(string userName, string pwd, string userSex, string userTime, string userContactInfo, string autoGraph, string userHeadImg, string userTopImg, string userBGImg)
         {
@@ -65,7 +64,7 @@ namespace Model
             this.userBGImg = userBGImg;
         }
 
-        //查询全部
+        //查询全部//删除
         public UserInfo(int userID, string userName, string pwd, string userSex, string userContactInfo, string userTime, string autoGraph, string userHeadImg, string userTopImg, string userBGImg)
         {
             this.userID = userID;

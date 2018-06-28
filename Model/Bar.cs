@@ -25,6 +25,39 @@ namespace Model
             this.barID = barID;
         }
 
+        //增加
+        public Bar(int barTypeID, int userID, string barName, string barTime, string barAutoGraph, string barHeadImg, string barTopImg, string barBGImg)
+        {
+            this.barID = barID;
+            this.barTypeID = barTypeID;
+            this.userID = userID;
+            this.barTime = barTime;
+            this.barName = barName;
+            this.barAutoGraph = barAutoGraph;
+            this.barHeadImg = barHeadImg;
+            this.barTopImg = barTopImg;
+            this.barBGImg = barBGImg;
+        }
+
+        //删除
+        public Bar(string barName)
+        {
+            this.barName = barName;
+        }
+
+        //更新
+        public Bar(int barTypeID, int userID, string barName, string barAutoGraph, string barHeadImg, string barTopImg, string barBGImg)
+        {
+            this.barTypeID = barTypeID;
+            this.userID = userID;
+            this.barName = barName;
+            this.barAutoGraph = barAutoGraph;
+            this.barHeadImg = barHeadImg;
+            this.barTopImg = barTopImg;
+            this.barBGImg = barBGImg;
+        }
+
+        //查询
         public Bar(int barID, int barTypeID, int userID, string barName, string barTime, string barAutoGraph, string barHeadImg, string barTopImg, string barBGImg)
         {
             this.barID = barID;

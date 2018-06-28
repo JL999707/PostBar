@@ -19,6 +19,35 @@ namespace Model
         {
             this.picID = picID;
         }
+
+        //增加
+        public Picture(int postID, string picName, string picAddr, string picTime)
+        {
+            this.picID = picID;
+            this.postID = postID;
+            this.picName = picName;
+            this.picAddr = picAddr;
+            this.picTime = picTime;
+        }
+
+        //删除
+        public Picture(string picName)
+        {
+            this.picID = picID;
+            this.postID = postID;
+            this.picName = picName;
+            this.picAddr = picAddr;
+            this.picTime = picTime;
+        }
+
+        //更新
+        public Picture(string picName, string picAddr)
+        {
+            this.picName = picName;
+            this.picAddr = picAddr;
+        }
+
+        //查询
         public Picture(int picID, int postID, string picName, string picAddr, string picTime)
         { 
             this.picID = picID;
