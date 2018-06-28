@@ -15,7 +15,7 @@ namespace DAL
     {
         string connStr;
         SqlConnection conn;
-        IDbHelper db = DBFactory.GetDbHelper();
+        IDbHelper db = DBFactory.GetDbHelper();//
         //增加用户、用户注册
         public int Add(UserInfo user)
         {
