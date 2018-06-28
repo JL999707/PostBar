@@ -1,12 +1,17 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Head.master" AutoEventWireup="true" CodeFile="Main.aspx.cs" Inherits="_Default" %>
 
+<%@ Register Src="~/chartsPanel.ascx" TagPrefix="uc1" TagName="chartsPanel" %>
+<%@ Register Src="~/tabContent.ascx" TagPrefix="uc1" TagName="tabContent" %>
+
+
+
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <link rel="stylesheet" type="text/css" href="css/Main.css"/>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder2" Runat="Server">
     <div class="picture">
         <div class="rotation">
-            <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="4000">
+            <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="2000">
 	            <ol class="carousel-indicators">
 		            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
 		            <li data-target="#myCarousel" data-slide-to="1"></li>
@@ -37,13 +42,25 @@
             </div> 
         </div>
         <div class="sumBar">
+            <div class="num">
+                <div class="num_show">0</div>
+                <div class="num_show">0</div>
+                <div class="num_show">0</div>
+                <div class="num_show">0</div>
+                <div class="num_show">0</div>
+                <div class="num_show">0</div>
+                <div class="num_show">0</div>
+                <div class="num_show">0</div>
+            </div>
         </div>
     </div>
     <div class="content">
         <div class="myselfInfo">
             <div class="info">
-                <label class="info_userName">昵称</label>
-                <label class="info_unmPost">帖子数：66</label>
+                <div class="info_div">
+                    <asp:label runat="server" class="info_userName" text=""></asp:label><br />
+                    帖子数：<asp:label runat="server" text=""></asp:label>
+                </div>
             </div>
             <div class="img_head"></div>
             <div class="operation">
@@ -51,7 +68,9 @@
                 <span class="glyphicon glyphicon-pencil"></span><br />
                 <button type="button" class="btn btn-default collection">收藏的帖子</button>
                 <span class="glyphicon glyphicon-star"></span><br />
-                <asp:Calendar ID="Calendar1" runat="server" CellPadding="0" SelectedDate="06/26/2018 19:03:29"></asp:Calendar>
+                <div class="calendar">
+                    <asp:Calendar ID="Calendar1" runat="server"></asp:Calendar>
+                </div>
             </div>
         </div>
         <div class="barType">
@@ -75,7 +94,7 @@
             <div class="hotBar">
                 <div class="barTitle">热门吧</div>
                 <div class="hotBar_bar">
-                    <%--<div id="demo" class="carousel slide">
+                        <%--<div id="demo" class="carousel slide">
 	                        <div class="carousel-inner hotbar_div">
 		                        <div class="item active ">
                                     
@@ -112,20 +131,12 @@
             <div id="myTabContent" class="tab-content">
 	            <div class="tab-pane fade in active" id="hotdoor">
 		            <div class="dynamic_hot">
-                        <div class="dynamic_hot_barName"><h4><a>废土行动吧</a></h4></div>
-                        <div class="dynamic_hot_title"><h4><a>【有奖活动】你生命中遇到过哪些惊心动魄的事情？</a></h4></div>
-                        <div class="dynamic_hot_content">喜欢惊险刺激的小伙伴们， 总会有那么一个让你觉得刻骨铭心难以忘记的电影，小说或者游戏， 在这些电</div>
-                        <div class="dynamic_hot_img"></div>
-                        <div class="dynamic_hot_author">霓裳小舞儿   今天8:25</div>
+                        <uc1:tabContent runat="server" ID="tabContent" />
 		            </div>
 	            </div>
 	            <div class="tab-pane fade" id="owndor">
 		            <div class="dynamic_own">
-                        <div class="dynamic_hot_barName"><h4><a>废土行动吧</a></h4></div>
-                        <div class="dynamic_hot_title"><h4><a>【有奖活动】你生命中遇到过哪些惊心动魄的事情？</a></h4></div>
-                        <div class="dynamic_hot_content">喜欢惊险刺激的小伙伴们， 总会有那么一个让你觉得刻骨铭心难以忘记的电影，小说或者游戏， 在这些电</div>
-                        <div class="dynamic_hot_img"></div>
-                        <div class="dynamic_hot_author">霓裳小舞儿   今天8:25</div>
+                        <uc1:tabContent runat="server" ID="tabContent1" />
 		            </div>
 	            </div>
             </div>
@@ -136,72 +147,21 @@
                     <h3 class="panel-title">热议榜</h3>
                 </div>
                 <div class="panel-body">
-                    <ul>
-                        <li>
-                            <span class="charts_num">1</span>
-                            <a class="charts_content">dgasg</a>
-                            <span class="charts_people">1234567</span>
-                        </li>
-                        <li>
-                            <span class="charts_num">2</span>
-                            <a class="charts_content">gfhadhgfdh</a>
-                            <span class="charts_people">1234567</span>
-                        </li>
-                        <li>
-                            <span class="charts_num">3</span>
-                            <a class="charts_content">fdgf</a>
-                            <span class="charts_people">1234567</span>
-                        </li>
-                        <li>
-                            <span class="charts_num">4</span>
-                            <a class="charts_content">fdgf</a>
-                            <span class="charts_people">1234567</span>
-                        </li>
-                        <li>
-                            <span class="charts_num">5</span>
-                            <a class="charts_content">fdgf</a>
-                            <span class="charts_people">1234567</span>
-                        </li>
-                        <li>
-                            <span class="charts_num">6</span>
-                            <a class="charts_content">fdgf</a>
-                            <span class="charts_people">1234567</span>
-                        </li>
-                        <li>
-                            <span class="charts_num">7</span>
-                            <a class="charts_content">fdgf</a>
-                            <span class="charts_people">1234567</span>
-                        </li>
-                        <li>
-                            <span class="charts_num">8</span>
-                            <a class="charts_content">fdgf</a>
-                            <span class="charts_people">1234567</span>
-                        </li>
-                        <li>
-                            <span class="charts_num">9</span>
-                            <a class="charts_content">fdgf</a>
-                            <span class="charts_people">1234567</span>
-                        </li>
-                        <li>
-                            <span class="charts_num">10</span>
-                            <a class="charts_content">fdgf</a>
-                            <span class="charts_people">1234567</span>
-                        </li>
-                    </ul>
+                    <uc1:chartsPanel runat="server" ID="chartsPanel" />
                 </div>
             </div>
             <div class="charts_notice panel panel-default">
-                <div class="panel-heading">
-                    <h3 class="panel-title">公告栏</h3>
-                </div>
-                <div class="panel-body">
-                    <div class="notice_img"></div>
+                    <div class="panel-heading">
+                        <h3 class="panel-title">公告栏</h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="notice_img"></div>
                         <ul>
                             <li>
-                                <a>贴吧开展违法赌博专项清理行动</a>
+                                <a href="http://tieba.baidu.com/p/5757349508">贴吧开展违法赌博专项清理行动</a>
                             </li>
                             <li>
-                                <a>贴吧积极配合网信办整改</a>
+                                <a href="http://tieba.baidu.com/p/5267451989">贴吧积极配合网信办整改</a>
                             </li>
                         </ul>
                     </div>

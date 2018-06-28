@@ -6,44 +6,66 @@
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>江湖论坛</title>
-    <script src="js/jquery.js"></script>
-    <%--<script src="js/bootstrap.min.js"></script>--%>
-    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <%--<link rel="stylesheet" href="css/bootstrap.min.css"/>--%>
-    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css"/>
     <link rel="stylesheet" type="text/css" href="css/Head.css"/>
+    <script src="js/jquery.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script src="js/Head.js"></script>
     <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server"></asp:ContentPlaceHolder>
 </head>
 <body>
     <form id="form1" runat="server">
+    <div class="zheZhao"></div>
+    <div class="main">
+        <a>×</a>
+        <div class="login">
+            <div class="login_img"></div>
+            <p>用户名·密码登录</p>
+            <div class="login_content">
+                <%--<input type="text" class="userName" placeholder="手机/邮箱/用户名"/>--%>
+                <asp:TextBox ID="userName_txt" runat="server" class="userName" placeholder="手机/邮箱/用户名"></asp:TextBox>
+                <%--<input type="password" class="pwd" placeholder="密码"/>--%>
+                <asp:TextBox ID="pwd_txt" type="password" runat="server" class="pwd" placeholder="密码"></asp:TextBox>
+                <input type="checkbox" class="remember"/>下次自动登录
+                <%--<button type="button" class="btn btn-primary sure">登录</button>--%>
+                <asp:Button ID="Login_btn" runat="server" class="btn btn-primary sure" Text="登录" OnClick="Login_btn_Click"/>
+            </div>
+        </div>
+        <div class="register">
+            <button class="btn btn-link forget">忘记密码?</button>
+            <button class="btn btn-link enroll">立即注册</button>
+        </div>
+    </div>
     <div class="body">
         <div class="top">
-            <a href="#">用户</a>
-            <a href="#">消息</a>
-            <a href="#">更多</a>
+            <%--<button class="btn btn-link top_login">登录</button>--%>
+            <asp:LinkButton ID="Login_link" runat="server"  class="btn btn-link top_login">登录</asp:LinkButton>
+            <button class="btn btn-link">消息</button>
+            <button class="btn btn-link">更多</button>
         </div>
         <div class="head">
             <div class="search">
                 <div class="input-group">
                     <span class="input-group-btn">
-                        <img src="imgs/search_logo.png"/>
+                        <a href="Main.aspx"><img src="imgs/search_logo.png"/></a>
                     </span>
-                    <input type="text" class="form-control"/>
+                    <%--<input type="text" class="form-control"/>--%>
+                    <asp:TextBox ID="textCheck" runat="server" class="form-control"></asp:TextBox>
                     <span class="input-group-btn">
-	                    <button type="button" class="btn btn-primary">进入贴吧</button>
-                        <button type="button" class="ssbtn btn btn-default">搜索</button>
+	                    <%--<button type="button" class="btn btn-primary">进入贴吧</button>--%>
+                        <asp:Button ID="check" runat="server" Text="进入贴吧" class="btn btn-primary" OnClick="check_Click"/>
+                        <%--<button type="button" class="ssbtn btn btn-default">搜索</button>--%>
+                        <asp:Button ID="likeCheck" runat="server" Text="搜索" class="ssbtn btn btn-default" OnClick="likeCheck_Click"/>
                     </span>
                 </div>
             </div>
         </div>
         <div class="map">
-            当前位置：
-            <a href="#">首页</a>
+            当前位置：<a href="#">首页</a>
         </div>
-        <asp:ContentPlaceHolder id="ContentPlaceHolder2" runat="server">
-        
-        </asp:ContentPlaceHolder>
-    </div>
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder2" runat="server"></asp:ContentPlaceHolder>
+        </div>
+        <div class="foot"></div>
     </form>
 </body>
 </html>
