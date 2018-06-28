@@ -14,7 +14,7 @@ namespace BLL
         //增加
         public OperationResult ruleAdd(Rule rule)
         {
-            Rule temp = dao.Query(rule.ruleItem);
+            Rule temp = dao.QueryRuleItme(rule.ruleItem);
             if (temp == null)
             {
                 return OperationResult.exist;
@@ -40,7 +40,7 @@ namespace BLL
         //删除
         public bool deletRule(string ruleItem)
         {
-            Rule temp = dao.Query(ruleItem);
+            Rule temp = dao.QueryRuleItme(ruleItem);
             if (temp == null)
             {
                 return false;
@@ -57,7 +57,7 @@ namespace BLL
         }
 
         //检索单个所有信息
-        public Model.Rule checkAllRule(string ruleItem)
+        public Model.Rule likeCheckAllRule(string ruleItem)
         {
             Model.Rule checkAllRule = dao.QueryRuleItme(ruleItem);
 

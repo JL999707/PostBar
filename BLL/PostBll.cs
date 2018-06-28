@@ -67,7 +67,7 @@ namespace BLL
             }
         }
         //模糊查询
-        public List<Model.Post> CheckPost(string postName, bool isAccurate)
+        public List<Model.Post> likeCheckPost(string postName, bool isAccurate)
         {
             return dao.Query(postName, isAccurate);
         }

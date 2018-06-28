@@ -73,7 +73,7 @@ namespace BLL
         }
 
         //模糊查询
-        public List<Picture> CheckPic(string picName, bool isAccurate)
+        public List<Picture> likeCheckPic(string picName, bool isAccurate)
         {
             return dao.Query(picName, isAccurate);
         }

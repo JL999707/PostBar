@@ -73,7 +73,7 @@ namespace BLL
         }
 
         //模糊查询
-        public List<At> CheckAt(int T_BeAtUserID, bool isAccurate)
+        public List<At> likeCheckAt(int T_BeAtUserID, bool isAccurate)
         {
             return dao.Query(T_BeAtUserID, isAccurate);
         }

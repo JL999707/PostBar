@@ -86,7 +86,7 @@ public partial class index : System.Web.UI.Page
         string userName = txtLike.Text.Trim();
         bool isAccurate = false;
         BLL.UserBll mgr = new BLL.UserBll();
-        List<UserInfo> userList = mgr.CheckUsers(userName, isAccurate);
+        List<UserInfo> userList = mgr.likeCheckUsers(userName, isAccurate);
         if (userList != null && isAccurate == false)
         {
             this.GridView2.DataSource = userList;
@@ -234,7 +234,7 @@ public partial class index : System.Web.UI.Page
         string barTypeName =txtBarType.Text.Trim();
         bool isAccurate = false;
         BLL.BarTypeBll mgr = new BLL.BarTypeBll();
-        List<BarType> barTypeList = mgr.CheckLikeBarType(barTypeName, isAccurate);
+        List<BarType> barTypeList = mgr.likeCheckBarType(barTypeName, isAccurate);
         if (barTypeList != null && isAccurate == false)
         {
             this.GridView2.DataSource = barTypeList;
@@ -269,7 +269,7 @@ public partial class index : System.Web.UI.Page
         string noticeName = this.txtNotice.Text.Trim();
         bool isAccurate = false;
         BLL.NoticeBll mgr = new BLL.NoticeBll();
-        List<Notice> noticeList = mgr.CheckLikeNotice(noticeName, isAccurate);
+        List<Notice> noticeList = mgr.likeCheckNotice(noticeName, isAccurate);
         if (noticeList != null && isAccurate == false)
         {
             this.GridView2.DataSource = noticeList;

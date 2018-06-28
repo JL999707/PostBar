@@ -13,7 +13,7 @@ namespace BLL
         //增加
         public OperationResult postCollAdd(Model.PostCollection postColl)
         {
-            Model.PostCollection temp = dao.Query(postColl.collName);
+            Model.PostCollection temp = dao.QueryCollName(postColl.collName);
             if (temp == null)
             {
                 return OperationResult.exist;
@@ -39,7 +39,7 @@ namespace BLL
         //删除
         public bool deletPostColl(string postCollName)
         {
-            Model.PostCollection temp = dao.Query(postCollName);
+            Model.PostCollection temp = dao.QueryCollName(postCollName);
             if (temp == null)
             {
                 return false;
@@ -58,7 +58,7 @@ namespace BLL
         //检索单个所有信息
         public Model.PostCollection checkAllPostColl(string postCollName)
         {
-            Model.PostCollection checkAllPostColl = dao.Query(postCollName);
+            Model.PostCollection checkAllPostColl = dao.QueryCollName(postCollName);
 
             //不需要访问数据源，直接执行业务逻辑
             if (checkAllPostColl != null)
@@ -72,7 +72,7 @@ namespace BLL
         }
 
         //模糊查询
-        public List<Model.PostCollection> CheckPostColl(string postCollName, bool isAccurate)
+        public List<Model.PostCollection> likeCheckPostColl(string postCollName, bool isAccurate)
         {
             return dao.Query(postCollName, isAccurate);
         }

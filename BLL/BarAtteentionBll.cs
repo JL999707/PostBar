@@ -15,7 +15,7 @@ namespace BLL
         //增加
         public OperationResult barAttAdd(BarAttention barAtt)
         {
-            BarAttention temp = dao.Query(barAtt.barAttName);
+            BarAttention temp = dao.QueryBarAttName(barAtt.barAttName);
             if (temp == null)
             {
                 return OperationResult.exist;
@@ -41,7 +41,7 @@ namespace BLL
         //删除
         public bool deletBarAtt(string barAttName)
         {
-            BarAttention temp = dao.Query(barAttName);
+            BarAttention temp = dao.QueryBarAttName(barAttName);
             if (temp == null)
             {
                 return false;
@@ -57,9 +57,9 @@ namespace BLL
             }
         }
         //模糊查询
-        public List<BarAttention> CheckBarAtt(string barAttTitle, bool isAccurate)
+        public List<BarAttention> likeCheckBarAtt(string barAttName, bool isAccurate)
         {
-            return dao.Query(barAttTitle, isAccurate);
+            return dao.Query(barAttName, isAccurate);
         }
         //根据贴吧名称检索单个所有信息
         public Model.BarAttention checkAllBarAtt1(string barAttName)

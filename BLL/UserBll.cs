@@ -85,7 +85,7 @@ namespace BLL
         }
 
         //用户模糊查询
-        public List<UserInfo> CheckUsers(string userName, bool isAccurate)
+        public List<UserInfo> likeCheckUsers(string userName, bool isAccurate)
         {
             return dao.Query(userName, isAccurate);
         }

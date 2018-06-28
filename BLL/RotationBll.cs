@@ -14,7 +14,7 @@ namespace BLL
         //增加
         public OperationResult rotateAdd(Rotation rotate)
         {
-            Rotation temp = dao.Query(rotate.rotName);
+            Rotation temp = dao.QueryRotName(rotate.rotName);
             if (temp == null)
             {
                 return OperationResult.exist;
@@ -40,7 +40,7 @@ namespace BLL
         //删除
         public bool deletRotate(string rotName)
         {
-            Rotation temp = dao.Query(rotName);
+            Rotation temp = dao.QueryRotName(rotName);
             if (temp == null)
             {
                 return false;
@@ -57,7 +57,7 @@ namespace BLL
         }
 
         //检索单个所有信息
-        public Model.Rotation checkAllRotate(string rotName)
+        public Model.Rotation likeCheckAllRotate(string rotName)
         {
             Model.Rotation checkAllRotate = dao.QueryRotName(rotName);
 

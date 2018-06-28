@@ -13,7 +13,7 @@ namespace BLL
         //增加
         public OperationResult privLetAdd(Model.PrivateLetter privLet)
         {
-            Model.PrivateLetter temp = dao.Query(privLet.privName);
+            Model.PrivateLetter temp = dao.QueryPrivName(privLet.privName);
             if (temp == null)
             {
                 return OperationResult.exist;
@@ -39,7 +39,7 @@ namespace BLL
         //删除
         public bool deletPrivLet(string privLetName)
         {
-            Model.PrivateLetter temp = dao.Query(privLetName);
+            Model.PrivateLetter temp = dao.QueryPrivName(privLetName);
             if (temp == null)
             {
                 return false;
@@ -56,7 +56,7 @@ namespace BLL
         }
 
         //模糊查询
-        public List<Model.PrivateLetter> CheckLikePrivLet(string privLetName, bool isAccurate)
+        public List<Model.PrivateLetter> likeCheckPrivLet(string privLetName, bool isAccurate)
         {
             return dao.Query(privLetName, isAccurate);
         }
@@ -64,7 +64,7 @@ namespace BLL
         //检索单个所有信息
         public Model.PrivateLetter checkAllPrivLet(string privLetName)
         {
-            Model.PrivateLetter checkAllPrivLet = dao.Query(privLetName);
+            Model.PrivateLetter checkAllPrivLet = dao.QueryPrivName(privLetName);
 
             //不需要访问数据源，直接执行业务逻辑
             if (checkAllPrivLet != null)

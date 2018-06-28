@@ -73,7 +73,7 @@ namespace BLL
         }
 
         //模糊查询
-        public List<Reply> CheckReply(string replyName, bool isAccurate)
+        public List<Reply> likeCheckReply(string replyName, bool isAccurate)
         {
             return dao.Query(replyName, isAccurate);
         }
@@ -95,7 +95,7 @@ namespace BLL
         //根据postID检索单个所有信息
         public Model.Reply checkAllReply2(int postID)
         {
-            Model.Reply checkAllReply2 = dao.Query(postID);
+            Model.Reply checkAllReply2 = dao.QueryPost(postID);
 
             //不需要访问数据源，直接执行业务逻辑
             if (checkAllReply2 != null)

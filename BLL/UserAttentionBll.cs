@@ -14,7 +14,7 @@ namespace BLL
         //增加
         public OperationResult userAttAdd(UserAttention userAtt)
         {
-            UserAttention temp = dao.Query(userAtt.userAttName);
+            UserAttention temp = dao.QueryUserAttName(userAtt.userAttName);
             if (temp == null)
             {
                 return OperationResult.exist;
@@ -38,16 +38,16 @@ namespace BLL
         }
 
         //删除
-        public bool deletUserAtt(string userAttTitle)
+        public bool deletUserAtt(string userAttName)
         {
-            UserAttention temp = dao.Query(userAttTitle);
+            UserAttention temp = dao.QueryUserAttName(userAttName);
             if (temp == null)
             {
                 return false;
             }
             else
             {
-                int rowCount = dao.Delete(userAttTitle);
+                int rowCount = dao.Delete(userAttName);
                 if (rowCount == 1)
                 {
                     return true;
@@ -57,14 +57,14 @@ namespace BLL
         }
 
         //模糊查询
-        public List<UserAttention> CheckUserAtt(string userAttTitle, bool isAccurate)
+        public List<UserAttention> CheckUserAtt(string userAttName, bool isAccurate)
         {
-            return dao.Query(userAttTitle, isAccurate);
+            return dao.Query(userAttName, isAccurate);
         }
         //检索单个所有信息
-        public Model.UserAttention checkAllUserAtt(string userAttTitle)
+        public Model.UserAttention likeCheckAllUserAtt(string userAttName)
         {
-            Model.UserAttention checkAllUserAtt = dao.Query(userAttTitle);
+            Model.UserAttention checkAllUserAtt = dao.QueryUserAttName(userAttName);
 
             //不需要访问数据源，直接执行业务逻辑
             if (checkAllUserAtt != null)

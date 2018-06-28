@@ -73,7 +73,7 @@ namespace BLL
         }
 
         //模糊查询
-        public List<Report> CheckReport(string reportName, bool isAccurate)
+        public List<Report> likeCheckReport(string reportName, bool isAccurate)
         {
             return dao.Query(reportName, isAccurate);
         }
