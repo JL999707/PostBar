@@ -176,7 +176,7 @@ namespace DAL
         //select count(*) from table where 字段 = "";
         public int checkCountBarTypeID(int barTypeID)
         {
-            string cmdText = "select count(*) from  T_Bar where barTypeID=@barTypeID";
+            string cmdText = "select count(*) from T_Bar where barTypeID=@barTypeID";
             string[] paramList = { "@barTypeID" };
             object[] valueList = { barTypeID };
             return Convert.ToInt32(db.ExecuteScalar(cmdText, paramList, valueList));
