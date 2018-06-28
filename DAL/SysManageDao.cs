@@ -15,9 +15,9 @@ namespace DAL
         IDbHelper db = DBFactory.GetDbHelper();
         public int Add(SysManage sysMana)
         {
-            string cmdText = "insert into T_SysManage values(@sysManaID, @rotID,@noticeID,@barTypeID)";
-            string[] paramList = { "@sysManaID", "@rotID", "@noticeID", "@barTypeID"};
-            object[] valueList = { sysMana.sysManaID, sysMana.rotID, sysMana.noticeID, sysMana.barTypeID};
+            string cmdText = "insert into T_SysManage values(@sysManaID, @rotID,@noticeID,@barTypeID,@manaTime)";
+            string[] paramList = { "@sysManaID", "@rotID", "@noticeID", "@barTypeID", "@manaTime" };
+            object[] valueList = { sysMana.sysManaID, sysMana.rotID, sysMana.noticeID, sysMana.barTypeID,sysMana.manaTime};
             return db.ExecuteNoneQuery(cmdText, paramList, valueList);
         }
 
@@ -31,9 +31,9 @@ namespace DAL
 
         public int Update(SysManage sysMana)
         {
-            string cmdText = "update T_SysManage set sysManaID=@sysManaID, rotID=@rotID,noticeID=@noticeID,barTypeID=@barTypeID";
-            string[] paramList = { "@sysManaID", "@rotID", "@noticeID", "@barTypeID" };
-            object[] valuesList = { sysMana.sysManaID, sysMana.rotID, sysMana.noticeID, sysMana.barTypeID};
+            string cmdText = "update T_SysManage set sysManaID=@sysManaID, rotID=@rotID,noticeID=@noticeID,barTypeID=@barTypeID,manaTime=@manaTime";
+            string[] paramList = { "@sysManaID", "@rotID", "@noticeID", "@barTypeID", "@manaTime" };
+            object[] valuesList = { sysMana.sysManaID, sysMana.rotID, sysMana.noticeID, sysMana.barTypeID,sysMana.manaTime};
             return db.ExecuteNoneQuery(cmdText, paramList, valuesList);
         }
 
@@ -76,7 +76,7 @@ namespace DAL
             for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
             {
                 DataRow dr = ds.Tables[0].Rows[i];
-                SysManage sysMana = new SysManage(Convert.ToInt32(dr["sysManaID"]), Convert.ToInt32(dr["rotID"]), Convert.ToInt32(dr["noticeID"]), Convert.ToInt32(dr["barTypeID"]));
+                SysManage sysMana = new SysManage(Convert.ToInt32(dr["sysManaID"]), Convert.ToInt32(dr["rotID"]), Convert.ToInt32(dr["noticeID"]), Convert.ToInt32(dr["barTypeID"]),dr["manaTime"].ToString());
                 sysManaList.Add(sysMana);
             }
             return sysManaList;
@@ -95,6 +95,7 @@ namespace DAL
                 sysMana.rotID = Convert.ToInt32(reader["rotID"]);
                 sysMana.noticeID = Convert.ToInt32(reader["noticeID"]);
                 sysMana.barTypeID = Convert.ToInt32(reader["barTypeID"]);
+                sysMana.manaTime = reader["manaTime"].ToString();
             }
             reader.Close();
             return sysMana;
@@ -112,6 +113,7 @@ namespace DAL
                 sysMana.sysManaID = Convert.ToInt32(reader["sysManaID"]);
                 sysMana.noticeID = Convert.ToInt32(reader["noticeID"]);
                 sysMana.barTypeID = Convert.ToInt32(reader["barTypeID"]);
+                sysMana.manaTime = reader["manaTime"].ToString();
             }
             reader.Close();
             return sysMana;
@@ -129,6 +131,7 @@ namespace DAL
                 sysMana.sysManaID = Convert.ToInt32(reader["sysManaID"]);
                 sysMana.noticeID = Convert.ToInt32(reader["noticeID"]);
                 sysMana.barTypeID = Convert.ToInt32(reader["barTypeID"]);
+                sysMana.manaTime = reader["manaTime"].ToString();
 
             }
             reader.Close();
@@ -147,6 +150,7 @@ namespace DAL
                 sysMana.sysManaID = Convert.ToInt32(reader["sysManaID"]);
                 sysMana.noticeID = Convert.ToInt32(reader["noticeID"]);
                 sysMana.barTypeID = Convert.ToInt32(reader["barTypeID"]);
+                sysMana.manaTime = reader["manaTime"].ToString();
             }
             reader.Close();
             return sysMana;

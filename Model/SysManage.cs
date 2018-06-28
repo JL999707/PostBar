@@ -8,10 +8,11 @@ namespace Model
 {
     public class SysManage
     {
-        public int sysManaID{get;set;}
+        public int sysManaID { get; set; }
         public int rotID { get; set; }
         public int noticeID { get; set; }
-        public int barTypeID{ get; set; }
+        public int barTypeID { get; set; }
+        public string manaTime { get; set; }
 
         public SysManage(){ }
         public SysManage(int sysManaID)
@@ -19,19 +20,21 @@ namespace Model
             this.sysManaID = sysManaID;
         }
 
-        public SysManage(int rotID,int noticeID,int barTypeID)
+        public SysManage(int rotID,int noticeID,int barTypeID, string manaTime)
         {
             this.rotID = rotID;
             this.noticeID = noticeID;
             this.barTypeID = barTypeID;
+            this.manaTime = manaTime;
         }
 
-        public SysManage(int sysManaID,int rotID, int noticeID, int barTypeID)
+        public SysManage(int sysManaID,int rotID, int noticeID, int barTypeID, string manaTime)
         {
             this.sysManaID = sysManaID;
             this.rotID = rotID;
             this.noticeID = noticeID;
             this.barTypeID = barTypeID;
+            this.manaTime = manaTime;
         }
     }
 }
