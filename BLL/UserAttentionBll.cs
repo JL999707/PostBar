@@ -80,7 +80,7 @@ namespace BLL
         //根据被关注者名称检索单个所有信息
         public Model.UserAttention checkAllUserAtt1(string userAttName)
         {
-            Model.UserAttention checkAllUserAtt1 = dao.Query(userAttName);
+            Model.UserAttention checkAllUserAtt1 = dao.QueryUserAttName(userAttName);
 
             //不需要访问数据源，直接执行业务逻辑
             if (checkAllUserAtt1 != null)
@@ -95,7 +95,7 @@ namespace BLL
         //根据关注者ID，userID检索单个所有信息
         public Model.UserAttention checkAllUserAtt2(int userID)
         {
-            Model.UserAttention checkAllUserAtt2 = dao.Query(userID);
+            Model.UserAttention checkAllUserAtt2 = dao.QueryUserID(userID);
 
             //不需要访问数据源，直接执行业务逻辑
             if (checkAllUserAtt2 != null)

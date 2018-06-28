@@ -59,7 +59,7 @@ namespace BLL
         //检索单个所有信息
         public Model.Rule checkAllRule(string ruleItem)
         {
-            Model.Rule checkAllRule = dao.Query(ruleItem);
+            Model.Rule checkAllRule = dao.QueryRuleItme(ruleItem);
 
             //不需要访问数据源，直接执行业务逻辑
             if (checkAllRule != null)

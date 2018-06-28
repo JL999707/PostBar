@@ -80,7 +80,7 @@ namespace BLL
         //根据userID检索单个所有信息
         public Model.Reply checkAllReply1(int userID)
         {
-            Model.Reply checkAllReply1= dao.Query(userID);
+            Model.Reply checkAllReply1= dao.QueryUserID(userID);
 
             //不需要访问数据源，直接执行业务逻辑
             if (checkAllReply1 != null)

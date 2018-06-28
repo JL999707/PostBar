@@ -81,7 +81,7 @@ namespace BLL
         //根据userID检索单个所有信息
         public Model.Bar checkAllReply1(int userID)
         {
-            Model.Bar checkAllReply1 = dao.Query(userID);
+            Model.Bar checkAllReply1 = dao.QueryUserID(userID);
 
             //不需要访问数据源，直接执行业务逻辑
             if (checkAllReply1 != null)
@@ -94,9 +94,9 @@ namespace BLL
             }
         }
         //根据barTypeID检索单个所有信息
-        public Model.Bar checkAllReply2(int barTypeID, bool isAccurate = true)
+        public Model.Bar checkAllReply2(int barTypeID)
         {
-            Model.Bar checkAllReply2 = dao.Query(barTypeID, isAccurate);
+            Model.Bar checkAllReply2 = dao.QueryBarTypeID(barTypeID);
 
             //不需要访问数据源，直接执行业务逻辑
             if (checkAllReply2 != null)

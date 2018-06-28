@@ -59,7 +59,7 @@ namespace BLL
         //检索单个所有信息
         public Model.Rotation checkAllRotate(string rotName)
         {
-            Model.Rotation checkAllRotate = dao.Query(rotName);
+            Model.Rotation checkAllRotate = dao.QueryRotName(rotName);
 
             //不需要访问数据源，直接执行业务逻辑
             if (checkAllRotate != null)

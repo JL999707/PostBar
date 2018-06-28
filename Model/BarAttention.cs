@@ -15,16 +15,29 @@ namespace Model
         public string barAttTime { get; set; }
         public BarAttention() { }
 
+        //删除,关注的用户进行删除
         public BarAttention(string barAttName)
         {
             this.barAttName = barAttName;
         }
+        //删除,被关注的贴吧进行删除
         public BarAttention(int userID)
         {
             this.userID = userID;
         }
 
-        public BarAttention(int barAttID, int userID, int barID, string barAttName, string barAttTime)
+        //增加
+        public BarAttention(int userID, int barID, string barAttName, string barAttTime)
+        {
+            this.barAttID = barAttID;
+            this.userID = userID;
+            this.barID = barID;
+            this.barAttName = barAttName;
+            this.barAttTime = barAttTime;
+        }
+
+        //更新
+        public BarAttention(int userID, int barID, string barAttName)
         {
             this.barAttID = barAttID;
             this.userID = userID;
@@ -34,5 +47,14 @@ namespace Model
         }
 
 
+        //查询
+        public BarAttention(int barAttID, int userID, int barID, string barAttName, string barAttTime)
+        {
+            this.barAttID = barAttID;
+            this.userID = userID;
+            this.barID = barID;
+            this.barAttName = barAttName;
+            this.barAttTime = barAttTime;
+        }
     }
 }

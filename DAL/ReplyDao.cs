@@ -83,7 +83,7 @@ namespace DAL
             return replyList;
         }
 
-        public Reply Query(int userID)//根据userID查询
+        public Reply QueryUserID(int userID)//根据userID查询
         {
             string cmdText = "select * from T_Reply where userID=@userID";
             string[] paramList = { "@userID" };

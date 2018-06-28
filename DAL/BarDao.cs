@@ -85,7 +85,7 @@ namespace DAL
             return barList;
         }
 
-        public Bar Query(int userID)//根据userID查询
+        public Bar QueryUserID(int userID)//根据userID查询
         {
             string cmdText = "select * from T_Bar where userID=@userID";
             string[] paramList = { "@userID" };
@@ -106,29 +106,28 @@ namespace DAL
             reader.Close();
             return bar;
         }
-        public Bar Query(int barTypeID, bool isAccurate = true)//根据barTypeID查询
+        public Bar QueryBarTypeID(int barTypeID)//根据barTypeID查询
         {
             Bar bar = new Bar();
-            if (isAccurate)
+            string cmdText = "select * from T_Bar where postID=@barTypeID";
+            string[] paramList = { "@barTypeID" };
+            object[] valueList = { barTypeID };
+            SqlDataReader reader = db.ExecuteReader(cmdText, paramList, valueList);
+            if (reader.Read())
             {
-                string cmdText = "select * from T_Bar where postID=@barTypeID";
-                string[] paramList = { "@barTypeID" };
-                object[] valueList = { barTypeID };
-                SqlDataReader reader = db.ExecuteReader(cmdText, paramList, valueList);
-                if (reader.Read())
-                {
-                    bar.barTypeID = barTypeID;
-                    bar.userID = Convert.ToInt32(reader["user"]);
-                    bar.barName = reader["barName"].ToString();
-                    bar.barTime = reader["barTime"].ToString();
-                    //bar.barName = reader["barName"].ToString();
-                    bar.barAutoGraph = reader["barAutoGraph"].ToString();
-                    bar.barHeadImg = reader["barHeadImg"].ToString();
-                    bar.barTopImg = reader["barTopImg"].ToString();
-                    bar.barBGImg = reader["barBGImg"].ToString();
-                }
-                reader.Close();
+                bar.barTypeID = barTypeID;
+                bar.userID = Convert.ToInt32(reader["user"]);
+                bar.barName = reader["barName"].ToString();
+                bar.barTime = reader["barTime"].ToString();
+                //bar.barName = reader["barName"].ToString();
+                bar.barAutoGraph = reader["barAutoGraph"].ToString();
+                bar.barHeadImg = reader["barHeadImg"].ToString();
+                bar.barTopImg = reader["barTopImg"].ToString();
+                bar.barBGImg = reader["barBGImg"].ToString();
+
+
             }
+            reader.Close();
             return bar;
         }
         //根据用户姓名得到用户ID
