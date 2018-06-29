@@ -15,8 +15,8 @@
 </head>
 <body>
     <form id="form1" runat="server">
-    <div class="zheZhao"></div>
-    <div class="main">
+    <div class="zheZhao" runat="server" id="zheZhao"></div>
+    <div class="main" runat="server" id="main">
         <a>×</a>
         <div class="login">
             <div class="login_img"></div>
@@ -29,6 +29,7 @@
                 <input type="checkbox" class="remember"/>下次自动登录
                 <%--<button type="button" class="btn btn-primary sure">登录</button>--%>
                 <asp:Button ID="Login_btn" runat="server" class="btn btn-primary sure" Text="登录" OnClick="Login_btn_Click"/>
+                <asp:Label ID="tishi" runat="server" Text=""></asp:Label>
             </div>
         </div>
         <div class="register">

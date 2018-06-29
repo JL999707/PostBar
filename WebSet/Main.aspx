@@ -58,8 +58,12 @@
         <div class="myselfInfo">
             <div class="info">
                 <div class="info_div">
-                    <asp:label runat="server" class="info_userName" text=""></asp:label><br />
-                    帖子数：<asp:label runat="server" text=""></asp:label>
+                    用户名：<br />
+                    <asp:Label ID="userName" runat="server" Text=""></asp:Label>
+                    <%--<asp:label runat="server" text=""></asp:label>--%>
+                    <br />
+                    帖子数：<asp:Label ID="postNum" runat="server" Text=""></asp:Label>
+                    <%--<asp:Label ID="postNum" runat="server" Text=""></asp:Label>--%>
                 </div>
             </div>
             <div class="img_head"></div>

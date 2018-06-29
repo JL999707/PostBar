@@ -69,10 +69,12 @@
     height:70px;
     background-color:#e4e6eb;
     font-size:12px;
+    overflow:hidden;
 }
 
 .info_div{
     margin-left:120px;
+    margin-top:20px;
 }
 
 .img_head{
