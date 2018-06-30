@@ -9,12 +9,9 @@ public partial class _Default : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        //if (!IsPostBack)
-        //{
-        //    if (this.Session["userName"] != null)
-        //    {
-        //        this.userName.Text = this.Session["userName"].ToString();
-        //    }
-        //}
+        if (this.Session["userName"] != null)
+        {
+            this.userName.Text = this.Session["userName"].ToString();
+        }
     }
 }
