@@ -1,7 +1,9 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Head.master" AutoEventWireup="true" CodeFile="Main.aspx.cs" Inherits="_Default" %>
 
-<%@ Register Src="~/chartsPanel.ascx" TagPrefix="uc1" TagName="chartsPanel" %>
-<%@ Register Src="~/tabContent.ascx" TagPrefix="uc1" TagName="tabContent" %>
+<%@ Register Src="~/control/tabContent.ascx" TagPrefix="uc2" TagName="tabContent" %>
+<%@ Register Src="~/control/chartsPanel.ascx" TagPrefix="uc2" TagName="chartsPanel" %>
+
+
 
 
 
@@ -135,12 +137,11 @@
             <div id="myTabContent" class="tab-content">
 	            <div class="tab-pane fade in active" id="hotdoor">
 		            <div class="dynamic_hot">
-                        <uc1:tabContent runat="server" ID="tabContent" />
+                        <asp:PlaceHolder ID="dynamic_hot" runat="server"></asp:PlaceHolder>
 		            </div>
 	            </div>
 	            <div class="tab-pane fade" id="owndor">
 		            <div class="dynamic_own">
-                        <uc1:tabContent runat="server" ID="tabContent1" />
 		            </div>
 	            </div>
             </div>
@@ -151,7 +152,7 @@
                     <h3 class="panel-title">热议榜</h3>
                 </div>
                 <div class="panel-body">
-                    <uc1:chartsPanel runat="server" ID="chartsPanel" />
+                    <uc2:chartsPanel runat="server" ID="chartsPanel" />
                 </div>
             </div>
             <div class="charts_notice panel panel-default">

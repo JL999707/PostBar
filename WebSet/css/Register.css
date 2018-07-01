@@ -1,0 +1,54 @@
+﻿body{
+    background-color:#ffffff; 
+    background-size:cover;
+    font-size: 16px;
+}
+.form{
+    background: #ccc;
+    width:1000px;
+}  
+#login_form{
+    display: none;
+}  
+#register_form{
+    display: block;
+}  
+.fa{
+    display: inline-block;
+    top: 17px;
+    left: 6px;
+    position: relative;
+    color: #ccc;
+}  
+input[type="text"],input[type="password"]{
+    padding-left:26px;
+}  
+.checkbox{
+    padding-left:21px;
+}
+.form-group{
+    margin-left: 100px;
+}
+.head-right{
+    float:right;
+    margin-top:-100px;
+}
+.head-img {
+    margin-top: -20px;
+}
+
+.picture-mobilephone {
+    height: 400px;
+    width: 200px;
+    background-color: #ffffff;
+    margin-top: -510px;
+    margin-left: 560px;
+}
+
+.formbox {
+    width: 780px;
+    height: auto;
+    background-color: #ff0000;
+    margin-left: auto;
+    margin-right: auto;
+}
