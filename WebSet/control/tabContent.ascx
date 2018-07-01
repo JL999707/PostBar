@@ -1,4 +1,10 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="tabContent.ascx.cs" Inherits="tabContent" %>
+<style>
+    .dynamic_hot_author{
+        border-bottom:1px solid gray;
+    }
+</style>
+
 
 <div class="dynamic_hot_barName"><h4><a>废土行动吧</a></h4></div>
 <div class="dynamic_hot_title"><h4><a>【有奖活动】你生命中遇到过哪些惊心动魄的事情？</a></h4></div>

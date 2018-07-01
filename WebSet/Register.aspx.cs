@@ -115,34 +115,56 @@ public partial class Register : System.Web.UI.Page
 
     protected void btnZhuCe_Click(object sender, EventArgs e)
     {
-        BLL.UserBll bll = new BLL.UserBll();
-        string name = this.userName.Text.Trim();
-        string sex = this.Sex.Value;
-        string pwd = this.UserPassWord.Text.Trim();
-        string repwd = this.RePassWord.Text.Trim();
-        string time = DateTime.Now.ToLongDateString().ToString();
-        string telNum = this.telNum.Text;
-        string graph = "签名";
-        string headimg = "0";
-        string topimg = "0";
-        string bgimg = "0";
-        string email = this.Email.Text.Trim();
-        string MD5pwd = GetMD5(pwd);
-        string MD5repwd = System.Web.Security.FormsAuthentication.HashPasswordForStoringInConfigFile(pwd, "MD5");
-
-        UserInfo user = new UserInfo(name,MD5pwd,sex,time,telNum,graph,headimg,topimg,bgimg);
-
-        OperationResult userRegist = bll.userRegist(user);
-
-        if (userRegist.ToString() == "success")
+        try
         {
-            Response.Write("<script>alert('success')</script>");
-            Response.Redirect("Main.aspx");
+            BLL.UserBll bll = new BLL.UserBll();
+            string name = this.userName.Text.Trim();
+            string sex = this.Sex.Value;
+            string pwd = this.UserPassWord.Text.Trim();
+            string repwd = this.RePassWord.Text.Trim();
+            string time = DateTime.Now.ToLongDateString().ToString();
+            string telNum = this.telNum.Text;
+            string graph = "签名";
+            string headimg = "0";
+            string topimg = "0";
+            string bgimg = "0";
+            string email = this.Email.Text.Trim();
+            string MD5pwd = GetMD5(pwd);
+            string MD5repwd = System.Web.Security.FormsAuthentication.HashPasswordForStoringInConfigFile(pwd, "MD5");
+
+            
+            Model.UserInfo checkAllUser = bll.checkAllUser(name);
+            if (checkAllUser != null)
+            {
+                UserInfo user = new UserInfo(name, MD5pwd, sex, time, telNum, graph, headimg, topimg, bgimg);
+                OperationResult userRegist = bll.userRegist(user);
+
+                if (userRegist.ToString() == "success")
+                {
+                    Response.Write("<script>alert('success')</script>");
+                    Response.Redirect("Main.aspx");
+                }
+                else if (userRegist.ToString() == "failure")
+                {
+                    Response.Write("<script>alert('failure')</script>");
+                }
+                
+            }
+            else
+            {
+                Response.Write("<script>alert('用户已存在')</script>");
+            }
         }
-        else if (userRegist.ToString() == "failure")
+        catch (Exception ex)
         {
-            Response.Write("<script>alert('failure')</script>");
+            Response.Write(ex.Message);
         }
+        
+
+        
+        
+        
+
         //SqlConnection myConn = GetCon();
         //myConn.Open();
         //string cmdstr = "insert into tb_User(UserName ,UserPassWord ,Email) values('" + Name + "','" + MD5pwd + "','" + email + "')";

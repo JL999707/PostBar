@@ -61,7 +61,7 @@
     width:215px;
     height:auto;
     border:1px solid gray;
-    position:absolute;
+    float:left;
 }
 
 .info{
@@ -117,8 +117,8 @@
     width:774px;
     height:277px;
     border:1px solid gray;
-    position:absolute;
-    margin-left:227px;
+    margin-left:10px;
+    float:left;
 }
 
 .qipaBar{
@@ -245,14 +245,13 @@
 .dynamic{
     width:550px;
     height:auto;
-    position:absolute;
-    margin-left:227px;
-    margin-top:289px;
+    margin-left:10px;
+    margin-top:10px;
+    float:left;
 }
 
 .dynamic_hot,.dynamic_own{
     width:100%;
-    height:auto;
 }
 
 .dynamic a{
@@ -262,8 +261,9 @@
 .charts{
     width:215px;
     height:auto;
-    margin-left:787px;
-    margin-top:289px;
+    margin-left:10px;
+    margin-top:10px;
+    float:left;
 }
 
 .charts a{

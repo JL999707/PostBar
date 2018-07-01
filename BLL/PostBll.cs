@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BLL
 {
-    class PostBll
+    public class PostBll
     {
         DAL.PostDao dao = new DAL.PostDao();
         //增加
