@@ -152,9 +152,10 @@
             <div id="myTabContent" class="tab-content">
 	            <div class="tab-pane fade in active" id="hotdoor">
 		            <div class="dynamic_hot">
-                        <asp:PlaceHolder ID="dynamic_hot" runat="server">
+                        <%--<asp:PlaceHolder ID="dynamic_hot" runat="server">
                             <uc2:tabContent runat="server" ID="tabContent" />
-                        </asp:PlaceHolder>
+                        </asp:PlaceHolder>--%>
+                        <uc2:tabContent runat="server" id="tabContent" />
 		            </div>
 	            </div>
 	            <div class="tab-pane fade" id="owndor">

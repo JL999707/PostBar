@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -7,13 +8,16 @@ using System.Web.UI.WebControls;
 
 public partial class tabContent : System.Web.UI.UserControl
 {
-    public int i
-    {
-        get;
-        set;
-    }
     protected void Page_Load(object sender, EventArgs e)
     {
+        //BLL.PostBll bll = new BLL.PostBll();
+        //Model.Post pp = bll.checkAllPost("i");
+        
+    }
 
+    protected void Button1_Click(object sender, EventArgs e)
+    {
+        Response.Write("<script>alert('hjhk')</script>");
+        
     }
 }
