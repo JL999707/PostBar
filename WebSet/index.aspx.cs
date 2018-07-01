@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using Model;
 using BLL;
 using DAL;
+using System.Data;
 
 public partial class index : System.Web.UI.Page
 {
@@ -345,12 +346,39 @@ public partial class index : System.Web.UI.Page
     //rule表
     //
     //userAtt表
-    //
 
-
-
-
-
-
-
+    //获得bar表desc查询的前10个
+    protected void btnDesc_Click(object sender, EventArgs e)
+    {
+        BLL.BarBll mgr = new BarBll();
+        string barName = this.labDesc.Text;
+        bool isAccurate = false;
+        List<Bar> barList = mgr.checkBarDesc(barName, isAccurate);
+        if (barList != null && isAccurate == false)
+        {
+            this.gridDesc.DataSource = barList;
+            gridDesc.DataBind();
+        }
+        else
+        {
+            this.labNotice.Text = "查找不到";
+        }
+    }
+    //获得post表desc查询的前10个
+    protected void btnPostDesc_Click(object sender, EventArgs e)
+    {
+        BLL.PostBll mgr = new PostBll();
+        string postName = this.labPostDesc.Text;
+        bool isAccurate = false;
+        List<Post> postList = mgr.checkPostDesc(postName, isAccurate);
+        if (postList != null && isAccurate == false)
+        {
+            this.gridPostDesc.DataSource = postList;
+            gridPostDesc.DataBind();
+        }
+        else
+        {
+            this.labNotice.Text = "查找不到";
+        }
+    }
 }

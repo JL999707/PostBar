@@ -137,6 +137,24 @@
             <br />
             <br />
             <br />
+            <asp:Button ID="btnDesc" runat="server" OnClick="btnDesc_Click" Text="查询bar表倒叙" />
+            <asp:Label ID="labDesc" runat="server"></asp:Label>
+            <br />
+            <asp:GridView ID="gridDesc" runat="server">
+            </asp:GridView>
+            <br />
+            <asp:Button ID="btnPostDesc" runat="server" OnClick="btnPostDesc_Click" Text="查询post表倒叙" />
+            <asp:Label ID="labPostDesc" runat="server"></asp:Label>
+            <br />
+            <asp:GridView ID="gridPostDesc" runat="server">
+            </asp:GridView>
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
             <br />
             <br />
             <br />

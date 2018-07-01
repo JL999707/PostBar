@@ -91,5 +91,14 @@ namespace DAL
             object[] valueList = { picName };
             return Convert.ToInt32(db.ExecuteScalar(cmdText, paramList, valueList));
         }
+        //根据noticeID查询某项符合某记录的数量
+        //select count(*) from table where 字段 = "";
+        public int checkCountPicID(int picID)
+        {
+            string cmdText = "select count(*) from  T_Picture where picD=@picID";
+            string[] paramList = { "@picID" };
+            object[] valueList = { picID };
+            return Convert.ToInt32(db.ExecuteScalar(cmdText, paramList, valueList));
+        }
     }
 }

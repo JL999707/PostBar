@@ -89,5 +89,14 @@ namespace DAL
             object[] valueList = { rotName };
             return Convert.ToInt32(db.ExecuteScalar(cmdText, paramList, valueList));
         }
+        //根据rotID查询某项符合某记录的数量
+        //select count(*) from table where 字段 = "";
+        public int checkCountRotID(int rotID)
+        {
+            string cmdText = "select count(*) from  T_Rotation where rotID=@rotID";
+            string[] paramList = { "@rotID" };
+            object[] valueList = { rotID };
+            return Convert.ToInt32(db.ExecuteScalar(cmdText, paramList, valueList));
+        }
     }
 }

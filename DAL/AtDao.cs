@@ -125,5 +125,14 @@ namespace DAL
             object[] valueList = { beAtUserID };
             return Convert.ToInt32(db.ExecuteScalar(cmdText, paramList, valueList));
         }
+        //根据atID查询某项符合某记录的数量
+        //select count(*) from table where 字段 = "";
+        public int checkCountAtID(int atID)
+        {
+            string cmdText = "select count(*) from  T_At where atID=@atID";
+            string[] paramList = { "@atID" };
+            object[] valueList = { atID };
+            return Convert.ToInt32(db.ExecuteScalar(cmdText, paramList, valueList));
+        }
     }
 }

@@ -6,6 +6,7 @@ using DbHelper;
 using Model;
 using System.Data;
 using System.Data.SqlClient;
+using System.Configuration;
 
 namespace DAL
 {
@@ -15,8 +16,8 @@ namespace DAL
         public int Add(Bar bar)
         {
             string cmdText = "insert into T_Bar values(@barTypeID,@userID,@barName,@barTime,@barAutoGraph,@barHeadImg,@barTopImg,@barBGImg)";
-            string[] paramList = { "@barTypeID", "@userID", "@barName", "@barTime",  "@barAutoGraph", "@barHeadImg", "@barTopImg", "@barBGImg" };
-            object[] valueList = { bar.barTypeID, bar.userID, bar.barTime, bar.barName,  bar.barAutoGraph, bar.barHeadImg, bar.barTopImg, bar.barBGImg };
+            string[] paramList = { "@barTypeID", "@userID", "@barName", "@barTime", "@barAutoGraph", "@barHeadImg", "@barTopImg", "@barBGImg" };
+            object[] valueList = { bar.barTypeID, bar.userID, bar.barTime, bar.barName, bar.barAutoGraph, bar.barHeadImg, bar.barTopImg, bar.barBGImg };
             return db.ExecuteNoneQuery(cmdText, paramList, valueList);
         }
 
@@ -31,7 +32,7 @@ namespace DAL
         public int Update(Bar bar)
         {
             string cmdText = "update T_Bar set barTypeID=@barTypeIDuserID=@userID,barTime=@barTime,barAutoGraph=@barAutoGraph,barHeadImg=@barHeadImg,barTopImg=@barTopImg,barBGImg=@barBGImg wher barName=@barName";
-            string[] paramList = { "@barTypeID", "@userID", "@barName", "@barTime","@barAutoGraph", "@barHeadImg", "@barTopImg", "@barBGImg" };
+            string[] paramList = { "@barTypeID", "@userID", "@barName", "@barTime", "@barAutoGraph", "@barHeadImg", "@barTopImg", "@barBGImg" };
             object[] valuesList = { bar.barTypeID, bar.userID, bar.barTime, bar.barName, bar.barAutoGraph, bar.barHeadImg, bar.barTopImg, bar.barBGImg };
             return db.ExecuteNoneQuery(cmdText, paramList, valuesList);
         }
@@ -79,7 +80,7 @@ namespace DAL
             for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
             {
                 DataRow dr = ds.Tables[0].Rows[i];
-                Bar bar = new Bar(Convert.ToInt32(dr["barID"]), Convert.ToInt32(dr["barTypeID"]), Convert.ToInt32(dr["userID"]), dr["barName"].ToString(), dr["barTime"].ToString(),  dr["barAutoGraph"].ToString(), dr["barHeadImg"].ToString(), dr["barTopImg"].ToString(), dr["barBGImg"].ToString());
+                Bar bar = new Bar(Convert.ToInt32(dr["barID"]), Convert.ToInt32(dr["barTypeID"]), Convert.ToInt32(dr["userID"]), dr["barName"].ToString(), dr["barTime"].ToString(), dr["barAutoGraph"].ToString(), dr["barHeadImg"].ToString(), dr["barTopImg"].ToString(), dr["barBGImg"].ToString());
                 barList.Add(bar);
             }
             return barList;
@@ -191,5 +192,42 @@ namespace DAL
             return Convert.ToInt32(db.ExecuteScalar(cmdText, paramList, valueList));
         }
 
+        //根据barID查询某项符合某记录的数量
+        //select count(*) from table where 字段 = "";
+        public int checkCountBarID(int barID)
+        {
+            string cmdText = "select count(*) from  T_Bar where barID=@barID";
+            string[] paramList = { "@barID" };
+            object[] valueList = { barID };
+            return Convert.ToInt32(db.ExecuteScalar(cmdText, paramList, valueList));
+        }
+
+        //查询最近添加的10个记录
+        public List<Bar> getDesc(string barName, bool isAccurate = false)
+        {
+            List<Bar> barList = new List<Bar>();
+            DataSet ds = new DataSet();
+            if (isAccurate)
+            {
+                string cmdText = "select top 10 * from T_Bar where barName like @barName order by barID desc";
+                string[] paramList = { "@barName" };
+                object[] valueList = { barName };
+                ds = db.FillDataSet(cmdText, paramList, valueList);
+            }
+            else
+            {
+                string cmdText = "select  top 10 * from T_Bar where barName like @barName order by barID desc";
+                string[] paramList = { "@barName" };
+                object[] valueList = { "%" + barName + "%" };
+                ds = db.FillDataSet(cmdText, paramList, valueList);
+            }
+            for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
+            {
+                DataRow dr = ds.Tables[0].Rows[i];
+                Bar bar = new Bar(Convert.ToInt32(dr["barID"]), Convert.ToInt32(dr["barTypeID"]), Convert.ToInt32(dr["userID"]), dr["barName"].ToString(), dr["barTime"].ToString(), dr["barAutoGraph"].ToString(), dr["barHeadImg"].ToString(), dr["barTopImg"].ToString(), dr["barBGImg"].ToString());
+                barList.Add(bar);
+            }
+            return barList;
+        }
     }
 }

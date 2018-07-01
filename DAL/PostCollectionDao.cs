@@ -133,5 +133,14 @@ namespace DAL
             object[] valueList = { userID };
             return Convert.ToInt32(db.ExecuteScalar(cmdText, paramList, valueList));
         }
+        //根据postCollID查询某项符合某记录的数量
+        //select count(*) from table where 字段 = "";
+        public int checkCountPostCollID(int postCollID)
+        {
+            string cmdText = "select count(*) from  T_PostCollection where postCollID=@postCollID";
+            string[] paramList = { "@postCollID" };
+            object[] valueList = { postCollID };
+            return Convert.ToInt32(db.ExecuteScalar(cmdText, paramList, valueList));
+        }
     }
 }
