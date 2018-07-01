@@ -224,5 +224,14 @@ namespace DAL
             object[] valueList = { ruleID };
             return Convert.ToInt32(db.ExecuteScalar(cmdText, paramList, valueList));
         }
+        //根据reportID查询某项符合某记录的数量
+        //select count(*) from table where 字段 = "";
+        public int checkCountReportID(int reportID)
+        {
+            string cmdText = "select count(*) from  T_Roprt where reportID=@reportID";
+            string[] paramList = { "@reportID" };
+            object[] valueList = { reportID };
+            return Convert.ToInt32(db.ExecuteScalar(cmdText, paramList, valueList));
+        }
     }
 }

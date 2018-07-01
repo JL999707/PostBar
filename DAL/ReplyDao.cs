@@ -171,5 +171,14 @@ namespace DAL
             object[] valueList = { postID };
             return Convert.ToInt32(db.ExecuteScalar(cmdText, paramList, valueList));
         }
+        //根据replyID查询某项符合某记录的数量
+        //select count(*) from table where 字段 = "";
+        public int checkCountReplyID(int replyID)
+        {
+            string cmdText = "select count(*) from  T_Reply where replyID=@replyID";
+            string[] paramList = { "@replyID" };
+            object[] valueList = { replyID };
+            return Convert.ToInt32(db.ExecuteScalar(cmdText, paramList, valueList));
+        }
     }
 }

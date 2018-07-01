@@ -124,5 +124,43 @@ namespace DAL
             object[] valueList = { barID };
             return Convert.ToInt32(db.ExecuteScalar(cmdText, paramList, valueList));
         }
+
+        //根据postID查询某项符合某记录的数量
+        //select count(*) from table where 字段 = "";
+        public int checkCountPostID(int postID)
+        {
+            string cmdText = "select count(*) from  T_Post where postID=@postID";
+            string[] paramList = { "@postID" };
+            object[] valueList = { postID };
+            return Convert.ToInt32(db.ExecuteScalar(cmdText, paramList, valueList));
+        }
+
+        //查询最近添加的10个记录
+        public List<Post> getDesc(string postName, bool isAccurate = false)
+        {
+            List<Post> postList = new List<Post>();
+            DataSet ds = new DataSet();
+            if (isAccurate)
+            {
+                string cmdText = "select  top 10 * from T_Post where postName like @postName order by postID desc";
+                string[] paramList = { "@postName" };
+                object[] valueList = { postName };
+                ds = db.FillDataSet(cmdText, paramList, valueList);
+            }
+            else
+            {
+                string cmdText = "select  top 10 * from T_Post where postName like @postName order by postID desc";
+                string[] paramList = { "@postName" };
+                object[] valueList = { "%" + postName + "%" };
+                ds = db.FillDataSet(cmdText, paramList, valueList);
+            }
+            for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
+            {
+                DataRow dr = ds.Tables[0].Rows[i];
+                Post post = new Post(Convert.ToInt32(dr["postID"]), Convert.ToInt32(dr["barID"]), dr["postName"].ToString(), dr["postContent"].ToString(), dr["postTime"].ToString(), dr["judge"].ToString(), dr["postAutoGraph"].ToString(), dr["postHeadImg"].ToString(), dr["postTopImg"].ToString(), dr["postBGImg"].ToString());
+                postList.Add(post);
+            }
+            return postList;
+        }
     }
 }

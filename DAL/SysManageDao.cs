@@ -232,5 +232,14 @@ namespace DAL
             object[] valueList = { barTypeID };
             return Convert.ToInt32(db.ExecuteScalar(cmdText, paramList, valueList));
         }
+        //根据sysManaID查询某项符合某记录的数量
+        //select count(*) from table where 字段 = "";
+        public int checkCountSysManaID(int sysManaID)
+        {
+            string cmdText = "select count(*) from  T_SysManage where sysManaID=@sysManaID";
+            string[] paramList = { "@sysManaID" };
+            object[] valueList = { sysManaID };
+            return Convert.ToInt32(db.ExecuteScalar(cmdText, paramList, valueList));
+        }
     }
 }

@@ -100,5 +100,12 @@ namespace BLL
             int checkCountID = dao.checkCountBarID(barID);
             return checkCountID;
         }
+
+        //查询最近添加的10个记录
+        public List<Model.Post> checkPostDesc(string postName, bool isAccurate)
+        {
+            return dao.getDesc(postName, isAccurate);
+        }
+
     }
 }

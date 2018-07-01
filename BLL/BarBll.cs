@@ -3,7 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DbHelper;
 using Model;
+using System.Data;
+using System.Data.SqlClient;
+using System.Configuration;
 
 namespace BLL
 {
@@ -159,7 +163,11 @@ namespace BLL
             return checkCountBarTypeID;
         }
 
-
+        //查询最近添加的10个记录
+        public List<Bar> checkBarDesc(string barName,bool isAccurate)
+        {
+            return dao.getDesc(barName, isAccurate);
+        }
 
     }
 }

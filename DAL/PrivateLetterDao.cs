@@ -135,5 +135,14 @@ namespace DAL
             object[] valueList = { privUserID };
             return Convert.ToInt32(db.ExecuteScalar(cmdText, paramList, valueList));
         }
+        //根据privLetID查询某项符合某记录的数量
+        //select count(*) from table where 字段 = "";
+        public int checkCountPrivLetID(int privLetID)
+        {
+            string cmdText = "select count(*) from  T_PrivateLetter where privLetID=@privLetID";
+            string[] paramList = { "@privLetID" };
+            object[] valueList = { privLetID };
+            return Convert.ToInt32(db.ExecuteScalar(cmdText, paramList, valueList));
+        }
     }
 }

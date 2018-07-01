@@ -224,5 +224,14 @@ namespace DAL
             object[] valueList = { manaTime };
             return Convert.ToInt32(db.ExecuteScalar(cmdText, paramList, valueList));
         }
+        //根据barManageID查询某项符合某记录的数量
+        //select count(*) from table where 字段 = "";
+        public int checkCountBarManaID(int barManaID)
+        {
+            string cmdText = "select count(*) from  T_BarManage where barManaID=@barManaID";
+            string[] paramList = { "@barManaID" };
+            object[] valueList = { barManaID };
+            return Convert.ToInt32(db.ExecuteScalar(cmdText, paramList, valueList));
+        }
     }
 }

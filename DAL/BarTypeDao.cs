@@ -89,5 +89,14 @@ namespace DAL
             object[] valueList = { barTypeName };
             return Convert.ToInt32(db.ExecuteScalar(cmdText, paramList, valueList));
         }
+        //根据barTypeID查询某项符合某记录的数量
+        //select count(*) from table where 字段 = "";
+        public int checkCountBarTypeID(int barTypeID)
+        {
+            string cmdText = "select count(*) from  T_BarType where barTypeID=@barTypeID";
+            string[] paramList = { "@barTypeID" };
+            object[] valueList = { barTypeID };
+            return Convert.ToInt32(db.ExecuteScalar(cmdText, paramList, valueList));
+        }
     }
 }
