@@ -130,25 +130,18 @@ public partial class Register : System.Web.UI.Page
         string MD5pwd = GetMD5(pwd);
         string MD5repwd = System.Web.Security.FormsAuthentication.HashPasswordForStoringInConfigFile(pwd, "MD5");
 
-        UserInfo user = new UserInfo(name,pwd,sex,time,telNum,graph,headimg,topimg,bgimg);
+        UserInfo user = new UserInfo(name,MD5pwd,sex,time,telNum,graph,headimg,topimg,bgimg);
 
         OperationResult userRegist = bll.userRegist(user);
 
         if (userRegist.ToString() == "success")
         {
-            //tishi.Text = "注册成功";
             Response.Write("<script>alert('success')</script>");
             Response.Redirect("Main.aspx");
         }
         else if (userRegist.ToString() == "failure")
         {
-            //tishi.Text = "注册失败";
             Response.Write("<script>alert('failure')</script>");
-        }
-        else if (userRegist.ToString() == "exist")
-        {
-            //tishi.Text = "该用户已存在";
-            Response.Write("<script>alert('该用户已存在')</script>");
         }
         //SqlConnection myConn = GetCon();
         //myConn.Open();
