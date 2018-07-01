@@ -75,4 +75,9 @@ public partial class Head : System.Web.UI.MasterPage
             Response.AddHeader("Refresh", "0");
         }
     }
+
+    protected void registerOn_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("Register.aspx");
+    }
 }

@@ -17,11 +17,17 @@ public partial class _Default : System.Web.UI.Page
 
         for (int i = 0;i < 10;i++)
         {
+            tabContent.i = i;
             this.dynamic_hot.Controls.Add(TemplateControl.LoadControl("~/control/tabContent.ascx"));
         }
 
-        Response.Write("<script>alert(" + dynamic_hot.Controls.Count + ")</script>");
+        //Response.Write("<script>alert(" + dynamic_hot.Controls + ")</script>");
 
         BLL.PostBll bll = new BLL.PostBll(); 
+    }
+
+    protected void collection_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("Own.aspx");
     }
 }
