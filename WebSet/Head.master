@@ -34,7 +34,8 @@
         </div>
         <div class="register">
             <button class="btn btn-link forget">忘记密码?</button>
-            <button class="btn btn-link enroll">立即注册</button>
+            <%--<button class="btn btn-link enroll">立即注册</button>--%>
+            <asp:Button ID="registerOn" runat="server" class="btn btn-link enroll" Text="立即注册" OnClick="registerOn_Click" />
         </div>
     </div>
     <div class="body">

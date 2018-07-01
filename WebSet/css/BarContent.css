@@ -1,0 +1,87 @@
+﻿.fakeimg {
+    height: 50px;
+    width: 50px;
+    background-image: url(../imgs/20160516220714_AeHNF.png);
+    background-size:50px 50px;
+    float:left;
+    margin-top:12px;
+    margin-left: 40px;
+}
+        
+.functionbar1{
+    width: 1000px;
+    height: 75px;
+    background-color:gray;
+}
+
+.info{
+    margin-top:20px;
+    margin-left:200px;
+    position:absolute;
+}
+
+.functionbar2{
+    width: 775px;
+    height: 50px;
+    background-color:#aaa;
+}
+    
+.lunimg{
+    height:180px;
+    width: 1000px;
+    background-color:aliceblue;
+}
+
+.deliver{
+    height: auto;
+    width: 1000px;
+    overflow:hidden;
+}
+ 
+ .contain_left{
+    height:auto;
+    width:215px;
+    margin-left:785px;
+    margin-top:10px;
+}
+
+.deliver-contain{
+    height: auto;
+    width: 775px;
+    float:left;
+    margin-top:10px;
+}
+
+.charts{
+    width:215px;
+    height:auto;
+    margin-left:10px;
+    margin-top:10px;
+    float:left;
+}
+
+.charts a{
+    color:black;
+    font-size:12px;
+}
+
+.charts_notice{
+    margin-top:-10px;
+}
+
+.charts_notice .panel-body{
+    padding:0;
+    margin:0;
+}
+
+.charts_notice li{
+    margin-left:15px;
+}
+
+.notice_img{
+    margin-left:-2px;
+    height:90px;
+    width:215px;
+    background-image:url(../imgs/111公告板.png);
+    background-size:100% 100%;
+}

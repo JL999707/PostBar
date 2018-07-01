@@ -70,12 +70,17 @@
             </div>
             <div class="img_head"></div>
             <div class="operation">
-                <button type="button" class="btn btn-default sign">一键签到</button>
+                <%--<button type="button" class="btn btn-default sign">一键签到</button>--%>
+                <asp:Button ID="sign" runat="server" class="btn btn-default sign" Text="一键签到" />
                 <span class="glyphicon glyphicon-pencil"></span><br />
-                <button type="button" class="btn btn-default collection">收藏的帖子</button>
+                <%--<button type="button" class="btn btn-default collection">收藏的帖子</button>--%>
+                <asp:Button ID="collection" runat="server" class="btn btn-default collection" Text="收藏的帖子" OnClick="collection_Click" />
                 <span class="glyphicon glyphicon-star"></span><br />
                 <div class="calendar">
                     <asp:Calendar ID="Calendar1" runat="server"></asp:Calendar>
+                </div>
+                <div>
+
                 </div>
             </div>
         </div>
@@ -100,28 +105,38 @@
             <div class="hotBar">
                 <div class="barTitle">热门吧</div>
                 <div class="hotBar_bar">
-                        <%--<div id="demo" class="carousel slide">
-	                        <div class="carousel-inner hotbar_div">
-		                        <div class="item active ">
-                                    
-		                        </div>
-		                        <div class="item">
-			                        
-		                        </div>
-                                <div class="item">
-			                        
-		                        </div>
-	                        </div>
-	                        <a class="left carousel-control" href="#demo" role="button" data-slide="prev">
-	                            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-	                            <span class="sr-only">Previous</span>
-	                        </a>
-	                        <a class="right carousel-control" href="#demo" role="button" data-slide="next">
-	                            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-	                            <span class="sr-only">Next</span>
-	                        </a>
-                        </div> --%>
-                    <marquee behavior="scroll" onMouseOut="this.start()" onMouseOver="this.stop()">scroll：表示由一端滚动到另一端，会重复。</marquee>
+                    <marquee behavior="scroll" onMouseOut="this.start()" onMouseOver="this.stop()">
+                        <div class="hotBar_div">
+                            <img src="imgs/qipa_one.jpeg"/>
+                            <h5>葡萄牙吧</h5>
+                            <h5>人数</h5>
+                            <h5>评论</h5>
+                        </div>
+                        <div class="hotBar_div">
+                            <img src="imgs/qipa_one.jpeg"/>
+                            <h5>葡萄牙吧</h5>
+                            <h5>人数</h5>
+                            <h5>评论</h5>
+                        </div>
+                        <div class="hotBar_div">
+                            <img src="imgs/qipa_one.jpeg"/>
+                            <h5>葡萄牙吧</h5>
+                            <h5>人数</h5>
+                            <h5>评论</h5>
+                        </div>
+                        <div class="hotBar_div">
+                            <img src="imgs/qipa_one.jpeg"/>
+                            <h5>葡萄牙吧</h5>
+                            <h5>人数</h5>
+                            <h5>评论</h5>
+                        </div>
+                        <div class="hotBar_div">
+                            <img src="imgs/qipa_one.jpeg"/>
+                            <h5>葡萄牙吧</h5>
+                            <h5>人数</h5>
+                            <h5>评论</h5>
+                        </div>
+                    </marquee>
                 </div>
             </div>
         </div>
@@ -137,7 +152,9 @@
             <div id="myTabContent" class="tab-content">
 	            <div class="tab-pane fade in active" id="hotdoor">
 		            <div class="dynamic_hot">
-                        <asp:PlaceHolder ID="dynamic_hot" runat="server"></asp:PlaceHolder>
+                        <asp:PlaceHolder ID="dynamic_hot" runat="server">
+                            <uc2:tabContent runat="server" ID="tabContent" />
+                        </asp:PlaceHolder>
 		            </div>
 	            </div>
 	            <div class="tab-pane fade" id="owndor">

@@ -132,9 +132,13 @@ public partial class Register : System.Web.UI.Page
             string MD5pwd = GetMD5(pwd);
             string MD5repwd = System.Web.Security.FormsAuthentication.HashPasswordForStoringInConfigFile(pwd, "MD5");
 
-            
+
             Model.UserInfo checkAllUser = bll.checkAllUser(name);
-            if (checkAllUser != null)
+            if (checkAllUser == null)
+            {
+                Response.Write("<script>alert('用户已存在')</script>");
+            }
+            else
             {
                 UserInfo user = new UserInfo(name, MD5pwd, sex, time, telNum, graph, headimg, topimg, bgimg);
                 OperationResult userRegist = bll.userRegist(user);
@@ -148,11 +152,6 @@ public partial class Register : System.Web.UI.Page
                 {
                     Response.Write("<script>alert('failure')</script>");
                 }
-                
-            }
-            else
-            {
-                Response.Write("<script>alert('用户已存在')</script>");
             }
         }
         catch (Exception ex)
@@ -207,4 +206,9 @@ public partial class Register : System.Web.UI.Page
     //            this.UserName.Focus();
         // }
        }
+
+    protected void login_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("Main.aspx");
+    }
 }

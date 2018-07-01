@@ -44,8 +44,8 @@
             <li class="active"><a href="#">关注／取关</a></li>
             <li class="active"><a href="#">关注数</a></li>
             <li class="active"><a href="#">帖子数</a></li>
-            <li class="active"><a href="#">足球吧签名</a></li>
         </ul>
+         <p>足球吧签名<span class="glyphicon glyphicon-pencil"></span></p>
     </div>
     <div class="deliver">
         <div class="deliver-contain">
@@ -55,7 +55,6 @@
 	                <li><a href="#ios" data-toggle="tab">iOS</a></li>
 	                <li class="dropdown"><a href="#" id="myTabDrop1" class="dropdown-toggle" data-toggle="dropdown">图片<b class="caret"></b></a></li>
 		            <li class="active"><a href="#home" data-toggle="tab">精品</a></li>
-                    <li class="active"><a href="#home" data-toggle="tab">视频</a></li>
                     <li class="active"><a href="#home" data-toggle="tab">视频</a></li>
                 </ul>
             </div>

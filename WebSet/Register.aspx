@@ -18,7 +18,8 @@
         </div>
         <div class="head-right">
             我已注册,现在就
-            <input type="button" value="登录" />
+            <%--<input type="button" value="登录" />--%>
+            <%--<asp:Button ID="login" runat="server" class="btn btn-default" Text="登录" href="Main.aspx" OnClick="login_Click"/>--%>
         </div>
     </div>
     <hr />
