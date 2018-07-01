@@ -30,6 +30,7 @@ namespace BLL
             }
         }
 
+
         //更新
         public bool Update(Bar bar)
         {

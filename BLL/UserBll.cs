@@ -25,8 +25,22 @@ namespace BLL
         //增加用户、用户注册
         public OperationResult userRegist(UserInfo user)
         {
-            UserInfo temp = dao.checkAllUser(user.userName);
-            if (temp == null)
+            //UserInfo temp = dao.checkAllUser(user.userName);
+            //if (temp != null)
+            //{
+            //    return OperationResult.exist;
+            //}
+            //else
+            //{
+            //    int rowCount = dao.Add(user);
+            //    if (rowCount == 1)
+            //    {
+            //        return OperationResult.success;
+            //    }
+            //    return OperationResult.failure;
+            //}
+            int temp1 = dao.checkCountUserName(user.userName);
+            if (temp1 > 0)
             {
                 return OperationResult.exist;
             }
@@ -40,7 +54,6 @@ namespace BLL
                 return OperationResult.failure;
             }
         }
-
         //更新用户基本信息
         public bool Update(UserInfo user)
         {
