@@ -154,7 +154,22 @@ namespace DAL
             object[] valueList = { userName };
             return Convert.ToInt32(db.ExecuteScalar(cmdText, paramList, valueList));
         }
-
+        //根据userID得到userName
+        public UserInfo getUserName(int userID)
+        {
+            string cmdText = "select * from T_User where userID=@userID";
+            string[] paramList = { "@userID" };
+            object[] valueList = { userID };
+            SqlDataReader reader = db.ExecuteReader(cmdText, paramList, valueList);
+            UserInfo user = new UserInfo();
+            if (reader.Read())
+            {
+                user.userID = userID;
+                user.userName = reader["userName"].ToString();
+            }
+            reader.Close();
+            return user;
+        }
 
         //public UserInfo checkAllUser(int T_UserID, string userName, string pwd, string userSex, string userContactInfo, string autoGraph, string userHeadPho, string userTopImg, string userBGImg)
         //{

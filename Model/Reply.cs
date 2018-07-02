@@ -14,6 +14,7 @@ namespace Model
         public string replyName { get; set; }
         public string replyContent { get; set; }
         public string replyTime { get; set; }
+        public string replyPic { get; set; }
 
         public Reply() { }
 
@@ -24,9 +25,18 @@ namespace Model
         }
 
         //增加
+        public Reply(int userID, int postID, string replyName, string replyContent, string replyTime, string replyPic)
+        {
+            this.userID = userID;
+            this.postID = postID;
+            this.replyName = replyName;
+            this.replyContent = replyContent;
+            this.replyTime = replyTime;
+            this.replyPic = replyPic;
+        }
+        //增加
         public Reply(int userID, int postID, string replyName, string replyContent, string replyTime)
         {
-            this.replyID = replyID;
             this.userID = userID;
             this.postID = postID;
             this.replyName = replyName;
@@ -41,7 +51,7 @@ namespace Model
             this.postID = postID;
         }
         //查询
-        public Reply(int replyID, int userID, int postID, string replyName, string replyContent, string replyTime)
+        public Reply(int replyID, int userID, int postID, string replyName, string replyContent, string replyTime, string replyPic)
         {
             this.replyID = replyID;
             this.userID = userID;
@@ -49,6 +59,7 @@ namespace Model
             this.replyName = replyName;
             this.replyContent = replyContent;
             this.replyTime = replyTime;
+            this.replyPic = replyPic;
         }
         //更新,回复表更新不了的
     }

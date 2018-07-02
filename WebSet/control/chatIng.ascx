@@ -1,6 +1,4 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="chatIng.ascx.cs" Inherits="control_chatIng" %>
-
-
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="chating.ascx.cs" Inherits="control_chating" %>
 <style>
     #bgDiv {
         width: 800px;
@@ -24,7 +22,7 @@
     <asp:Label ID="labPostTitle" runat="server" Text="新贴名称"></asp:Label>
     <br />
     <asp:Label ID="labBlock1" runat="server" Height="20px" Width="30px"></asp:Label>
-    <asp:TextBox ID="txtPostTitle" runat="server" Height="25px" Width="506px"></asp:TextBox>
+    <asp:TextBox ID="txtReplyTitle" runat="server" Height="25px" Width="506px"></asp:TextBox>
     <br />
     <asp:Panel ID="Panel1" runat="server" Height="323px">
         <br />

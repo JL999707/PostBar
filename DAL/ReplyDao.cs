@@ -14,9 +14,9 @@ namespace DAL
         IDbHelper db = DBFactory.GetDbHelper();
         public int Add(Reply reply)
         {
-            string cmdText = "insert into T_Reply values(@replyID, @userID, @postID,@replyName, @replyContent, @replyTime)";
-            string[] paramList = { "@replyID", "@userID", "@postID", "@replyName", "@replyContent", "@replyTime" };
-            object[] valueList = { reply.replyID, reply.userID, reply.postID, reply.replyName, reply.replyContent, reply.replyTime };
+            string cmdText = "insert into T_Reply values( @userID, @postID,@replyName, @replyContent, @replyTime,@replyPic)";
+            string[] paramList = { "@userID", "@postID", "@replyName", "@replyContent", "@replyTime", "@replyPic" };
+            object[] valueList = { reply.userID, reply.postID, reply.replyName, reply.replyContent, reply.replyTime, reply.replyPic };
             return db.ExecuteNoneQuery(cmdText, paramList, valueList);
         }
 
@@ -30,9 +30,9 @@ namespace DAL
 
         public int Update(Reply reply)
         {
-            string cmdText = "update T_Reply set replyID=@replyID, userID=@userID, postID=@postID,replyName=@replyName, replyContent=@replyContent, replyTime=@replyTime where replyName=@replyName";
-            string[] paramList = { "@replyID", "@userID", "@postID", "@replyContent", "@replyName", "@replyTime" };
-            object[] valuesList = { reply.replyID, reply.userID, reply.postID, reply.replyName, reply.replyContent, reply.replyTime };
+            string cmdText = "update T_Reply set replyID=@replyID, userID=@userID, postID=@postID,replyName=@replyName, replyContent=@replyContent, replyTime=@replyTime, replyPic=@replyPic where replyName=@replyName";
+            string[] paramList = { "@replyID", "@userID", "@postID", "@replyContent", "@replyName", "@replyTime", "@replyPic" };
+            object[] valuesList = { reply.replyID, reply.userID, reply.postID, reply.replyName, reply.replyContent, reply.replyTime, reply.replyPic };
             return db.ExecuteNoneQuery(cmdText, paramList, valuesList);
         }
 
@@ -51,6 +51,7 @@ namespace DAL
                 reply.postID = Convert.ToInt32(reader["postID"]);
                 reply.replyContent = reader["replyContent"].ToString();
                 reply.replyTime = reader["replyTime"].ToString();
+                reply.replyPic = reader["replyPic"].ToString();
             }
             reader.Close();
             return reply;
@@ -77,7 +78,7 @@ namespace DAL
             for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
             {
                 DataRow dr = ds.Tables[0].Rows[i];
-                Reply reply = new Reply(Convert.ToInt32(dr["replyID"]), Convert.ToInt32(dr["userID"]), Convert.ToInt32(dr["postID"]), dr["replyName"].ToString(), dr["replyContent"].ToString(), dr["replyTime"].ToString());
+                Reply reply = new Reply(Convert.ToInt32(dr["replyID"]), Convert.ToInt32(dr["userID"]), Convert.ToInt32(dr["postID"]), dr["replyName"].ToString(), dr["replyContent"].ToString(), dr["replyTime"].ToString(), dr["replyPic"].ToString());
                 replyList.Add(reply);
             }
             return replyList;
@@ -98,6 +99,7 @@ namespace DAL
                 reply.postID = Convert.ToInt32(reader["postID"]);
                 reply.replyContent = reader["replyContent"].ToString();
                 reply.replyTime = reader["replyTime"].ToString();
+                reply.replyPic = reader["replyPic"].ToString();
             }
             reader.Close();
             return reply;
@@ -117,6 +119,7 @@ namespace DAL
                 reply.userID = Convert.ToInt32(reader["userID"]);
                 reply.replyContent = reader["replyContent"].ToString();
                 reply.replyTime = reader["replyTime"].ToString();
+                reply.replyPic = reader["replyPic"].ToString();
             }
             reader.Close();
             return reply;

@@ -79,6 +79,21 @@ namespace BLL
             return checkCountPostName;
         }
 
+        //根据postID得到postName
+        public Model.Post getPostName(int postID)
+        {
+            Model.Post getPostName = dao.getPostName(postID);
+            //int getUserID1 = Convert.ToInt32(getUserID);
+            //不需要访问数据源，直接执行业务逻辑
+            if (getPostName != null)
+            {
+                return getPostName;
+            }
+            else
+            {
+                return getPostName;
+            }
+        }
         //根据贴吧名称barName得到贴吧ID，barID
         public Model.Bar getBarID(string barName)
         {
