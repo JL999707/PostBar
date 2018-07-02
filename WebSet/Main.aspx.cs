@@ -15,11 +15,10 @@ public partial class _Default : System.Web.UI.Page
             this.userName.Text = this.Session["userName"].ToString();
         }
 
-        for (int i = 0;i < 10;i++)
-        {
-            tabContent.i = i;
-            this.dynamic_hot.Controls.Add(TemplateControl.LoadControl("~/control/tabContent.ascx"));
-        }
+        //for (int i = 1;i <= 10;i++)
+        //{
+        //    this.dynamic_hot.Controls.Add(TemplateControl.LoadControl("~/control/tabContent.ascx"));
+        //}
 
         //Response.Write("<script>alert(" + dynamic_hot.Controls + ")</script>");
 

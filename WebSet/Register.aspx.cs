@@ -132,26 +132,21 @@ public partial class Register : System.Web.UI.Page
             string MD5pwd = GetMD5(pwd);
             string MD5repwd = System.Web.Security.FormsAuthentication.HashPasswordForStoringInConfigFile(pwd, "MD5");
 
+            UserInfo user = new UserInfo(name, MD5pwd, sex, time, telNum, graph, headimg, topimg, bgimg);
+            OperationResult userRegist = bll.userRegist(user);
 
-            Model.UserInfo checkAllUser = bll.checkAllUser(name);
-            if (checkAllUser == null)
+            if (userRegist.ToString() == "success")
             {
-                Response.Write("<script>alert('用户已存在')</script>");
+                Response.Write("<script>alert('success')</script>");
+                Response.Redirect("Main.aspx");
+            }
+            else if (userRegist.ToString() == "failure")
+            {
+                Response.Write("<script>alert('failure')</script>");
             }
             else
             {
-                UserInfo user = new UserInfo(name, MD5pwd, sex, time, telNum, graph, headimg, topimg, bgimg);
-                OperationResult userRegist = bll.userRegist(user);
-
-                if (userRegist.ToString() == "success")
-                {
-                    Response.Write("<script>alert('success')</script>");
-                    Response.Redirect("Main.aspx");
-                }
-                else if (userRegist.ToString() == "failure")
-                {
-                    Response.Write("<script>alert('failure')</script>");
-                }
+                Response.Write("<script>alert('用户已存在')</script>");
             }
         }
         catch (Exception ex)
