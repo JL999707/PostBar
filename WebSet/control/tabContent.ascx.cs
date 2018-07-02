@@ -10,14 +10,6 @@ public partial class tabContent : System.Web.UI.UserControl
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        //BLL.PostBll bll = new BLL.PostBll();
-        //Model.Post pp = bll.checkAllPost("i");
-        
-    }
-
-    protected void Button1_Click(object sender, EventArgs e)
-    {
-        Response.Write("<script>alert('hjhk')</script>");
         
     }
 }
