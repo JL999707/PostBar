@@ -29,4 +29,9 @@ public partial class _Default : System.Web.UI.Page
     {
         Response.Redirect("Own.aspx");
     }
+
+    protected void barName_Click(object sender, EventArgs e)
+    {
+        
+    }
 }
