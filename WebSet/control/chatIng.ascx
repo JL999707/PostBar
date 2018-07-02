@@ -1,4 +1,6 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="chat.ascx.cs" Inherits="chat" %>
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="chatIng.ascx.cs" Inherits="control_chatIng" %>
+
+
 <style>
     #bgDiv {
         width: 800px;
