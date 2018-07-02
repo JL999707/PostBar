@@ -1,5 +1,8 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Head.master" AutoEventWireup="true" CodeFile="Bar.aspx.cs" Inherits="_Default" %>
 
+<%@ Register Src="~/control/chartsPanel.ascx" TagPrefix="uc1" TagName="chartsPanel" %>
+
+
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <link rel="stylesheet" type="text/css" href="css/Bar.css" />
 </asp:Content>
@@ -64,80 +67,7 @@
                 </div>
             </div>
         </div>
-        <div class="contain_left">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h3 class="panel-title">贴吧热议榜</h3>
-                </div>
-                <div class="panel-body">
-                    <div class="notice_img"></div>
-                    <ul>
-                        <li><a>贴吧开展违法赌博专项清理行动</a></li>
-                        <li><a>贴吧积极配合网信办整改</a></li>
-                        <li>
-                            <p><a href="#">xawq</a></p>
-                        </li>
-                        <li>
-                            <p><a href="#">xawq</a></p>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h3 class="panel-title">贴吧热议榜</h3>
-                </div>
-                <div class="panel-body">
-                    <div class="notice_img"></div>
-                    <ul>
-                        <li><a>贴吧开展违法赌博专项清理行动</a></li>
-                        <li><a>贴吧积极配合网信办整改</a></li>
-                        <li>
-                            <p><a href="#">xawq</a></p>
-                        </li>
-                        <li>
-                            <p><a href="#">xawq</a></p>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h3 class="panel-title">贴吧热议榜</h3>
-                </div>
-                <div class="panel-body">
-                    <div class="notice_img"></div>
-                    <ul>
-                        <li><a>贴吧开展违法赌博专项清理行动</a></li>
-                        <li><a>贴吧积极配合网信办整改</a></li>
-                        <li>
-                            <p><a href="#">xawq</a></p>
-                        </li>
-                        <li>
-                            <p><a href="#">xawq</a></p>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h3 class="panel-title">贴吧热议榜</h3>
-                </div>
-                <div class="panel-body">
-                    <div class="notice_img"></div>
-                    <ul>
-                        <li><a>贴吧开展违法赌博专项清理行动</a></li>
-                        <li><a>贴吧积极配合网信办整改</a></li>
-                        <li>
-                            <p><a href="#">xawq</a></p>
-                        </li>
-                        <li>
-                            <p><a href="#">xawq</a></p>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
+        <uc1:chartsPanel runat="server" ID="chartsPanel" />
     </div>
 </asp:Content>
 

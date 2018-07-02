@@ -3,10 +3,6 @@
 <%@ Register Src="~/control/tabContent.ascx" TagPrefix="uc2" TagName="tabContent" %>
 <%@ Register Src="~/control/chartsPanel.ascx" TagPrefix="uc2" TagName="chartsPanel" %>
 
-
-
-
-
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <link rel="stylesheet" type="text/css" href="css/Main.css"/>
 </asp:Content>
@@ -152,10 +148,33 @@
             <div id="myTabContent" class="tab-content">
 	            <div class="tab-pane fade in active" id="hotdoor">
 		            <div class="dynamic_hot">
-                        <%--<asp:PlaceHolder ID="dynamic_hot" runat="server">
-                            <uc2:tabContent runat="server" ID="tabContent" />
-                        </asp:PlaceHolder>--%>
-                        <uc2:tabContent runat="server" id="tabContent" />
+                        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="postID" DataSourceID="SqlDataSource1" GridLines="None">
+    <Columns>
+        <asp:TemplateField>
+            <ItemTemplate>
+                <div class="dynamic_hot_barName">
+                    <h4><a href="../Bar.aspx">
+                        <asp:Label ID="barName" runat="server" Text='<%# Eval("barID") %>'></asp:Label>
+                    </a></h4>
+                </div>
+                <div class="dynamic_hot_postName">
+                    <h4><a href="../Bar.aspx">
+                        <asp:Label ID="postName" runat="server" Text='<%# Eval("postName") %>'></asp:Label>
+                    </a></h4>
+                </div>
+                <div class="dynamic_hot_postContent">
+                    <asp:Label ID="postContent" runat="server" Text='<%# Eval("postContent") %>'></asp:Label>
+                </div>
+                <div class="dynamic_hot_postImg"></div>
+                <div class="dynamic_hot_postAuthor">
+                    <asp:Label ID="postAuthor" runat="server" Text="Label"></asp:Label>
+                    <asp:Label ID="postTime" runat="server" Text='<%# Eval("postTime") %>'></asp:Label>
+                </div>
+            </ItemTemplate>
+        </asp:TemplateField>
+    </Columns>
+</asp:GridView>
+<asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:PostBarConnectionString %>" SelectCommand="SELECT * FROM [T_Post]"></asp:SqlDataSource>
 		            </div>
 	            </div>
 	            <div class="tab-pane fade" id="owndor">
@@ -164,32 +183,6 @@
 	            </div>
             </div>
         </div>
-        <div class="charts">
-            <div class="charts_charts panel panel-default">
-                <div class="panel-heading">
-                    <h3 class="panel-title">热议榜</h3>
-                </div>
-                <div class="panel-body">
-                    <uc2:chartsPanel runat="server" ID="chartsPanel" />
-                </div>
-            </div>
-            <div class="charts_notice panel panel-default">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">公告栏</h3>
-                    </div>
-                    <div class="panel-body">
-                        <div class="notice_img"></div>
-                        <ul>
-                            <li>
-                                <a href="http://tieba.baidu.com/p/5757349508">贴吧开展违法赌博专项清理行动</a>
-                            </li>
-                            <li>
-                                <a href="http://tieba.baidu.com/p/5267451989">贴吧积极配合网信办整改</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <uc2:chartsPanel runat="server" ID="chartsPanel" />
 </asp:Content>
 

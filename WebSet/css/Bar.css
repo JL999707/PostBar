@@ -36,30 +36,6 @@
     width: 1000px;
     overflow:hidden;
 }
- 
- .contain_left{
-    height:auto;
-    width:215px;
-    margin-left:785px;
-    margin-top:10px;
-}
-
-.contain_left a{
-    color:black;
-    font-size:12px;
-}
-
-.contain_left li{
-    list-style:none;
-    height:22px;
-    line-height:22px;
-    margin-top:5px;
-}
-
-.panel{
-    padding:0;
-    margin:0;
-}
 
 .deliver-contain{
     height: auto;
