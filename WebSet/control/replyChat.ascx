@@ -19,6 +19,7 @@
     <br />
         <asp:TextBox ID="txtContent" runat="server" Height="35px" Width="573px"></asp:TextBox>
     <br />
-    <asp:Button ID="btnRelease" runat="server" Text="发表" Height="26px" OnClick="btnRelease_Click" />
+    <asp:Label ID="Label1" runat="server" Width="540px"></asp:Label>
+    <asp:Button ID="btnRelease" runat="server" Text="发表" Height="25px" OnClick="btnRelease_Click" Width="40px" />
     <br /> 
 </div>

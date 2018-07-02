@@ -124,6 +124,23 @@ namespace DAL
             return bar;
         }
 
+        //根据postID得到postName
+        public Post getPostName(int postID)
+        {
+            string cmdText = "select * from T_Post where postID=@postID";
+            string[] paramList = { "@postID" };
+            object[] valueList = { postID };
+            SqlDataReader reader = db.ExecuteReader(cmdText, paramList, valueList);
+            Post post = new Post();
+            if (reader.Read())
+            {
+                post.postID = postID;
+                post.postName = reader["postName"].ToString();
+            }
+            reader.Close();
+            return post;
+        }
+
         //根据贴吧名称userName得到用户ID，userID
         public UserInfo getUserID(string userName)
         {

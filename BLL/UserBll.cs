@@ -130,5 +130,22 @@ namespace BLL
             int checkCountUserName = dao.checkCountUserName(userName);
             return checkCountUserName;
         }
+
+
+        //根据userID得到userName
+        public Model.UserInfo getUserName(int userID)
+        {
+            Model.UserInfo getUserName = dao.getUserName(userID);
+            //int getUserID1 = Convert.ToInt32(getUserID);
+            //不需要访问数据源，直接执行业务逻辑
+            if (getUserName != null)
+            {
+                return getUserName;
+            }
+            else
+            {
+                return getUserName;
+            }
+        }
     }
 }
