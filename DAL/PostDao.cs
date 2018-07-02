@@ -12,11 +12,18 @@ namespace DAL
     public class PostDao
     {
         IDbHelper db = DBFactory.GetDbHelper();
+        //public int Add(Post post)
+        //{
+        //    string cmdText = "insert into T_Post values( @barID,@userID, @postName, @postContent, @postTime,@postPic)";
+        //    string[] paramList = { "@barID", "@userID", "@postName", "@postContent", "@postTime", "@postPic" };
+        //    object[] valueList = { post.barID, post.userID, post.postName, post.postContent, post.postTime, post.postPic };
+        //    return db.ExecuteNoneQuery(cmdText, paramList, valueList);
+        //}
         public int Add(Post post)
         {
-            string cmdText = "insert into T_Post values(@postID, @barID, @postName, @postContent, @postTime,@judge, @postAutoGraph, @postHeadImg, @postTopImg, @postBGImg)";
-            string[] paramList = { "@postID", "@barID", "@postName", "@postContent", "@postTime", "@judge", "@postAutoGraph", "@postHeadImg", "@postTopImg", "@postBGImg" };
-            object[] valueList = { post.postID, post.barID, post.postName, post.postContent, post.postTime, post.judge, post.postAutoGraph, post.postHeadImg, post.postTopImg, post.postBGImg };
+            string cmdText = "insert into T_Post values (@barID,@userID, @postName, @postContent, @postTime,@postPic,@judge, @postAutoGraph, @postHeadImg, @postTopImg, @postBGImg)";
+            string[] paramList = { "@barID", "@userID", "@postName", "@postContent", "@postTime", "@postPic", "@judge", "@postAutoGraph", "@postHeadImg", "@postTopImg", "@postBGImg" };
+            object[] valueList = { post.barID, post.userID, post.postName, post.postContent, post.postTime, post.postPic, post.judge,  post.postAutoGraph, post.postHeadImg, post.postTopImg, post.postBGImg };
             return db.ExecuteNoneQuery(cmdText, paramList, valueList);
         }
 
@@ -30,9 +37,9 @@ namespace DAL
 
         public int Update(Post post)
         {
-            string cmdText = "update T_Post set postID=@postID, barID=@barID, postName=@postName, postContent=@postContent, postTime=@postTime,judge=@judge, postAutoGraph=@postAutoGraph, postHeadImg=@postHeadimg, postTopImg=@postTopImg, postBGImg=@postBGImg where postName=@postName";
+            string cmdText = "update T_Post set postID=@postID, barID=@barID, postName=@postName, postContent=@postContent, postTime=@postTime,judge=@judge,postPic=@postPic, postAutoGraph=@postAutoGraph, postHeadImg=@postHeadimg, postTopImg=@postTopImg, postBGImg=@postBGImg where postName=@postName";
             string[] paramList = { "@postID", "@barID", "@postName", "@postContent", "@postTime", "@judge", "@postAutoGraph", "@postHeadImg", "@postTopImg", "@postBGImg" };
-            object[] valuesList = { post.postID, post.barID, post.postName, post.postContent, post.postTime, post.judge, post.postAutoGraph, post.postHeadImg, post.postTopImg, post.postBGImg };
+            object[] valuesList = { post.postID, post.barID, post.postName, post.postContent, post.postTime, post.judge,post.postPic, post.postAutoGraph, post.postHeadImg, post.postTopImg, post.postBGImg };
             return db.ExecuteNoneQuery(cmdText, paramList, valuesList);
         }
 
@@ -48,9 +55,11 @@ namespace DAL
                 post.postName = postName;
                 post.postID = Convert.ToInt32(reader["postID"]);
                 post.barID = Convert.ToInt32(reader["barID"]);
+                post.userID = Convert.ToInt32(reader["userID"]);
                 post.postContent = reader["postContent"].ToString();
                 post.postTime = reader["postTime"].ToString();
                 post.judge = reader["judge"].ToString();
+                post.postPic = reader["postPic"].ToString();
                 post.postAutoGraph = reader["postAutoGraph"].ToString();
                 post.postHeadImg = reader["postHeadImg"].ToString();
                 post.postTopImg = reader["postTopImg"].ToString();
@@ -82,7 +91,7 @@ namespace DAL
             for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
             {
                 DataRow dr = ds.Tables[0].Rows[i];
-                Post post = new Post(Convert.ToInt32(dr["postID"]), Convert.ToInt32(dr["barID"]), dr["postName"].ToString(), dr["postContent"].ToString(), dr["postTime"].ToString(), dr["judge"].ToString(), dr["postAutoName"].ToString(), dr["postHeadImg"].ToString(), dr["postTopImg"].ToString(), dr["postBGImg"].ToString());
+                Post post = new Post(Convert.ToInt32(dr["postID"]), Convert.ToInt32(dr["barID"]), Convert.ToInt32(dr["userID"]), dr["postName"].ToString(), dr["postContent"].ToString(), dr["postTime"].ToString(), dr["judge"].ToString(),dr["postPic"].ToString(), dr["postAutoName"].ToString(), dr["postHeadImg"].ToString(), dr["postTopImg"].ToString(), dr["postBGImg"].ToString());
                 postList.Add(post);
             }
             return postList;
@@ -101,7 +110,7 @@ namespace DAL
         //根据贴吧名称barName得到贴吧ID，barID
         public Bar getBarID(string barName)
         {
-            string cmdText = "select * from T_User where barName=@barName";
+            string cmdText = "select * from T_Bar where barName=@barName";
             string[] paramList = { "@barName" };
             object[] valueList = { barName };
             SqlDataReader reader = db.ExecuteReader(cmdText, paramList, valueList);
@@ -115,6 +124,23 @@ namespace DAL
             return bar;
         }
 
+        //根据贴吧名称userName得到用户ID，userID
+        public UserInfo getUserID(string userName)
+        {
+            string cmdText = "select * from T_User where userName=@userName";
+            string[] paramList = { "@userName" };
+            object[] valueList = { userName };
+            SqlDataReader reader = db.ExecuteReader(cmdText, paramList, valueList);
+            UserInfo user = new UserInfo();
+            if (reader.Read())
+            {
+                user.userName = userName;
+                user.userID = Convert.ToInt32(reader["userID"]);
+            }
+            reader.Close();
+            return user;
+        }
+
         //根据barID查询某项符合某记录的数量
         //select count(*) from table where 字段 = "";
         public int checkCountBarID(int barID)
@@ -124,7 +150,6 @@ namespace DAL
             object[] valueList = { barID };
             return Convert.ToInt32(db.ExecuteScalar(cmdText, paramList, valueList));
         }
-
         //根据postID查询某项符合某记录的数量
         //select count(*) from table where 字段 = "";
         public int checkCountPostID(int postID)
@@ -132,6 +157,16 @@ namespace DAL
             string cmdText = "select count(*) from  T_Post where postID=@postID";
             string[] paramList = { "@postID" };
             object[] valueList = { postID };
+            return Convert.ToInt32(db.ExecuteScalar(cmdText, paramList, valueList));
+        }
+
+        //根据userID查询某项符合某记录的数量
+        //select count(*) from table where 字段 = "";
+        public int checkCountUserID(int userID)
+        {
+            string cmdText = "select count(*) from  T_Post where userID=@userID";
+            string[] paramList = { "@userID" };
+            object[] valueList = { userID };
             return Convert.ToInt32(db.ExecuteScalar(cmdText, paramList, valueList));
         }
 
@@ -157,7 +192,7 @@ namespace DAL
             for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
             {
                 DataRow dr = ds.Tables[0].Rows[i];
-                Post post = new Post(Convert.ToInt32(dr["postID"]), Convert.ToInt32(dr["barID"]), dr["postName"].ToString(), dr["postContent"].ToString(), dr["postTime"].ToString(), dr["judge"].ToString(), dr["postAutoGraph"].ToString(), dr["postHeadImg"].ToString(), dr["postTopImg"].ToString(), dr["postBGImg"].ToString());
+                Post post = new Post(Convert.ToInt32(dr["postID"]), Convert.ToInt32(dr["barID"]), Convert.ToInt32(dr["userID"]), dr["postName"].ToString(), dr["postContent"].ToString(), dr["postTime"].ToString(), dr["judge"].ToString(),dr["postPic"].ToString(), dr["postAutoGraph"].ToString(), dr["postHeadImg"].ToString(), dr["postTopImg"].ToString(), dr["postBGImg"].ToString());
                 postList.Add(post);
             }
             return postList;

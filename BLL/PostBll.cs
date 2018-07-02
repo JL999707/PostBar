@@ -94,11 +94,32 @@ namespace BLL
                 return getBarID;
             }
         }
+        //根据用户名称userName得到用户ID，userID
+        public Model.UserInfo getUserID(string userName)
+        {
+            Model.UserInfo getUserID = dao.getUserID(userName);
+            //int getUserID1 = Convert.ToInt32(getUserID);
+            //不需要访问数据源，直接执行业务逻辑
+            if (getUserID != null)
+            {
+                return getUserID;
+            }
+            else
+            {
+                return getUserID;
+            }
+        }
         //根据barID查询某项符合某记录的数量
         public int checkCountID(int barID)
         {
             int checkCountID = dao.checkCountBarID(barID);
             return checkCountID;
+        }
+        //根据userID查询某项符合某记录的数量
+        public int checkCountUserID(int userID)
+        {
+            int checkCountUserID = dao.checkCountBarID(userID);
+            return checkCountUserID;
         }
 
         //查询最近添加的10个记录
