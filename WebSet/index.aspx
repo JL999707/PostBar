@@ -1,5 +1,8 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="index.aspx.cs" Inherits="index" %>
 
+<%@ Register Src="~/chat.ascx" TagPrefix="uc1" TagName="chat" %>
+
+
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -150,6 +153,7 @@
             </asp:GridView>
             <br />
             <br />
+            <uc1:chat runat="server" ID="chat" />
             <br />
             <br />
             <br />
