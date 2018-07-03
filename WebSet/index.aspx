@@ -1,6 +1,6 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="index.aspx.cs" Inherits="index" %>
 
-<%@ Register Src="~/chat.ascx" TagPrefix="uc1" TagName="chat" %>
+
 <%@ Register Src="~/control/chat.ascx" TagPrefix="uc2" TagName="chat" %>
 
 

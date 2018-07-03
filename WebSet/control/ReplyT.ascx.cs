@@ -11,4 +11,9 @@ public partial class control_ReplyT : System.Web.UI.UserControl
     {
 
     }
+
+    protected void btnBarAtt_Click(object sender, EventArgs e)
+    {
+
+    }
 }
