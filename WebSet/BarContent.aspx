@@ -13,8 +13,10 @@
             <li class="active"><a href="#">
                 <asp:Button ID="barName" runat="server" Text="" CssClass="btn-link" OnClick="barName_Click"/></a></li>
             <li class="active"><a href="#">关注／取关</a></li>
-            <li class="active"><a href="#">关注数</a></li>
-            <li class="active"><a href="#">帖子数</a></li>
+            <li class="active"><a href="#">
+                <asp:Label ID="barAtt" runat="server" Text="Label"></asp:Label></a></li>
+            <li class="active"><a href="#">
+                <asp:Label ID="postNum" runat="server" Text="Label"></asp:Label></a></li>
         </ul>
     </div>
     <div class="deliver">

@@ -208,7 +208,7 @@ public partial class index : System.Web.UI.Page
         string userName = this.txtBarAttCountID.Text.Trim();
         BLL.BarAttBll mgr = new BLL.BarAttBll();
         Model.UserInfo getUserID = mgr.getUserID(userName);
-        int checkCountID = mgr.checkCountID(getUserID.userID);
+        int checkCountID = mgr.checkCountUserID(getUserID.userID);
         this.labBarAttCount.Text = checkCountID.ToString();
     }
 

@@ -150,7 +150,7 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        <asp:Button ID="btnBarAtt" runat="server" Text="关注的贴吧" OnClick="btnBarAtt_Click" /></td>
+                                        <asp:Button ID="btnBarAtt" runat="server" Text="关注的贴吧"/></td>
                                 </tr>
                                 <tr>
                                     <td>&nbsp;</td>
@@ -168,7 +168,6 @@
                         </div>
                     </div>
                 </div>
-
             </ItemTemplate>
         </asp:TemplateField>
     </Columns>

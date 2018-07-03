@@ -127,6 +127,15 @@ namespace DAL
 
         //根据userID查询某项符合某记录的数量
         //select count(*) from table where 字段 = "";
+        public int checkCountUserID(int userID)
+        {
+            string cmdText = "select count(*) from  T_BarAttention where userID=@userID";
+            string[] paramList = { "@userID" };
+            object[] valueList = { userID };
+            return Convert.ToInt32(db.ExecuteScalar(cmdText, paramList, valueList));
+        }
+        //根据barID查询某项符合某记录的数量
+        //select count(*) from table where 字段 = "";
         public int checkCountBarID(int barID)
         {
             string cmdText = "select count(*) from  T_BarAttention where barID=@barID";

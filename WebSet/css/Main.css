@@ -220,3 +220,40 @@
     margin-top:-20px;
     float:left;
 }
+
+.dynamic_hot div{
+    width:540px;
+    margin-left:2px;
+}
+
+.dynamic_hot_barName{
+    height:40px;
+    line-height:40px;
+    font-size:20px;
+    color:black;
+}
+
+.dynamic_hot_postName{
+    height:40px;
+    line-height:40px;
+    font-size:16px;
+    color:blue;
+}
+
+.dynamic_hot_postContent {
+    height:60px;
+    line-height:60px;
+    font-size:14px;
+    color:black;
+}
+
+.dynamic_hot_postImg {
+    height:auto;
+}
+
+.dynamic_hot_postAuthor{
+    height:30px;
+    line-height:30px;
+    font-size:12px;
+    color:gray;
+}

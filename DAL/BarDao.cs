@@ -159,7 +159,7 @@ namespace DAL
             if (reader.Read())
             {
                 bar.barName = barName;
-                bar.userID = Convert.ToInt32(reader["barID"]);
+                bar.barID = Convert.ToInt32(reader["barID"]);
             }
             reader.Close();
             return bar;

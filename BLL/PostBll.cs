@@ -158,7 +158,7 @@ namespace BLL
             }
         }
         //根据barID查询某项符合某记录的数量
-        public int checkCountID(int barID)
+        public int checkCountBarID(int barID)
         {
             int checkCountID = dao.checkCountBarID(barID);
             return checkCountID;
@@ -166,7 +166,7 @@ namespace BLL
         //根据userID查询某项符合某记录的数量
         public int checkCountUserID(int userID)
         {
-            int checkCountUserID = dao.checkCountBarID(userID);
+            int checkCountUserID = dao.checkCountUserID(userID);
             return checkCountUserID;
         }
 

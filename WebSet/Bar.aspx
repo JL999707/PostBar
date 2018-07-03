@@ -45,10 +45,12 @@
             <li class="active"><a href="#">关注／取关</a></li>
             <li class="active"><a href="#">
                 <asp:Label ID="barAtt" runat="server" Text="Label"></asp:Label></a></li>
-            <li class="active"><a href="#">帖子数</a></li>
+            <li class="active"><a href="#">
+                <asp:Label ID="postNum" runat="server" Text="Label"></asp:Label></a></li>
             <asp:Label ID="BarID" runat="server" Text="" style="display:none"></asp:Label>
         </ul>
-        <p>足球吧签名<span class="glyphicon glyphicon-pencil"></span></p>
+        <p>
+            <asp:Label ID="graph" runat="server" Text="Label"></asp:Label><span class="glyphicon glyphicon-pencil"></span></p>
     </div>
     <div class="deliver">
         <div class="deliver-contain">
@@ -61,7 +63,50 @@
             </div>
             <div id="myTabContent" class="tab-content">
                 <div class="tab-pane fade in active" id="BarPost">
-                    
+                    <asp:GridView ID="GridView1" runat="server">
+                        <Columns>
+                            <asp:TemplateField>
+                                <ItemTemplate>
+                                    <div id="app">
+                                        <div id="main">
+                                            <div id="leftDiv">
+                                                <div id="imgBG">
+                                                    <img id="img" src="../imgs/Penguins.jpg" />
+                                                </div>
+                                                <table id="table" style="width: 100%;">
+                                                    <tr>
+                                                        <td>&nbsp;</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><a id="aName" href="#">这是名字</a></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>&nbsp;</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <asp:Button ID="btnBarAtt" runat="server" Text="关注的贴吧"/></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>&nbsp;</td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                            <div id="right-topDiv"></div>
+                                            <div id="right-centerDiv">
+                                                <button id="btnReport">举报</button>
+                                                <label id="labL">楼数</label>
+                                                <label id="labTime">时间</label>
+                                                <button id="btnReply">回复</button>
+                                            </div>
+                                            <div id="right-bottomDiv">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                        </Columns>
+                    </asp:GridView>
                 </div>
                 <div class="tab-pane fade" id="BarPicture">
                     

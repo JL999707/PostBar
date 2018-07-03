@@ -38,7 +38,18 @@ public partial class Head : System.Web.UI.MasterPage
 
     protected void check_Click(object sender, EventArgs e)
     {
-        
+        string search = this.textCheck.Text;
+        BLL.BarBll bll = new BarBll();
+        Model.Bar result = bll.checkAllBar(search);
+        if (result != null)
+        {
+            this.Session["barName"] = search;
+            Response.Redirect("Bar.aspx");
+        }
+        else
+        {
+            Response.Write("<script>alert('无此吧')</script>");
+        }
     }
 
     protected void likeCheck_Click(object sender, EventArgs e)

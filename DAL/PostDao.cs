@@ -182,7 +182,7 @@ namespace DAL
             if (reader.Read())
             {
                 user.userID = userID;
-                user.userName =reader["userID"].ToString();
+                user.userName =reader["userName"].ToString();
             }
             reader.Close();
             return user;
