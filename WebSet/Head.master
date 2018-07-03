@@ -66,8 +66,8 @@
             当前位置：<asp:SiteMapPath ID="SiteMapPath1" runat="server"></asp:SiteMapPath>
         </div>
         <asp:ContentPlaceHolder ID="ContentPlaceHolder2" runat="server"></asp:ContentPlaceHolder>
-        </div>
-        <div class="foot"></div>
+    </div>
+    <div class="foot"></div>
     </form>
 </body>
 </html>
