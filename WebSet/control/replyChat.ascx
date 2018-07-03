@@ -7,7 +7,8 @@
         margin-top: 0px;
         margin-left: auto;
         margin-right: auto;
-        background-image: url('http://localhost:2932/imgs/moSha.jpg');
+        /*background-image: url('http://localhost:2932/imgs/moSha.jpg');*/
+        background-color:#F7F8FA;
     }
 
 
@@ -19,6 +20,7 @@
     <br />
         <asp:TextBox ID="txtContent" runat="server" Height="35px" Width="573px"></asp:TextBox>
     <br />
+    <asp:Label ID="Label1" runat="server" Width="541px"></asp:Label>
     <asp:Button ID="btnRelease" runat="server" Text="发表" Height="26px" OnClick="btnRelease_Click" />
     <br /> 
 </div>
