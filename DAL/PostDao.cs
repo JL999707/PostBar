@@ -91,12 +91,11 @@ namespace DAL
             for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
             {
                 DataRow dr = ds.Tables[0].Rows[i];
-                Post post = new Post(Convert.ToInt32(dr["postID"]), Convert.ToInt32(dr["barID"]), Convert.ToInt32(dr["userID"]), dr["postName"].ToString(), dr["postContent"].ToString(), dr["postTime"].ToString(), dr["judge"].ToString(),dr["postPic"].ToString(), dr["postAutoName"].ToString(), dr["postHeadImg"].ToString(), dr["postTopImg"].ToString(), dr["postBGImg"].ToString());
+                Post post = new Post(Convert.ToInt32(dr["postID"]), Convert.ToInt32(dr["barID"]), Convert.ToInt32(dr["userID"]), dr["postName"].ToString(), dr["postContent"].ToString(), dr["postTime"].ToString(), dr["judge"].ToString(),dr["postPic"].ToString(), dr["postAutoGraph"].ToString(), dr["postHeadImg"].ToString(), dr["postTopImg"].ToString(), dr["postBGImg"].ToString());
                 postList.Add(post);
             }
             return postList;
         }
-
         //根据postName查询某项符合某记录的数量
         //select count(*) from table where 字段 = "";
         public int checkCountPostName(string postName)
