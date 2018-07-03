@@ -75,7 +75,7 @@
 <div class="charts">
     <div class="charts_charts panel panel-default">
         <div class="panel-heading">
-            <h3 class="panel-title">热议榜</h3>
+            <h3 class="panel-title">新吧榜</h3>
         </div>
         <div class="panel-body">
             <%--<ul>

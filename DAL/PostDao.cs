@@ -124,7 +124,7 @@ namespace DAL
             return bar;
         }
 
-        //根据贴吧名称barID得到贴吧名字
+        //根据贴吧IDbarID得到贴吧名字
         public Bar getBarName(int barID)
         {
             string cmdText = "select * from T_Bar where barID=@barID";
@@ -139,6 +139,23 @@ namespace DAL
             }
             reader.Close();
             return bar;
+        }
+
+        //根据用户ID得到用户Name
+        public UserInfo getUserName(int userID)
+        {
+            string cmdText = "select * from T_User where userID=@userID";
+            string[] paramList = { "@userID" };
+            object[] valueList = { userID };
+            SqlDataReader reader = db.ExecuteReader(cmdText, paramList, valueList);
+            UserInfo user = new UserInfo();
+            if (reader.Read())
+            {
+                user.userID = userID;
+                user.userName = reader["userName"].ToString();
+            }
+            reader.Close();
+            return user;
         }
 
         //根据贴吧名称userName得到用户ID，userID

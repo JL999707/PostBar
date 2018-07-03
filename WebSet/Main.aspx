@@ -69,6 +69,7 @@
                 <asp:Button ID="collection" runat="server" class="btn btn-default collection" Text="收藏的帖子" OnClick="collection_Click" />
                 <span class="glyphicon glyphicon-star"></span><br />
                 <div class="calendar">
+                    <asp:Calendar ID="Calendar1" runat="server"></asp:Calendar>
                 </div>
                 <div>
 
@@ -164,7 +165,7 @@
                                         </div>
                                         <div class="dynamic_hot_postImg"></div>
                                         <div class="dynamic_hot_postAuthor">
-                                            <asp:Label ID="postAuthor" runat="server" Text=""></asp:Label>
+                                            <asp:Label ID="postAuthor" runat="server" Text='<%# Eval("userID") %>'></asp:Label>
                                             <asp:Label ID="postTime" runat="server" Text='<%# Eval("postTime") %>'></asp:Label>
                                         </div>
                                     </ItemTemplate>

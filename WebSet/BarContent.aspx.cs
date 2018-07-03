@@ -11,4 +11,9 @@ public partial class Default2 : System.Web.UI.Page
     {
         this.barName.Text = this.Session["barName"].ToString();
     }
+
+    protected void barName_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("Bar.aspx");
+    }
 }
