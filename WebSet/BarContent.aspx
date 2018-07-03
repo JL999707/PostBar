@@ -10,7 +10,8 @@
     <div class="functionbar1">
         <div class="fakeimg"></div>
         <ul class="nav navbar-nav" >
-            <li class="active"><a href="#"> 足球吧</a></li>
+            <li class="active"><a href="#">
+                <asp:Button ID="barName" runat="server" Text="" CssClass="btn-link" OnClick="barName_Click"/></a></li>
             <li class="active"><a href="#">关注／取关</a></li>
             <li class="active"><a href="#">关注数</a></li>
             <li class="active"><a href="#">帖子数</a></li>

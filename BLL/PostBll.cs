@@ -109,6 +109,23 @@ namespace BLL
                 return getBarID;
             }
         }
+
+        //根据贴吧IDbarID得到贴吧名字
+        public Model.Bar getBarName(int barID)
+        {
+            Model.Bar getBarName = dao.getBarName(barID);
+            //int getUserID1 = Convert.ToInt32(getUserID);
+            //不需要访问数据源，直接执行业务逻辑
+            if (getBarName != null)
+            {
+                return getBarName;
+            }
+            else
+            {
+                return getBarName;
+            }
+        }
+
         //根据用户名称userName得到用户ID，userID
         public Model.UserInfo getUserID(string userName)
         {
@@ -124,6 +141,22 @@ namespace BLL
                 return getUserID;
             }
         }
+
+        //根据用户ID得到用户Name
+        public Model.UserInfo getUserName(int userID)
+        {
+            Model.UserInfo getUserName = dao.getUserName(userID);
+            //int getUserID1 = Convert.ToInt32(getUserID);
+            //不需要访问数据源，直接执行业务逻辑
+            if (getUserName != null)
+            {
+                return getUserName;
+            }
+            else
+            {
+                return getUserName;
+            }
+        }
         //根据barID查询某项符合某记录的数量
         public int checkCountID(int barID)
         {
@@ -137,7 +170,7 @@ namespace BLL
             return checkCountUserID;
         }
 
-        //查询最近添加的10个记录
+        //查询最近添加的记录
         public List<Model.Post> checkPostDesc(string postName, bool isAccurate)
         {
             return dao.getDesc(postName, isAccurate);

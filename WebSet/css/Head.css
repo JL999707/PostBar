@@ -60,6 +60,10 @@
 }
 
 .foot{
+    margin: auto;  
+    left: 0; 
+    right: 0; 
+    position:absolute;
     width:100%;
     height:70px;
     background-color:#EFEFEF;

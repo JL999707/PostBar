@@ -58,18 +58,14 @@
                 <div class="info_div">
                     用户名：<br />
                     <asp:Label ID="userName" runat="server" Text=""></asp:Label>
-                    <%--<asp:label runat="server" text=""></asp:label>--%>
                     <br />
                     帖子数：<asp:Label ID="postNum" runat="server" Text=""></asp:Label>
-                    <%--<asp:Label ID="postNum" runat="server" Text=""></asp:Label>--%>
                 </div>
             </div>
             <div class="img_head"></div>
             <div class="operation">
-                <%--<button type="button" class="btn btn-default sign">一键签到</button>--%>
                 <asp:Button ID="sign" runat="server" class="btn btn-default sign" Text="一键签到" />
                 <span class="glyphicon glyphicon-pencil"></span><br />
-                <%--<button type="button" class="btn btn-default collection">收藏的帖子</button>--%>
                 <asp:Button ID="collection" runat="server" class="btn btn-default collection" Text="收藏的帖子" OnClick="collection_Click" />
                 <span class="glyphicon glyphicon-star"></span><br />
                 <div class="calendar">
@@ -147,18 +143,21 @@
             <div id="myTabContent" class="tab-content">
 	            <div class="tab-pane fade in active" id="hotdoor">
 		            <div class="dynamic_hot">
-                        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="postID" DataSourceID="SqlDataSource1" GridLines="None">
+                        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" GridLines="None" AllowSorting="True">
                             <Columns>
                                 <asp:TemplateField>
                                     <ItemTemplate>
                                         <div class="dynamic_hot_barName">
-                                            <h4><a href="../Bar.aspx">
-                                                <asp:Label ID="barName" runat="server" Text='<%# Eval("barID") %>' OnDataBinding="barName_Click"></asp:Label>
-                                            </a></h4>
+                                            <h4>
+                                                <%--<asp:Label ID="barName" runat="server" Text='<%# Eval("barID") %>'></asp:Label>--%>
+                                                <asp:Button ID="barName" runat="server" Text='<%# Eval("barID") %>' OnClick="barName_Click" BackColor="White" BorderColor="White" BorderStyle="None" CssClass="btn-link"/>
+                                                <%--<asp:LinkButton ID="barName" runat="server" Text='<%# Eval("barID") %>' OnClick="barName_Click"></asp:LinkButton>--%>
+                                            </h4>
                                         </div>
                                         <div class="dynamic_hot_postName">
                                             <h4><a href="../BarContent.aspx">
-                                                <asp:Label ID="postName" runat="server" Text='<%# Eval("postName") %>'></asp:Label>
+                                                <%--<asp:Label ID="postName" runat="server" Text='<%# Eval("postName") %>'></asp:Label>--%>
+                                                <asp:Button ID="postName" runat="server" Text='<%# Eval("postName") %>' CssClass="btn-link" OnClick="postName_Click"/>
                                             </a></h4>
                                         </div>
                                         <div class="dynamic_hot_postContent">
@@ -166,14 +165,13 @@
                                         </div>
                                         <div class="dynamic_hot_postImg"></div>
                                         <div class="dynamic_hot_postAuthor">
-                                            <asp:Label ID="postAuthor" runat="server" Text="Label"></asp:Label>
+                                            <asp:Label ID="postAuthor" runat="server" Text='<%# Eval("userID") %>'></asp:Label>
                                             <asp:Label ID="postTime" runat="server" Text='<%# Eval("postTime") %>'></asp:Label>
                                         </div>
                                     </ItemTemplate>
                                 </asp:TemplateField>
                             </Columns>
                         </asp:GridView>
-                        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:PostBarConnectionString %>" SelectCommand="SELECT * FROM [T_Post]"></asp:SqlDataSource>
 		            </div>
 	            </div>
 	            <div class="tab-pane fade" id="owndor">
