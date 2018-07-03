@@ -124,6 +124,23 @@ namespace DAL
             return bar;
         }
 
+        //根据贴吧名称barID得到贴吧名字
+        public Bar getBarName(int barID)
+        {
+            string cmdText = "select * from T_Bar where barID=@barID";
+            string[] paramList = { "@barID" };
+            object[] valueList = { barID };
+            SqlDataReader reader = db.ExecuteReader(cmdText, paramList, valueList);
+            Bar bar = new Bar();
+            if (reader.Read())
+            {
+                bar.barID = barID;
+                bar.barName = reader["barName"].ToString();
+            }
+            reader.Close();
+            return bar;
+        }
+
         //根据贴吧名称userName得到用户ID，userID
         public UserInfo getUserID(string userName)
         {

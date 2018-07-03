@@ -14,15 +14,21 @@ public partial class _Default : System.Web.UI.Page
         {
             this.userName.Text = this.Session["userName"].ToString();
         }
+        //Button barName = GridView1.Rows[0].FindControl("barName") as Button;
+        //int row = ((GridViewRow)((Button)sender).NamingContainer).RowIndex;
 
-        //for (int i = 1;i <= 10;i++)
+        //BLL.PostBll bll = new BLL.PostBll();
+        //for (int i = 0;i < this.GridView1.Rows.Count;i++)
         //{
-        //    this.dynamic_hot.Controls.Add(TemplateControl.LoadControl("~/control/tabContent.ascx"));
+        //    Button barName = (Button)GridView1.Rows[i].FindControl("barName");
+        //    Model.Bar getBarName = bll.getBarName(Convert.ToInt32(barName.Text));
+
+        //    barName.Text = getBarName.ToString();
+        //    //Response.Write("<script>alert(" + barName.Text + ")</script>");
         //}
 
-        //Response.Write("<script>alert(" + dynamic_hot.Controls + ")</script>");
+        
 
-        BLL.PostBll bll = new BLL.PostBll(); 
     }
 
     protected void collection_Click(object sender, EventArgs e)
@@ -32,6 +38,42 @@ public partial class _Default : System.Web.UI.Page
 
     protected void barName_Click(object sender, EventArgs e)
     {
-        
+        int row = ((GridViewRow)((Button)sender).NamingContainer).RowIndex;
+        Button barName = (Button)GridView1.Rows[row].FindControl("barName");
+
+        if (this.Session["barName"] != null)
+        {
+            this.Session["barName"] = null;
+            this.Session["barName"] = barName.Text;
+        }
+        else
+        {
+            this.Session["barName"] = barName.Text;
+        }
+        //Response.Redirect("Bar.aspx");
+        BLL.PostBll bll = new BLL.PostBll();
+        Model.Bar bar = bll.getBarName(Convert.ToInt32(barName.Text));
+
+        //barName.Text = getBarName.ToString();
+        Response.Write("<script>alert(" + bar.barID.ToString() + ")</script>");
+    }
+
+    protected void postName_Click(object sender, EventArgs e)
+    {
+        int row = ((GridViewRow)((Button)sender).NamingContainer).RowIndex;
+        Button barName = (Button)GridView1.Rows[row].FindControl("barName");
+        Button postName = (Button)GridView1.Rows[row].FindControl("postName");
+
+        this.Session["barName"] = barName.Text;
+        if (this.Session["postName"] != null)
+        {
+            this.Session["postName"] = null;
+            this.Session["postName"] = postName.Text;
+        }
+        else
+        {
+            this.Session["postName"] = postName.Text;
+        }
+        Response.Redirect("BarContent.aspx");
     }
 }

@@ -152,13 +152,16 @@
                                 <asp:TemplateField>
                                     <ItemTemplate>
                                         <div class="dynamic_hot_barName">
-                                            <h4><a href="../Bar.aspx">
-                                                <asp:Label ID="barName" runat="server" Text='<%# Eval("barID") %>' OnDataBinding="barName_Click"></asp:Label>
-                                            </a></h4>
+                                            <h4>
+                                                <%--<asp:Label ID="barName" runat="server" Text='<%# Eval("barID") %>'></asp:Label>--%>
+                                                <asp:Button ID="barName" runat="server" Text='<%# Eval("barID") %>' OnClick="barName_Click" BackColor="White" BorderColor="White" BorderStyle="None" CssClass="btn-link"/>
+                                                <%--<asp:LinkButton ID="barName" runat="server" Text='<%# Eval("barID") %>' OnClick="barName_Click"></asp:LinkButton>--%>
+                                            </h4>
                                         </div>
                                         <div class="dynamic_hot_postName">
                                             <h4><a href="../BarContent.aspx">
-                                                <asp:Label ID="postName" runat="server" Text='<%# Eval("postName") %>'></asp:Label>
+                                                <%--<asp:Label ID="postName" runat="server" Text='<%# Eval("postName") %>'></asp:Label>--%>
+                                                <asp:Button ID="postName" runat="server" Text='<%# Eval("postName") %>' CssClass="btn-link" OnClick="postName_Click"/>
                                             </a></h4>
                                         </div>
                                         <div class="dynamic_hot_postContent">
