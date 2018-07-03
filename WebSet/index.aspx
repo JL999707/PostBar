@@ -1,6 +1,8 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="index.aspx.cs" Inherits="index" %>
 
 <%@ Register Src="~/chat.ascx" TagPrefix="uc1" TagName="chat" %>
+<%@ Register Src="~/control/chat.ascx" TagPrefix="uc2" TagName="chat" %>
+
 
 
 <!DOCTYPE html>
@@ -153,7 +155,7 @@
             </asp:GridView>
             <br />
             <br />
-            <uc1:chat runat="server" ID="chat" />
+            <uc2:chat runat="server" ID="chat" />
             <br />
             <br />
             <br />

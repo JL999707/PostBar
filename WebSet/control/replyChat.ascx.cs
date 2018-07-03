@@ -3,13 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
-using System.Web.UI.WebControls;
+using System.Web.UI.WebControls;//
 using BLL;
 using Model;
 
 public partial class control_replyChat : System.Web.UI.UserControl
 {
-    protected void Page_Load(object sender, EventArgs e){}
+    protected void Page_Load(object sender, EventArgs e)
+    {
+
+    }
 
     protected void btnRelease_Click(object sender, EventArgs e)
     {
