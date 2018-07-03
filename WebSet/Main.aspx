@@ -147,7 +147,7 @@
             <div id="myTabContent" class="tab-content">
 	            <div class="tab-pane fade in active" id="hotdoor">
 		            <div class="dynamic_hot">
-                        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="postID" DataSourceID="SqlDataSource1" GridLines="None">
+                        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="postID" DataSourceID="SqlDataSource1" GridLines="None" AllowSorting="True">
                             <Columns>
                                 <asp:TemplateField>
                                     <ItemTemplate>

@@ -194,14 +194,15 @@ namespace DAL
             DataSet ds = new DataSet();
             if (isAccurate)
             {
-                string cmdText = "select  top 10 * from T_Post where postName like @postName order by postID desc";
+                //top 10
+                string cmdText = "select * from T_Post where postName like @postName order by postID desc";
                 string[] paramList = { "@postName" };
                 object[] valueList = { postName };
                 ds = db.FillDataSet(cmdText, paramList, valueList);
             }
             else
             {
-                string cmdText = "select  top 10 * from T_Post where postName like @postName order by postID desc";
+                string cmdText = "select * from T_Post where postName like @postName order by postID desc";
                 string[] paramList = { "@postName" };
                 object[] valueList = { "%" + postName + "%" };
                 ds = db.FillDataSet(cmdText, paramList, valueList);

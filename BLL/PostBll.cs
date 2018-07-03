@@ -139,7 +139,7 @@ namespace BLL
             return checkCountUserID;
         }
 
-        //查询最近添加的10个记录
+        //查询最近添加的记录
         public List<Model.Post> checkPostDesc(string postName, bool isAccurate)
         {
             return dao.getDesc(postName, isAccurate);

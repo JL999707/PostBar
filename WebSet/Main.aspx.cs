@@ -10,24 +10,30 @@ public partial class _Default : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        string userName = null;
+        bool isAccurate = false;
+        BLL.PostBll mgr = new BLL.PostBll();
+        //List<Bar> barList = mgr.checkBarDesc(userName, isAccurate);
+
+        //this.GridView1.DataSource = barList;
+        //this.GridView1.DataBind();
+
+
+        if (!IsPostBack)
+        {
+            BLL.PostBll bll = new BLL.PostBll();
+            for (int i = 0; i < this.GridView1.Rows.Count; i++)
+            {
+                Button barName = (Button)GridView1.Rows[i].FindControl("barName");
+                Model.Bar getBarName = bll.getBarName(Convert.ToInt32(barName.Text));
+
+                barName.Text = getBarName.barName.ToString();
+            }
+        }
         if (this.Session["userName"] != null)
         {
             this.userName.Text = this.Session["userName"].ToString();
         }
-        //Button barName = GridView1.Rows[0].FindControl("barName") as Button;
-        //int row = ((GridViewRow)((Button)sender).NamingContainer).RowIndex;
-
-        //BLL.PostBll bll = new BLL.PostBll();
-        //for (int i = 0;i < this.GridView1.Rows.Count;i++)
-        //{
-        //    Button barName = (Button)GridView1.Rows[i].FindControl("barName");
-        //    Model.Bar getBarName = bll.getBarName(Convert.ToInt32(barName.Text));
-
-        //    barName.Text = getBarName.ToString();
-        //    //Response.Write("<script>alert(" + barName.Text + ")</script>");
-        //}
-
-        
 
     }
 
@@ -50,12 +56,7 @@ public partial class _Default : System.Web.UI.Page
         {
             this.Session["barName"] = barName.Text;
         }
-        //Response.Redirect("Bar.aspx");
-        BLL.PostBll bll = new BLL.PostBll();
-        Model.Bar bar = bll.getBarName(Convert.ToInt32(barName.Text));
-
-        //barName.Text = getBarName.ToString();
-        Response.Write("<script>alert(" + bar.barID.ToString() + ")</script>");
+        Response.Redirect("Bar.aspx");
     }
 
     protected void postName_Click(object sender, EventArgs e)
