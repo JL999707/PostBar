@@ -128,6 +128,21 @@ namespace BLL
                 return getUserID;
             }
         }
+        //根据用户姓名得到用户ID,userID
+        public Model.Bar getBarID(string barName)
+        {
+            Bar getBarID = dao.getBarID(barName);
+            //int getUserID1 = Convert.ToInt32(getUserID);
+            //不需要访问数据源，直接执行业务逻辑
+            if (getBarID != null)
+            {
+                return getBarID;
+            }
+            else
+            {
+                return getBarID;
+            }
+        }
         //根据贴吧类型名称得到贴吧类型ID
         public Model.BarType getBarTypeID(string barTypeName)
         {

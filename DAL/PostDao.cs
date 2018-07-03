@@ -122,7 +122,22 @@ namespace DAL
             reader.Close();
             return bar;
         }
-
+        //根据barID得到barName
+        public Bar getBarName(int barID)
+        {
+            string cmdText = "select * from T_Bar where barID=@barID";
+            string[] paramList = { "@barID" };
+            object[] valueList = { barID };
+            SqlDataReader reader = db.ExecuteReader(cmdText, paramList, valueList);
+            Bar bar = new Bar();
+            if (reader.Read())
+            {
+                bar.barID = barID;
+                bar.barName = reader["barName"].ToString();
+            }
+            reader.Close();
+            return bar;
+        }
         //根据postID得到postName
         public Post getPostName(int postID)
         {
@@ -156,7 +171,22 @@ namespace DAL
             reader.Close();
             return user;
         }
-
+        //根据userID得到userName
+        public UserInfo getUserName(int userID)
+        {
+            string cmdText = "select * from T_User where userID=@userID";
+            string[] paramList = { "@userID" };
+            object[] valueList = { userID };
+            SqlDataReader reader = db.ExecuteReader(cmdText, paramList, valueList);
+            UserInfo user = new UserInfo();
+            if (reader.Read())
+            {
+                user.userID = userID;
+                user.userName =reader["userID"].ToString();
+            }
+            reader.Close();
+            return user;
+        }
         //根据barID查询某项符合某记录的数量
         //select count(*) from table where 字段 = "";
         public int checkCountBarID(int barID)

@@ -112,7 +112,7 @@ namespace BLL
             int checkCountName = dao.checkCountBarName(barAttName);
             return checkCountName;
         }
-        //根据userID查询某项符合某记录的数量
+        //根据barID查询某项符合某记录的数量
         public int checkCountID(int barID)
         {
             int checkCountID = dao.checkCountBarID(barID);

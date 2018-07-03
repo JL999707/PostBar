@@ -43,7 +43,8 @@
         <ul class="nav navbar-nav">
             <li class="active"><a href="#"><asp:Label ID="barName" runat="server" Text=""></asp:Label></a></li>
             <li class="active"><a href="#">关注／取关</a></li>
-            <li class="active"><a href="#">关注数</a></li>
+            <li class="active">
+                <asp:Label ID="barAtt" runat="server" Text="Label"></asp:Label></li>
             <li class="active"><a href="#">帖子数</a></li>
             <asp:Label ID="BarID" runat="server" Text="" style="display:none"></asp:Label>
         </ul>

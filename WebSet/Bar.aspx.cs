@@ -15,9 +15,10 @@ public partial class _Default : System.Web.UI.Page
         {
             this.barName.Text = this.Session["barName"].ToString();
 
-            //BLL.BarAttBll mrg = new BLL.BarAttBll();
+            Model.Bar barID = bll.getBarID(this.barName.Text);
 
-            //int i = mrg.checkCountID();
+            int i = mrg.checkCountID(barID.barID);
+            this.barAtt.Text = "i";
         }
     }
 }
