@@ -91,12 +91,11 @@ namespace DAL
             for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
             {
                 DataRow dr = ds.Tables[0].Rows[i];
-                Post post = new Post(Convert.ToInt32(dr["postID"]), Convert.ToInt32(dr["barID"]), Convert.ToInt32(dr["userID"]), dr["postName"].ToString(), dr["postContent"].ToString(), dr["postTime"].ToString(), dr["judge"].ToString(),dr["postPic"].ToString(), dr["postAutoName"].ToString(), dr["postHeadImg"].ToString(), dr["postTopImg"].ToString(), dr["postBGImg"].ToString());
+                Post post = new Post(Convert.ToInt32(dr["postID"]), Convert.ToInt32(dr["barID"]), Convert.ToInt32(dr["userID"]), dr["postName"].ToString(), dr["postContent"].ToString(), dr["postTime"].ToString(), dr["judge"].ToString(),dr["postPic"].ToString(), dr["postAutoGraph"].ToString(), dr["postHeadImg"].ToString(), dr["postTopImg"].ToString(), dr["postBGImg"].ToString());
                 postList.Add(post);
             }
             return postList;
         }
-
         //根据postName查询某项符合某记录的数量
         //select count(*) from table where 字段 = "";
         public int checkCountPostName(string postName)
@@ -124,38 +123,21 @@ namespace DAL
             return bar;
         }
 
-        //根据贴吧IDbarID得到贴吧名字
-        public Bar getBarName(int barID)
+        //根据postID得到postName
+        public Post getPostName(int postID)
         {
-            string cmdText = "select * from T_Bar where barID=@barID";
-            string[] paramList = { "@barID" };
-            object[] valueList = { barID };
+            string cmdText = "select * from T_Post where postID=@postID";
+            string[] paramList = { "@postID" };
+            object[] valueList = { postID };
             SqlDataReader reader = db.ExecuteReader(cmdText, paramList, valueList);
-            Bar bar = new Bar();
+            Post post = new Post();
             if (reader.Read())
             {
-                bar.barID = barID;
-                bar.barName = reader["barName"].ToString();
+                post.postID = postID;
+                post.postName = reader["postName"].ToString();
             }
             reader.Close();
-            return bar;
-        }
-
-        //根据用户ID得到用户Name
-        public UserInfo getUserName(int userID)
-        {
-            string cmdText = "select * from T_User where userID=@userID";
-            string[] paramList = { "@userID" };
-            object[] valueList = { userID };
-            SqlDataReader reader = db.ExecuteReader(cmdText, paramList, valueList);
-            UserInfo user = new UserInfo();
-            if (reader.Read())
-            {
-                user.userID = userID;
-                user.userName = reader["userName"].ToString();
-            }
-            reader.Close();
-            return user;
+            return post;
         }
 
         //根据贴吧名称userName得到用户ID，userID
@@ -211,15 +193,14 @@ namespace DAL
             DataSet ds = new DataSet();
             if (isAccurate)
             {
-                //top 10
-                string cmdText = "select * from T_Post where postName like @postName order by postID desc";
+                string cmdText = "select  top 10 * from T_Post where postName like @postName order by postID desc";
                 string[] paramList = { "@postName" };
                 object[] valueList = { postName };
                 ds = db.FillDataSet(cmdText, paramList, valueList);
             }
             else
             {
-                string cmdText = "select * from T_Post where postName like @postName order by postID desc";
+                string cmdText = "select  top 10 * from T_Post where postName like @postName order by postID desc";
                 string[] paramList = { "@postName" };
                 object[] valueList = { "%" + postName + "%" };
                 ds = db.FillDataSet(cmdText, paramList, valueList);
