@@ -56,7 +56,6 @@ namespace DAL
             reader.Close();
             return reply;
         }
-
         public List<Reply> Query(string replyName, bool isAccurate = false)
         {
             List<Reply> replyList = new List<Reply>();
@@ -182,6 +181,60 @@ namespace DAL
             string[] paramList = { "@replyID" };
             object[] valueList = { replyID };
             return Convert.ToInt32(db.ExecuteScalar(cmdText, paramList, valueList));
+        }
+        ////根据postID查询最近添加的记录
+        //public List<Reply> getPostIDAES(int postID, bool isAccurate = false)
+        //{
+        //    List<Reply> replyList = new List<Reply>();
+        //    DataSet ds = new DataSet();
+        //    if (isAccurate)
+        //    {
+        //        string cmdText = "select * from T_Reply where postID=@postID";
+        //        string[] paramList = { "@postID" };
+        //        object[] valueList = { postID };
+        //        ds = db.FillDataSet(cmdText, paramList, valueList);
+        //    }
+        //    else
+        //    {
+        //        string cmdText = "select * from T_Reply where postID=@postID";
+        //        string[] paramList = { "@postID" };
+        //        object[] valueList = { "%" + postID + "%" };
+        //        ds = db.FillDataSet(cmdText, paramList, valueList);
+        //    }
+        //    for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
+        //    {
+        //        DataRow dr = ds.Tables[0].Rows[i];
+        //        Reply reply = new Reply(Convert.ToInt32(dr["replyID"]), Convert.ToInt32(dr["userID"]), Convert.ToInt32(dr["postID"]), dr["replyName"].ToString(), dr["replyContent"].ToString(), dr["replyTime"].ToString(), dr["replyPic"].ToString());
+        //        replyList.Add(reply);
+        //    }
+        //    return replyList;
+        //}
+        //根据postID查询最近添加的记录
+        public List<Reply> getPostIDAES(int postID, bool isAccurate = false)
+        {
+            List<Reply> replyList = new List<Reply>();
+            DataSet ds = new DataSet();
+            if (isAccurate)
+            {
+                string cmdText = "select * from T_Reply where postID=@postID";
+                string[] paramList = { "@postID" };
+                object[] valueList = { postID };
+                ds = db.FillDataSet(cmdText, paramList, valueList);
+            }
+            else
+            {
+                string cmdText = "select * from T_Reply where postID=@postID";
+                string[] paramList = { "@postID" };
+                object[] valueList = { "%" + postID + "%" };
+                ds = db.FillDataSet(cmdText, paramList, valueList);
+            }
+            for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
+            {
+                DataRow dr = ds.Tables[0].Rows[i];
+                Reply reply = new Reply(Convert.ToInt32(dr["replyID"]), Convert.ToInt32(dr["userID"]), Convert.ToInt32(dr["postID"]), dr["replyName"].ToString(), dr["replyContent"].ToString(), dr["replyTime"].ToString(), dr["replyPic"].ToString());
+                replyList.Add(reply);
+            }
+            return replyList;
         }
     }
 }

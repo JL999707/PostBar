@@ -31,7 +31,6 @@ public partial class Head : System.Web.UI.MasterPage
             if (this.Session["userName"] != null)
             {
                 this.Login_link.Text = this.Session["userName"].ToString();
-                this.Session["userName"] = null;
             }
         }
     }
@@ -54,7 +53,10 @@ public partial class Head : System.Web.UI.MasterPage
 
     protected void likeCheck_Click(object sender, EventArgs e)
     {
-
+        string search = this.textCheck.Text;
+        BLL.BarBll bll = new BarBll();
+        bool isAccurate = false;
+        List<Bar> barList = bll.likeCheckBar(search, isAccurate);
     }
 
     protected void Login_btn_Click(object sender, EventArgs e)
@@ -73,16 +75,10 @@ public partial class Head : System.Web.UI.MasterPage
         }
         else
         {
-            if (this.Session["userName"] != null)
-            {
-                this.Session["userName"] = null;
-            }
             this.Session["userName"] = this.userName_txt.Text;
             this.zheZhao.Style["display"] = "none";
             this.main.Style["display"] = "none";
             this.Login_link.Text = this.Session["userName"].ToString();
-            this.userName_txt.Text = "";
-            this.pwd_txt.Text = "";
             Response.AddHeader("Refresh", "0");
         }
     }

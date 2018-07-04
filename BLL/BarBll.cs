@@ -78,9 +78,9 @@ namespace BLL
         }
 
         //模糊查询
-        public List<Bar> likeCheckBar(string userName, bool isAccurate)
+        public List<Bar> likeCheckBar(string barName, bool isAccurate)
         {
-            return dao.Query(userName, isAccurate);
+            return dao.Query(barName, isAccurate);
         }
 
         //根据userID检索单个所有信息
@@ -141,6 +141,21 @@ namespace BLL
             else
             {
                 return getBarID;
+            }
+        }
+        //根据barID得到barName
+        public Model.Bar getBarName(int barID)
+        {
+            Bar getBarName = dao.getBarName(barID);
+            //int getUserID1 = Convert.ToInt32(getUserID);
+            //不需要访问数据源，直接执行业务逻辑
+            if (getBarName != null)
+            {
+                return getBarName;
+            }
+            else
+            {
+                return getBarName;
             }
         }
         //根据贴吧类型名称得到贴吧类型ID

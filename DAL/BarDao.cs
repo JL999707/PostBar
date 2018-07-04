@@ -164,6 +164,22 @@ namespace DAL
             reader.Close();
             return bar;
         }
+        //根据barID得到barName
+        public Bar getBarName(int barID)
+        {
+            string cmdText = "select * from T_Bar where barID=@barID";
+            string[] paramList = { "@barID" };
+            object[] valueList = { barID };
+            SqlDataReader reader = db.ExecuteReader(cmdText, paramList, valueList);
+            Bar bar = new Bar();
+            if (reader.Read())
+            {
+                bar.barID = barID;
+                bar.barName = reader["barName"].ToString();
+            }
+            reader.Close();
+            return bar;
+        }
         //根据贴吧类型名称得到贴吧类型ID
         public BarType getBarTypeID(string barTypeName)
         {

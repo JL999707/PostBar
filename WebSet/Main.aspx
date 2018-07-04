@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Head.master" AutoEventWireup="true" CodeFile="Main.aspx.cs" Inherits="_Default" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Head.master" AutoEventWireup="true" MaintainScrollPositionOnPostback="true" CodeFile="Main.aspx.cs" Inherits="_Default" %>
 
 <%@ Register Src="~/control/tabContent.ascx" TagPrefix="uc2" TagName="tabContent" %>
 <%@ Register Src="~/control/chartsPanel.ascx" TagPrefix="uc2" TagName="chartsPanel" %>
@@ -147,24 +147,6 @@
                             <Columns>
                                 <asp:TemplateField>
                                     <ItemTemplate>
-                                        <%--<div class="dynamic_hot_barName">
-                                            <h4>
-                                                <asp:Button ID="barName" runat="server" Text='<%# Eval("barID") %>' OnClick="barName_Click" BackColor="White" BorderColor="White" BorderStyle="None" CssClass="btn-link"/>
-                                            </h4>
-                                        </div>
-                                        <div class="dynamic_hot_postName">
-                                            <h4><a href="../BarContent.aspx">
-                                                <asp:Button ID="postName" runat="server" Text='<%# Eval("postName") %>' CssClass="btn-link" OnClick="postName_Click"/>
-                                            </a></h4>
-                                        </div>
-                                        <div class="dynamic_hot_postContent">
-                                            <asp:Label ID="postContent" runat="server" Text='<%# Eval("postContent") %>'></asp:Label>
-                                        </div>
-                                        <div class="dynamic_hot_postImg"></div>
-                                        <div class="dynamic_hot_postAuthor">
-                                            <asp:Label ID="postAuthor" runat="server" Text='<%# Eval("userID") %>'></asp:Label>
-                                            <asp:Label ID="postTime" runat="server" Text='<%# Eval("postTime") %>'></asp:Label>
-                                        </div>--%>
                                         <div class="dynamic_hot_barName">
                                             <asp:Button ID="barName" runat="server" Text='<%# Eval("barID") %>' OnClick="barName_Click" BackColor="White" BorderColor="White" BorderStyle="None" CssClass="btn-link" ForeColor="Black"/>
                                         </div>

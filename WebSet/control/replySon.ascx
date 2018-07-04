@@ -1,13 +1,13 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="replySon.ascx.cs" Inherits="control_replySon" %>
 <style>
-    #app {
+    #appSon {
         width:560px;
         height: auto;
         border: solid 1px #CCCCCC;
         position: relative;
     }
 
-    #right-centerDiv {
+    #right-centerDivSon {
         width: 560px;
         height: 70px;
         position: relative;
@@ -16,7 +16,7 @@
         z-index: 1;
     }
 
-    #imgBG {
+    #imgBGSon {
         width: 34px;
         height: 34px;
         border: solid #CCCCCC 1px;
@@ -24,7 +24,7 @@
         margin-left: 19px;
     }
 
-    #img {
+    #imgSon {
         width: 32px;
         height: 32px;
         margin-top: 1px;
@@ -32,7 +32,7 @@
     }
 
 
-    #aName {
+    #aNameSon {
         text-decoration: none;
         position: absolute;
         top:50px;
@@ -41,7 +41,7 @@
         color:black;
     }
 
-    #btnReport {
+    #btnReportSon {
         color: #999999;
         background: none;
         border: none;
@@ -51,7 +51,7 @@
         right: 230px;
     }
 
-    #labL {
+    #labLSon {
         color: #999999;
         background: none;
         border: none;
@@ -61,7 +61,7 @@
         right: 200px;
     }
 
-    #labTime {
+    #labTimeSon {
         color: #999999;
         background: none;
         border: none;
@@ -72,7 +72,7 @@
         right: 80px;
     }
 
-    #btnReply {
+    #btnReplySon {
         color: #999999;
         background: none;
         border: none;
@@ -87,16 +87,18 @@
     <Columns>
         <asp:TemplateField>
             <ItemTemplate>
-                <div id="app">
-                    <div id="right-centerDiv">
-                        <div id="imgBG">
-                            <img id="img" src="../imgs/Penguins.jpg" />
+                <div id="appSon">
+                    <div id="right-centerDivSon">
+                        <div id="imgBGSon">
+                            <img id="imgSon" src="../imgs/Penguins.jpg" />
                         </div>
-                        <a id="aName" href="#">这是名字</a>
-                        <button id="btnReport">举报</button>
-                        <label id="labL">楼数</label>
-                        <label id="labTime">时间</label>
-                        <button id="btnReply">回复</button>
+                        <a id="aNameSon" href="#">
+                            <asp:Label ID="replyUserName" runat="server" Text=""></asp:Label></a>
+                        <button id="btnReportSon">举报</button>
+                        <label id="labLSon">楼数</label>
+                        <label id="labTimeSon">
+                            <asp:Label ID="replyTime" runat="server" Text=""></asp:Label></label>
+                        <button id="btnReplySon">回复</button>
                     </div>
                 </div>
 

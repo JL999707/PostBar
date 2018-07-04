@@ -74,4 +74,20 @@ public partial class _Default : System.Web.UI.Page
         }
         Response.Redirect("BarContent.aspx");
     }
+
+    protected void btnReply_Click(object sender, EventArgs e)
+    {
+        int row = ((GridViewRow)((Button)sender).NamingContainer).RowIndex;
+        Button postName = (Button)GridView1.Rows[row].FindControl("postName");
+        if (this.Session["postName"] != null)
+        {
+            this.Session["postName"] = null;
+            this.Session["postName"] = postName.Text;
+        }
+        else
+        {
+            this.Session["postName"] = postName.Text;
+        }
+        Response.Redirect("BarContent.aspx");
+    }
 }

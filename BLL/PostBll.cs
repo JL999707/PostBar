@@ -66,12 +66,31 @@ namespace BLL
                 return checkAllPic;
             }
         }
+        //检索单个所有信息
+        public Model.Post userIDheckAllPost(string postName)
+        {
+            Model.Post checkAllPic = dao.Query(postName);
+
+            //不需要访问数据源，直接执行业务逻辑
+            if (checkAllPic != null)
+            {
+                return checkAllPic;
+            }
+            else
+            {
+                return checkAllPic;
+            }
+        }
         //模糊查询
         public List<Model.Post> likeCheckPost(string postName, bool isAccurate)
         {
             return dao.Query(postName, isAccurate);
         }
-
+        //模糊查询
+        public List<Model.Post> userIDlikeCheckPost(int userID, bool isAccurate)
+        {
+            return dao.userIDQuery(userID, isAccurate);
+        }
         //根据postName查询某项符合某记录的数量
         public int checkCountPostName(string postName)
         {

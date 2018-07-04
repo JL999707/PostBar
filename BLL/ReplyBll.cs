@@ -71,7 +71,6 @@ namespace BLL
                 return checkAllReply;
             }
         }
-
         //模糊查询
         public List<Reply> likeCheckReply(string replyName, bool isAccurate)
         {
@@ -148,6 +147,12 @@ namespace BLL
         {
             int checkCountPostID = dao.checkCountPostID(postID);
             return checkCountPostID;
+        }
+
+        //根据postID查询记录
+        public List<Reply> checkPostIDAES(int postID, bool isAccurate)
+        {
+            return dao.getPostIDAES(postID, isAccurate);
         }
     }
 }

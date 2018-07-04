@@ -28,66 +28,119 @@
             </div>
             <div id="myTabContent" class="tab-content">
                 <div class="tab-pane fade in active" id="MyMain">
-                    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="barAttID" DataSourceID="SqlDataSource1" GridLines="None">
+                    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" BorderColor="#CCCCCC" GridLines="None" ShowHeader="False" Width="775px">
                         <Columns>
                             <asp:TemplateField>
                                 <ItemTemplate>
-                                    <div class="dynamic_hot_barName">
-                                        <h4><a href="../Bar.aspx">
-                                            <asp:Label ID="barName" runat="server" Text='<%# Eval("barAttName") %>'></asp:Label>
-                                        </a></h4>
-                                    </div>
-                                    <div class="dynamic_hot_postName">
-                                        <h4><a href="../Bar.aspx">
-                                            <asp:Label ID="postName" runat="server"></asp:Label>
-                                        </a></h4>
-                                    </div>
-                                    <div class="dynamic_hot_postContent">
-                                        <asp:Label ID="postContent" runat="server"></asp:Label>
-                                    </div>
-                                    <div class="dynamic_hot_postImg"></div>
-                                    <div class="dynamic_hot_postAuthor">
-                                        <asp:Label ID="postAuthor" runat="server" Text='<%# Eval("userID") %>'></asp:Label>
-                                        <asp:Label ID="postTime" runat="server" Text='<%# Eval("barAttTime") %>'></asp:Label>
+                                    <div id="app">
+                                        <div id="main">
+                                            <div id="leftDiv">
+                                                <div id="imgBG">
+                                                    <img id="img" src="../imgs/Penguins.jpg" />
+                                                </div>
+                                                <table id="table" style="width: 100%;">
+                                                    <tr>
+                                                        <td>&nbsp;</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><a id="aName" href="#">
+                                                           <%-- <asp:Label ID="userName" runat="server" Text=""></asp:Label>--%>
+                                                            <asp:Button ID="userName" runat="server" Text="" CssClass="btn-link" />
+                                                            </a></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>&nbsp;</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <asp:Button ID="btnBarAtt" runat="server" Text="关注的贴吧"/></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>&nbsp;</td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                            <div id="right-topDiv">
+                                                <%--<asp:Label ID="postName" runat="server" Text='<%# Eval("postName") %>'></asp:Label>--%>
+                                                <asp:Button ID="postName" runat="server" Text='<%# Eval("postName") %>' CssClass="btn-link" OnClick="postName_Click" style="font-size:16px;"/><br /><br />
+                                                <%--<asp:Label ID="postContent" runat="server" Text='<%# Eval("postContent") %>'></asp:Label>--%>
+                                                <asp:Button ID="postContent" runat="server" Text='<%# Eval("postContent") %>' CssClass="btn-link" style="color:black;font-size:14px;" OnClick="postContent_Click" />
+                                            </div>
+                                            <div id="right-centerDiv">
+                                                <%--<button id="btnReport">举报</button>
+                                                <label id="labL">楼数</label>--%>
+                                                <%--<label id="labTime">时间</label>--%>
+                                                <asp:Label ID="labTime" runat="server" Text='<%# Eval("postTime") %>' style="font-size:12px;color:#999999;"></asp:Label>
+                                                <%--<button id="btnReply">回复</button>--%>
+                                                <%--<asp:Button ID="btnReply" runat="server" Text="回复" OnClick="btnReply_Click" CssClass="btn-link" style="color: #999999;background: none;border: none;font-size: 12px;position: absolute;top: 8px;right: 20px;"/>--%>
+                                            </div>
+                                            <div id="right-bottomDiv">
+                                            </div>
+                                        </div>
                                     </div>
                                 </ItemTemplate>
                             </asp:TemplateField>
                         </Columns>
                     </asp:GridView>
-                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:PostBarConnectionString3 %>" SelectCommand="SELECT * FROM [T_BarAttention]"></asp:SqlDataSource>
                 </div>
                 <div class="tab-pane fade" id="MyPost">
-                    <asp:GridView ID="GridView3" runat="server"></asp:GridView>
-                    <asp:SqlDataSource ID="SqlDataSource3" runat="server"></asp:SqlDataSource>
-                </div>
-                <div class="tab-pane fade" id="MyBar">
-                    <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" DataKeyNames="barAttID" DataSourceID="SqlDataSource1" GridLines="None">
+                    <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" BorderColor="#CCCCCC" GridLines="None" ShowHeader="False" Width="775px">
                         <Columns>
                             <asp:TemplateField>
                                 <ItemTemplate>
-                                    <div class="dynamic_hot_barName">
-                                        <h4><a href="../Bar.aspx">
-                                            <asp:Label ID="barName" runat="server" Text='<%# Eval("barAttName") %>'></asp:Label>
-                                        </a></h4>
-                                    </div>
-                                    <div class="dynamic_hot_postName">
-                                        <h4><a href="../Bar.aspx">
-                                            <asp:Label ID="postName" runat="server"></asp:Label>
-                                        </a></h4>
-                                    </div>
-                                    <div class="dynamic_hot_postContent">
-                                        <asp:Label ID="postContent" runat="server"></asp:Label>
-                                    </div>
-                                    <div class="dynamic_hot_postImg"></div>
-                                    <div class="dynamic_hot_postAuthor">
-                                        <asp:Label ID="postAuthor" runat="server" Text='<%# Eval("userID") %>'></asp:Label>
-                                        <asp:Label ID="postTime" runat="server" Text='<%# Eval("barAttTime") %>'></asp:Label>
+                                    <div id="app">
+                                        <div id="main">
+                                            <div id="leftDiv">
+                                                <div id="imgBG">
+                                                    <img id="img" src="../imgs/Penguins.jpg" />
+                                                </div>
+                                                <table id="table" style="width: 100%;">
+                                                    <tr>
+                                                        <td>&nbsp;</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><a id="aName" href="#">
+                                                           <%-- <asp:Label ID="userName" runat="server" Text=""></asp:Label>--%>
+                                                            <asp:Button ID="userName" runat="server" Text="" CssClass="btn-link" />
+                                                            </a></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>&nbsp;</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <asp:Button ID="btnBarAtt" runat="server" Text="关注的贴吧"/></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>&nbsp;</td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                            <div id="right-topDiv">
+                                                <%--<asp:Label ID="postName" runat="server" Text='<%# Eval("postName") %>'></asp:Label>--%>
+                                                <asp:Button ID="postName" runat="server" Text='<%# Eval("postName") %>' CssClass="btn-link" OnClick="postName_Click" style="font-size:16px;"/><br /><br />
+                                                <%--<asp:Label ID="postContent" runat="server" Text='<%# Eval("postContent") %>'></asp:Label>--%>
+                                                <asp:Button ID="postContent" runat="server" Text='<%# Eval("postContent") %>' CssClass="btn-link" style="color:black;font-size:14px;" OnClick="postContent_Click" />
+                                            </div>
+                                            <div id="right-centerDiv">
+                                                <%--<button id="btnReport">举报</button>
+                                                <label id="labL">楼数</label>--%>
+                                                <%--<label id="labTime">时间</label>--%>
+                                                <asp:Label ID="labTime" runat="server" Text='<%# Eval("postTime") %>' style="font-size:12px;color:#999999;"></asp:Label>
+                                                <%--<button id="btnReply">回复</button>--%>
+                                                <%--<asp:Button ID="btnReply" runat="server" Text="回复" OnClick="btnReply_Click" CssClass="btn-link" style="color: #999999;background: none;border: none;font-size: 12px;position: absolute;top: 8px;right: 20px;"/>--%>
+                                            </div>
+                                            <div id="right-bottomDiv">
+                                            </div>
+                                        </div>
                                     </div>
                                 </ItemTemplate>
                             </asp:TemplateField>
                         </Columns>
                     </asp:GridView>
-                    <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:PostBarConnectionString3 %>" SelectCommand="SELECT * FROM [T_BarAttention]"></asp:SqlDataSource>
+                </div>
+                <div class="tab-pane fade" id="MyBar">
+                    <asp:GridView ID="GridView3" runat="server"></asp:GridView>
                 </div>
                 <div class="tab-pane fade" id="MyCollection">
                     

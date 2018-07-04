@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Head.master" AutoEventWireup="true" CodeFile="Bar.aspx.cs" Inherits="_Default" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Head.master" AutoEventWireup="true" MaintainScrollPositionOnPostback="true" CodeFile="Bar.aspx.cs" Inherits="_Default" %>
 
 <%@ Register Src="~/control/chartsPanel.ascx" TagPrefix="uc1" TagName="chartsPanel" %>
 
@@ -105,7 +105,8 @@
                                                 <label id="labL">楼数</label>
                                                 <%--<label id="labTime">时间</label>--%>
                                                 <asp:Label ID="labTime" runat="server" Text='<%# Eval("postTime") %>' style="font-size:12px;color:#999999;"></asp:Label>
-                                                <button id="btnReply">回复</button>
+                                                <%--<button id="btnReply">回复</button>--%>
+                                                <asp:Button ID="btnReply" runat="server" Text="回复" OnClick="btnReply_Click" CssClass="btn-link" style="color: #999999;background: none;border: none;font-size: 12px;position: absolute;top: 8px;right: 20px;"/>
                                             </div>
                                             <div id="right-bottomDiv">
                                             </div>

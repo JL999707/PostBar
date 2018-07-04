@@ -137,7 +137,6 @@ public partial class Register : System.Web.UI.Page
 
             if (userRegist.ToString() == "success")
             {
-                Response.Write("<script>alert('success')</script>");
                 Response.Redirect("Main.aspx");
             }
             else if (userRegist.ToString() == "failure")
