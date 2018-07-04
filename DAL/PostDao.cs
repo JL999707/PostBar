@@ -154,7 +154,38 @@ namespace DAL
             reader.Close();
             return post;
         }
-
+        //根据postName得到postID
+        public Post getPostID(string postName)
+        {
+            string cmdText = "select * from T_Post where postName=@postName";
+            string[] paramList = { "@postName" };
+            object[] valueList = { postName };
+            SqlDataReader reader = db.ExecuteReader(cmdText, paramList, valueList);
+            Post post = new Post();
+            if (reader.Read())
+            {
+                post.postName = postName;
+                post.postID = Convert.ToInt32(reader["postID"]);
+            }
+            reader.Close();
+            return post;
+        }
+        //根据postID得到userID
+        public Post getPostUserID(int postID)
+        {
+            string cmdText = "select * from T_Post where postID=@postID";
+            string[] paramList = { "@postID" };
+            object[] valueList = { postID };
+            SqlDataReader reader = db.ExecuteReader(cmdText, paramList, valueList);
+            Post post = new Post();
+            if (reader.Read())
+            {
+                post.postID = postID;
+                post.userID = Convert.ToInt32(reader["userID"]);
+            }
+            reader.Close();
+            return post;
+        }
         //根据贴吧名称userName得到用户ID，userID
         public UserInfo getUserID(string userName)
         {
@@ -216,21 +247,21 @@ namespace DAL
             return Convert.ToInt32(db.ExecuteScalar(cmdText, paramList, valueList));
         }
 
-        //查询最近添加的10个记录
+        //查询最近添加的记录
         public List<Post> getDesc(string postName, bool isAccurate = false)
         {
             List<Post> postList = new List<Post>();
             DataSet ds = new DataSet();
             if (isAccurate)
             {
-                string cmdText = "select  top 10 * from T_Post where postName like @postName order by postID desc";
+                string cmdText = "select * from T_Post where postName like @postName order by postID desc";
                 string[] paramList = { "@postName" };
                 object[] valueList = { postName };
                 ds = db.FillDataSet(cmdText, paramList, valueList);
             }
             else
             {
-                string cmdText = "select  top 10 * from T_Post where postName like @postName order by postID desc";
+                string cmdText = "select * from T_Post where postName like @postName order by postID desc";
                 string[] paramList = { "@postName" };
                 object[] valueList = { "%" + postName + "%" };
                 ds = db.FillDataSet(cmdText, paramList, valueList);
@@ -239,6 +270,33 @@ namespace DAL
             {
                 DataRow dr = ds.Tables[0].Rows[i];
                 Post post = new Post(Convert.ToInt32(dr["postID"]), Convert.ToInt32(dr["barID"]), Convert.ToInt32(dr["userID"]), dr["postName"].ToString(), dr["postContent"].ToString(), dr["postTime"].ToString(), dr["judge"].ToString(),dr["postPic"].ToString(), dr["postAutoGraph"].ToString(), dr["postHeadImg"].ToString(), dr["postTopImg"].ToString(), dr["postBGImg"].ToString());
+                postList.Add(post);
+            }
+            return postList;
+        }
+        //根据barID查询最近添加的记录
+        public List<Post> getBarIDesc(int barID, bool isAccurate = false)
+        {
+            List<Post> postList = new List<Post>();
+            DataSet ds = new DataSet();
+            if (isAccurate)
+            {
+                string cmdText = "select * from T_Post where barID like @barID order by postID desc";
+                string[] paramList = { "@barID" };
+                object[] valueList = { barID };
+                ds = db.FillDataSet(cmdText, paramList, valueList);
+            }
+            else
+            {
+                string cmdText = "select * from T_Post where barID like @barID order by postID desc";
+                string[] paramList = { "@barID" };
+                object[] valueList = { "%" + barID + "%" };
+                ds = db.FillDataSet(cmdText, paramList, valueList);
+            }
+            for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
+            {
+                DataRow dr = ds.Tables[0].Rows[i];
+                Post post = new Post(Convert.ToInt32(dr["postID"]), Convert.ToInt32(dr["barID"]), Convert.ToInt32(dr["userID"]), dr["postName"].ToString(), dr["postContent"].ToString(), dr["postTime"].ToString(), dr["judge"].ToString(), dr["postPic"].ToString(), dr["postAutoGraph"].ToString(), dr["postHeadImg"].ToString(), dr["postTopImg"].ToString(), dr["postBGImg"].ToString());
                 postList.Add(post);
             }
             return postList;
