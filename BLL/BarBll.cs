@@ -198,6 +198,10 @@ namespace BLL
         {
             return dao.getDesc(barName, isAccurate);
         }
-
+        //查询全部记录
+        public int getBarCount()
+        {
+            return dao.getBarCount();
+        }
     }
 }

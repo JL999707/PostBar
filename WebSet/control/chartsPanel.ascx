@@ -67,7 +67,7 @@
         text-align: right;
         position: absolute;
         margin-top: 1px;
-        margin-left: 125px;
+        margin-left: 80px;
     }
 </style>
 
@@ -94,9 +94,10 @@
                                 <span class='charts_num'>
                                 <asp:Label ID="No" runat="server" Text='<%# this.GridView1.Rows.Count + 1%>'></asp:Label></span>
                             <a class='charts_content'>
-                                <asp:Label ID="barName" runat="server" Text='<%# Eval("barName")%>'></asp:Label></a>
+                                <%--<asp:Label ID="barName" runat="server" Text='<%# Eval("barName")%>'></asp:Label></a>--%>
+                                <asp:Button ID="barName" runat="server" Text='<%# Eval("barName")%>' CssClass="btn-link" Style="position:absolute;color:black" OnClick="barName_Click" />
                             <span class='charts_people'>
-                                <asp:Label ID="peopleNum" runat="server" Text='<%# Eval("barName")%>'></asp:Label></span>
+                                <asp:Label ID="peopleNum" runat="server" Text='<%# Eval("barName")%>' ></asp:Label></span>
                             </li>
                         </ItemTemplate>
                     </asp:TemplateField>

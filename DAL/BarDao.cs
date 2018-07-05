@@ -17,7 +17,7 @@ namespace DAL
         {
             string cmdText = "insert into T_Bar values(@barTypeID,@userID,@barName,@barTime,@barAutoGraph,@barHeadImg,@barTopImg,@barBGImg)";
             string[] paramList = { "@barTypeID", "@userID", "@barName", "@barTime", "@barAutoGraph", "@barHeadImg", "@barTopImg", "@barBGImg" };
-            object[] valueList = { bar.barTypeID, bar.userID, bar.barTime, bar.barName, bar.barAutoGraph, bar.barHeadImg, bar.barTopImg, bar.barBGImg };
+            object[] valueList = { bar.barTypeID, bar.userID, bar.barName, bar.barTime, bar.barAutoGraph, bar.barHeadImg, bar.barTopImg, bar.barBGImg };
             return db.ExecuteNoneQuery(cmdText, paramList, valueList);
         }
 
@@ -261,6 +261,14 @@ namespace DAL
                 barList.Add(bar);
             }
             return barList;
+        }
+        //查询全部记录
+        public int getBarCount()
+        {
+            string cmdText = "select count(*) from  T_Bar";
+            string[] paramList = {  };
+            object[] valueList = {  };
+            return Convert.ToInt32(db.ExecuteScalar(cmdText, paramList, valueList));
         }
     }
 }

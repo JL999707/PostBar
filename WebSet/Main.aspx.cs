@@ -9,6 +9,8 @@ using System.Web.UI.WebControls;
 public partial class _Default : System.Web.UI.Page
 {
     BLL.PostBll postBll = new BLL.PostBll();
+    BLL.BarBll barBll = new BLL.BarBll();
+    BLL.UserBll userBll = new BLL.UserBll();
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!IsPostBack)
@@ -39,6 +41,33 @@ public partial class _Default : System.Web.UI.Page
             //Response.Write("<script>alert(" + getBarName.userName.ToString() + ")</script>");
             int postNum = postBll.checkCountUserID(userID.userID);
             this.postNum.Text = postNum.ToString();
+
+            if (this.Session["userName"] != null)
+            {
+                Model.UserInfo user = userBll.checkAllUser(this.Session["userName"].ToString());
+                List<Model.Post> postList1 = postBll.userIDlikeCheckPost(user.userID, isAccurate);
+                this.GridView2.DataSource = postList1;
+                this.GridView2.DataBind();
+
+                for (int i = 0; i < this.GridView2.Rows.Count; i++)
+                {
+                    Button barName = (Button)GridView2.Rows[i].FindControl("barName");
+                    Model.Bar getBarName = postBll.getBarName(Convert.ToInt32(barName.Text));
+                    barName.Text = getBarName.barName.ToString();
+
+                    Label postAuthor = (Label)GridView2.Rows[i].FindControl("postAuthor");
+                    Model.UserInfo getUserName = postBll.getUserName(Convert.ToInt32(postAuthor.Text));
+                    postAuthor.Text = getUserName.userName.ToString();
+                }
+            }
+
+            int barCount = barBll.getBarCount();
+            string count = barCount.ToString();
+            for (int i = 1; i <= count.Length;i++)
+            {
+                Label label = (Label)this.sumBar.FindControl("label" + i);
+                label.Text = count[count.Length - 1].ToString();
+            }
         }
     }
 

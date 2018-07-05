@@ -1,0 +1,56 @@
+﻿body {
+    background-color: #ffffff;
+    no-repeat;
+    background-size: cover;
+    font-size: 16px;
+}
+
+#login_form {
+    display: none;
+}
+
+#register_form {
+    display: block;
+}
+
+.fa {
+    display: inline-block;
+    top: 27px;
+    left: 6px;
+    position: relative;
+    color: #ccc;
+}
+
+input[type="text"], input[type="password"] {
+    padding-left: 26px;
+}
+
+.checkbox {
+    padding-left: 21px;
+}
+
+.form-group {
+    margin-left: 100px;
+}
+
+.head-right {
+    float: right;
+    margin-top: -100px;
+}
+
+.head-img {
+    margin-top: -20px;
+}
+
+.neirongbox {
+    background: url(../imgs/大海.jpg) no-repeat;
+    height: 800px;
+    width: 1200px;
+    margin-left: 200px;
+    background-size: cover;
+}
+
+#DropDownList1{
+    margin-left:-4px;
+    margin-top:10px;
+}

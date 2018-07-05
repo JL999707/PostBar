@@ -193,10 +193,10 @@
 
 .hotBar_div{
     height:90px;
-    width:193px;
+    width:180px;
     border:1px solid gray;
     float:left;
-    margin-right:5px;
+    margin-left:10px;
 }
 
 .hotBar_div img{
@@ -241,8 +241,7 @@
 }
 
 .dynamic_hot_postContent {
-    height:60px;
-    line-height:60px;
+    height:auto;
     font-size:14px;
     color:black;
 }

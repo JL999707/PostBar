@@ -36,6 +36,7 @@ public partial class Default2 : System.Web.UI.Page
             Model.Post userID = postBll.getPostUserID(Convert.ToInt32(post.postID));
             Model.UserInfo postUserName = postBll.getUserName(Convert.ToInt32(userID.userID));
             this.userName.Text = postUserName.userName.ToString();
+            this.Session["postUserNameToReplyName"] = this.userName.Text;
             this.labTime.Text = post.postTime.ToString();
             this.postContent.Text = post.postContent.ToString();
             this.Session["postID"] = post.postID;
@@ -48,11 +49,11 @@ public partial class Default2 : System.Web.UI.Page
                 List<Reply> replyList = replyBll.likeCheckReply(this.userName.Text, isAccurate);
                 this.GridView1.DataSource = replyList;
                 this.GridView1.DataBind();
-
+                Model.Reply reply1 = replyBll.checkAllReply(this.userName.Text);
                 for (int i = 0; i < this.GridView1.Rows.Count; i++)
                 {
                     Button userName = (Button)GridView1.Rows[i].FindControl("userName");
-                    Model.UserInfo replyUserName = postBll.getUserName(Convert.ToInt32(reply.userID));
+                    Model.UserInfo replyUserName = postBll.getUserName(Convert.ToInt32(reply1.userID));
                     userName.Text = replyUserName.userName.ToString();
 
                     Panel replySon = (Panel)this.GridView1.Rows[i].FindControl("replySon");
@@ -101,7 +102,7 @@ public partial class Default2 : System.Web.UI.Page
         }
         Panel addReplySon = (Panel)this.GridView1.Rows[row].FindControl("addReplySon");
         
-        addReplySon.Visible = replySon.Visible;
+        addReplySon.Visible = true;
     }
 
     protected void btnReplySon_Click(object sender, EventArgs e)
@@ -142,5 +143,50 @@ public partial class Default2 : System.Web.UI.Page
         {
             Response.Write("<script>alert('用户已存在')</script>");
         }
+    }
+
+    protected void btnReply_Click(object sender, EventArgs e)
+    {
+        ClientScript.RegisterStartupScript(ClientScript.GetType(), "myscript", "<script>autoclick();</script>");
+    }
+
+    protected void btnReport_Click(object sender, EventArgs e)
+    {
+        this.Session["userName"] = this.userName.Text;
+        this.Session["postContent"] = this.postContent.Text;
+        this.Session["postTime"] = this.labTime.Text;
+
+        Response.Redirect("Report.aspx");
+    }
+
+    protected void btnReport_Click1(object sender, EventArgs e)
+    {
+        int row = ((GridViewRow)((Button)sender).NamingContainer).RowIndex;
+        Button userName = (Button)GridView1.Rows[row].FindControl("userName");
+        Label postContent = (Label)GridView1.Rows[row].FindControl("replyContent");
+        Label postTime = (Label)GridView1.Rows[row].FindControl("labTime");
+
+        this.Session["userName"] = userName.Text;
+        this.Session["postContent"] = postContent.Text;
+        this.Session["postTime"] = postTime.Text;
+
+        Response.Redirect("Report.aspx");
+    }
+
+    protected void btnReportSon_Click(object sender, EventArgs e)
+    {
+        int row = ((GridViewRow)((Button)sender).NamingContainer).RowIndex;
+
+        GridView GridView2 = (GridView)this.GridView1.Rows[row].FindControl("GridView2");
+        
+        Button userName = (Button)GridView2.Rows[row].FindControl("replyUserName");
+        Label postContent = (Label)GridView2.Rows[row].FindControl("replyContent");
+        Label postTime = (Label)GridView2.Rows[row].FindControl("replyTime");
+
+        this.Session["userName"] = userName.Text;
+        this.Session["postContent"] = postContent.Text;
+        this.Session["postTime"] = postTime.Text;
+
+        Response.Redirect("Report.aspx");
     }
 }

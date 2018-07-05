@@ -39,16 +39,24 @@
 	            </a>
             </div> 
         </div>
-        <div class="sumBar">
+        <div class="sumBar" id="sumBar" runat="server">
             <div class="num">
-                <div class="num_show">0</div>
-                <div class="num_show">0</div>
-                <div class="num_show">0</div>
-                <div class="num_show">0</div>
-                <div class="num_show">0</div>
-                <div class="num_show">0</div>
-                <div class="num_show">0</div>
-                <div class="num_show">0</div>
+                <div class="num_show">
+                    <asp:Label ID="Label8" runat="server" Text="-"></asp:Label></div>
+                <div class="num_show">
+                    <asp:Label ID="Label7" runat="server" Text="-"></asp:Label></div>
+                <div class="num_show">
+                    <asp:Label ID="Label6" runat="server" Text="-"></asp:Label></div>
+                <div class="num_show">
+                    <asp:Label ID="Label5" runat="server" Text="-"></asp:Label></div>
+                <div class="num_show">
+                    <asp:Label ID="Label4" runat="server" Text="-"></asp:Label></div>
+                <div class="num_show">
+                    <asp:Label ID="Label3" runat="server" Text="-"></asp:Label></div>
+                <div class="num_show">
+                    <asp:Label ID="Label2" runat="server" Text="-"></asp:Label></div>
+                <div class="num_show">
+                    <asp:Label ID="Label1" runat="server" Text="-"></asp:Label></div>
             </div>
         </div>
     </div>
@@ -97,7 +105,6 @@
             <div class="hotBar">
                 <div class="barTitle">热门吧</div>
                 <div class="hotBar_bar">
-                    <marquee behavior="scroll" onMouseOut="this.start()" onMouseOver="this.stop()">
                         <div class="hotBar_div">
                             <img src="imgs/qipa_one.jpeg"/>
                             <h5>葡萄牙吧</h5>
@@ -122,12 +129,6 @@
                             <h5>人数</h5>
                             <h5>评论</h5>
                         </div>
-                        <div class="hotBar_div">
-                            <img src="imgs/qipa_one.jpeg"/>
-                            <h5>葡萄牙吧</h5>
-                            <h5>人数</h5>
-                            <h5>评论</h5>
-                        </div></marquee>
                 </div>
             </div>
         </div>
@@ -167,6 +168,26 @@
 	            </div>
 	            <div class="tab-pane fade" id="owndor">
 		            <div class="dynamic_own">
+                        <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" GridLines="None" AllowSorting="True">
+                            <Columns>
+                                <asp:TemplateField>
+                                    <ItemTemplate>
+                                        <div class="dynamic_hot_barName">
+                                            <asp:Button ID="barName" runat="server" Text='<%# Eval("barID") %>' OnClick="barName_Click" BackColor="White" BorderColor="White" BorderStyle="None" CssClass="btn-link" ForeColor="Black"/>
+                                        </div>
+                                        <div class="dynamic_hot_postName">
+                                            <asp:Button ID="postName" runat="server" Text='<%# Eval("postName") %>' CssClass="btn-link" OnClick="postName_Click"/>
+                                        </div>
+                                        <div class="dynamic_hot_postContent"><asp:Label ID="postContent" runat="server" Text='<%# Eval("postContent") %>'></asp:Label></div>
+                                        <div class="dynamic_hot_postImg"></div>
+                                        <div class="dynamic_hot_postAuthor">
+                                            <asp:Label ID="postAuthor" runat="server" Text='<%# Eval("userID") %>'></asp:Label>
+                                            <asp:Label ID="postTime" runat="server" Text='<%# Eval("postTime") %>'></asp:Label>
+                                        </div>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                            </Columns>
+                        </asp:GridView>
 		            </div>
 	            </div>
             </div>

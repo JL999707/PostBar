@@ -1,0 +1,14 @@
+﻿*{
+    margin:0;
+    padding:0;
+}
+
+.left{
+    height:auto;
+    width:775px;
+}
+
+.right{
+    width:215px;
+    margin-left:785px;
+}

@@ -10,18 +10,33 @@ public partial class chartsPanel : System.Web.UI.UserControl
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        string userName = null;
-        bool isAccurate = false;
-        BLL.BarBll mgr = new BLL.BarBll();
-        List<Bar> barList = mgr.checkBarDesc(userName, isAccurate);
-        
-        this.GridView1.DataSource = barList;
-        this.GridView1.DataBind();
+        if (!IsPostBack)
+        {
+            string userName = null;
+            bool isAccurate = false;
+            BLL.BarBll mgr = new BLL.BarBll();
+            List<Bar> barList = mgr.checkBarDesc(userName, isAccurate);
 
-        //Response.Write("<script>alert('" + barList.ToString() + "')</script>");
-        //else
-        //{
-        //    this.tishi.Text = "查找不到";
-        //}
+            this.GridView1.DataSource = barList;
+            this.GridView1.DataBind();
+
+            for (int i = 0; i < this.GridView1.Rows.Count; i++)
+            {
+                Button barName = (Button)GridView1.Rows[i].FindControl("barName");
+
+                int barNum = mgr.checkCountBarName(barName.Text);
+
+                Label peopleNum = (Label)GridView1.Rows[i].FindControl("peopleNum");
+                peopleNum.Text = barNum.ToString();
+            }
+        }
+    }
+
+    protected void barName_Click(object sender, EventArgs e)
+    {
+        int row = ((GridViewRow)((Button)sender).NamingContainer).RowIndex;
+        Button barName = (Button)GridView1.Rows[row].FindControl("barName");
+        this.Session["barName"] = barName.Text;
+        Response.Redirect("Bar.aspx");
     }
 }

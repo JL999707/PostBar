@@ -40,14 +40,16 @@ public partial class Head : System.Web.UI.MasterPage
         string search = this.textCheck.Text;
         BLL.BarBll bll = new BarBll();
         Model.Bar result = bll.checkAllBar(search);
-        if (result != null)
+        if (result != null && result.barID != 0)
         {
             this.Session["barName"] = search;
             Response.Redirect("Bar.aspx");
         }
         else
         {
-            Response.Write("<script>alert('无此吧')</script>");
+            Response.Write("<script>alert('无此吧！请创建新吧！')</script>");
+            this.Session["newBarName"] = this.textCheck.Text;
+            Response.Redirect("NewBar.aspx");
         }
     }
 
@@ -61,9 +63,9 @@ public partial class Head : System.Web.UI.MasterPage
 
     protected void Login_btn_Click(object sender, EventArgs e)
     {
-        string MD5pwd = GetMD5(this.pwd_txt.Text);
+        //string MD5pwd = GetMD5(this.pwd_txt.Text);
         BLL.UserBll bll = new UserBll();
-        UserInfo user = new UserInfo(this.userName_txt.Text, MD5pwd);
+        UserInfo user = new UserInfo(this.userName_txt.Text, this.pwd_txt.Text);
         user = bll.userLogin(user);
         if (user == null)
         {

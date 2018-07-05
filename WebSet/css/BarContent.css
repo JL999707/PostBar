@@ -98,7 +98,6 @@
     left: 130px;
     top: 0px;
     z-index: 1;
-    background-color:azure;
 }
 
 #right-bottomDiv {
@@ -147,7 +146,7 @@
     margin-left:400px;
 }
 
-#labL {
+#labL,#labL {
     color: #999999;
     background: none;
     border: none;

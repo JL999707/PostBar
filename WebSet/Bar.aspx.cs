@@ -24,8 +24,8 @@ public partial class _Default : System.Web.UI.Page
             int postNum = postBll.checkCountBarID(barID.barID);
             this.postNum.Text = postNum.ToString();
 
-            Model.Bar graph = barBll.checkAllBar(this.barName.Text);
-            this.graph.Text = graph.barAutoGraph.ToString();
+            //Model.Bar graph = barBll.checkAllBar(this.barName.Text);
+            //this.graph.Text = graph.barAutoGraph.ToString();
             
             bool isAccurate = false;
             List<Model.Post> postList = postBll.checkBarIDDesc(barID.barID, isAccurate);
@@ -89,5 +89,19 @@ public partial class _Default : System.Web.UI.Page
             this.Session["postName"] = postName.Text;
         }
         Response.Redirect("BarContent.aspx");
+    }
+
+    protected void btnReport_Click(object sender, EventArgs e)
+    {
+        int row = ((GridViewRow)((Button)sender).NamingContainer).RowIndex;
+        Button userName = (Button)GridView1.Rows[row].FindControl("userName");
+        Button postContent = (Button)GridView1.Rows[row].FindControl("postContent");
+        Label postTime = (Label)GridView1.Rows[row].FindControl("labTime");
+
+        this.Session["userName"] = userName.Text;
+        this.Session["postContent"] = postContent.Text;
+        this.Session["postTime"] = postTime.Text;
+
+        Response.Redirect("Report.aspx");
     }
 }

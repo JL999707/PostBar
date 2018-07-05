@@ -3,13 +3,12 @@
 
 <style>
     #bgDiv {
-        width: 800px;
+        width: 775px;
         height: 511px;
-        /*background-color: burlywood;*/
+        background-color: #aaa;
         margin-top: 0px;
         margin-left: auto;
         margin-right: auto;
-        background-image: url('http://localhost:2932/imgs/moSha.jpg');
     }
 
 

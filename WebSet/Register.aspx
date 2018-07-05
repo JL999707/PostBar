@@ -65,6 +65,14 @@
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="Email" ErrorMessage="邮箱不能为空" ForeColor="red" Style="margin-left: -330px;position:absolute"></asp:RequiredFieldValidator>
                             <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="Email" ErrorMessage="邮箱格式不正确" ForeColor="Red" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" Style="margin-left: -330px;position:absolute"></asp:RegularExpressionValidator>
                         </div>
+                         <div class="form-group">  
+                                <i class="fa fa-envelope fa-lg"></i>
+                                <span><asp:TextBox ID="TextBox1" runat="server" class="form-control eamil"  placeholder="验证码" name="email" style="width:180px"></asp:TextBox>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="Email" ErrorMessage="验证码能为空" ForeColor="red"  style="position:absolute"></asp:RequiredFieldValidator>
+                                <asp:Image ID="yanzhengma" runat="server" Height="35px" ImageUrl="~/验证码.aspx" Width="100px"  style="cursor:hand;border:1px solid #ccc;vertical-align:top;margin-top:-38px;margin-left:-150px"
+                                onclick="this.src=this.src+'?temp='+ Math.random();" /></span>
+                                <p style="position:absolute">验证码看不清请点击图片换一张</p>
+                        </div>  
                         <div class="form-group" style="margin-left: -360px;margin-top:40px;">
                             <input type="submit" class="btn btn-info pull-left" id="back_btn" value="返回" style="width: 100px;" />
                             <asp:Button ID="btnZhuCe" runat="server" OnClick="btnZhuCe_Click" Text="注册" class="btn btn-success pull-right" Style="width: 100px" />

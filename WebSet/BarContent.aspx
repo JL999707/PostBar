@@ -1,11 +1,20 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Head.master" AutoEventWireup="true" MaintainScrollPositionOnPostback="true" CodeFile="BarContent.aspx.cs" Inherits="Default2" %>
 
 <%@ Register Src="~/control/chartsPanel.ascx" TagPrefix="uc1" TagName="chartsPanel" %>
+<%@ Register Src="~/control/chating.ascx" TagPrefix="uc1" TagName="chating" %>
+
 
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <link rel="stylesheet" type="text/css" href="css/BarContent.css"/>
+    <script language="javascript" type="text/javascript">
+        function autoclick()
+        {
+            lnk = document.getElementById("auto");
+            lnk.click();                       
+        }
+    </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder2" Runat="Server">
     <div class="functionbar1">
@@ -64,11 +73,11 @@
                                 <asp:Label ID="postContent" runat="server" Text="" style="color:black;font-size:14px;"></asp:Label>
                             </div>
                             <div id="right-centerDiv">
-                                <button id="btnReport">举报</button>
-                                <label id="labL">楼数</label>
-                                <%--<label id="labTime">时间</label>--%>
+                                <%--<button id="btnReport">举报</button>--%>
+                                <asp:Button ID="btnReport" runat="server" Text="举报" Style="color: #999999; background: none; border: none; font-size: 12px; margin-left: 400px;" OnClick="btnReport_Click" />
+                                <label id="labL">楼数 1</label>
                                 <asp:Label ID="labTime" runat="server" Text="" style="font-size:12px;color:#999999;"></asp:Label>
-                                <button id="btnReply">回复</button>
+                                <asp:Button ID="btnReply" runat="server" Text="回复" OnClick="btnReply_Click" style="color: #999999;background: none;border: none;font-size: 12px;"/>
                             </div>
                             <div id="right-bottomDiv">
                             </div>
@@ -90,7 +99,6 @@
                                                     </tr>
                                                     <tr>
                                                         <td><a id="aName" href="#">
-                                                            <%--<asp:Label ID="userName" runat="server" Text=""></asp:Label>--%>
                                                             <asp:Button ID="userName" runat="server" Text="" CssClass="btn-link"/>
                                                             </a>
                                                         </td>
@@ -111,14 +119,12 @@
                                                 <asp:Label ID="replyContent" runat="server" Text='<%# Eval("replyContent") %>'></asp:Label>
                                             </div>
                                             <div id="right-centerDiv">
-                                                <button id="btnReport">举报</button>
-                                                <label id="labL">楼数</label>
-                                                <%--<label id="labTime">时间</label>--%>
+                                                <%--<button id="btnReport">举报</button>--%>
+                                                <asp:Button ID="btnReport" runat="server" Text="举报" Style="color: #999999; background: none; border: none; font-size: 12px; margin-left: 400px;" OnClick="btnReport_Click1"/>
+                                                <label id="labL">楼数 <asp:Label ID="Label1" runat="server" Text='<%# this.GridView1.PageIndex * this.GridView1.PageSize + this.GridView1.Rows.Count + 1%>'></asp:Label></label>
                                                 <asp:Label ID="labTime" runat="server" Text='<%# Eval("replyTime") %>' style="font-size:12px;color:#999999;"></asp:Label>
-                                                <%--<label id="btnReply1">回复</label>--%>
                                                 <asp:Button ID="btnReply1" runat="server" Text="回复" CssClass="btn-link" style="color: #999999;font-size: 12px;" BorderStyle="None" OnClick="btnReply1_Click"/>
-                                                <%--<panel id="replySon"></panel>--%>
-                                                <asp:Panel ID="replySon" runat="server" Height="100px" Width="100%" BackColor="#FBFBFD" BorderStyle="None">
+                                                <asp:Panel ID="replySon" runat="server" Height="100%" Width="100%" BackColor="#FBFBFD" BorderStyle="None">
                                                     <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" ShowHeader="False">
                                                         <Columns>
                                                             <asp:TemplateField>
@@ -130,11 +136,11 @@
                                                                         <a id="aNameSon" href="#">
                                                                             <asp:Label ID="replyUserName" runat="server" Text=""></asp:Label></a>
                                                                         <asp:Label ID="replyContent" runat="server" Text="" style="position:absolute;margin-top:20px;margin-left:30px;"></asp:Label>
-                                                                        <button id="btnReportSon">举报</button>
+                                                                        <%--<button id="btnReportSon">举报</button>--%>
+                                                                        <asp:Button ID="btnReportSon" runat="server" Text="举报" Style="color: #999999; background: none; border: none; font-size: 12px; position: absolute; margin-left: 350px; margin-top: 48px;" OnClick="btnReportSon_Click" />
                                                                         <label id="labLSon">楼数</label>
                                                                         <label id="labTimeSon">
-                                                                            <asp:Label ID="replyTime" runat="server" Text=""></asp:Label></label>
-                                                                        <%--<button id="btnReplySon">回复</button>--%>
+                                                                        <asp:Label ID="replyTime" runat="server" Text=""></asp:Label></label>
                                                                         <asp:Button ID="btnReplySon" runat="server" Text="回复" CssClass="btn-link" OnClick="btnReplySon_Click" style="color: #999999;font-size: 12px;margin-top:48px;position:absolute;margin-left:530px;"/>
                                                                     </div>
                                                                 </ItemTemplate>
@@ -148,7 +154,6 @@
                                                         <asp:TextBox ID="txtContent" runat="server" Height="41px" Width="529px" BorderColor="#D6DFFA" BorderStyle="Solid" Style="margin-left: 25px"></asp:TextBox>
                                                         <br />
                                                         <label id=""></label>
-                                                        <%--<button id="btnSend">发送</button>--%>
                                                         <asp:Button ID="btnSend" runat="server" Text="发送" CssClass="btn-link" style="width: 50px;height: 20px;border: 1px solid #CCCCCC;border-radius: 10px;position: absolute;right: 38px;bottom: 5px;color: black;background-color: white;" OnClick="btnSend_Click"/>
                                                         <br />
                                                     </div>
@@ -162,6 +167,8 @@
                             </asp:TemplateField>
                         </Columns>
                     </asp:GridView>
+                    <uc1:chating runat="server" ID="chating" />
+                    <a name="bookmark"></a>
                 </div>
                 <div class="tab-pane fade" id="BarPicture"></div>
             </div>

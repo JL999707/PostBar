@@ -9,6 +9,8 @@ using System.Web.UI.WebControls;
 
 public partial class chat : System.Web.UI.UserControl
 {
+    BLL.BarBll barBll = new BarBll();
+    BLL.PostBll postBll = new PostBll();
     protected void Page_Load(object sender, EventArgs e){}
 
     protected void btnUpPic_Click(object sender, EventArgs e)
@@ -62,17 +64,22 @@ public partial class chat : System.Web.UI.UserControl
     //增加
     protected void btnRelease_Click(object sender, EventArgs e)
     {
-        int barID =Convert.ToInt32(this.Session["barID"].ToString());
-        int userID = Convert.ToInt32(this.Session["userID"].ToString());
+        
+        Model.Bar bar = barBll.getBarID(this.Session["barName"].ToString());
+        Model.UserInfo user = postBll.getUserID(this.Session["userName"].ToString());
+
+
+        int barID =Convert.ToInt32(bar.barID);
+        int userID = Convert.ToInt32(user.userID);
         string postName = this.txtPostTitle.Text.Trim();
         string postContent = this.txtContent.Text;
-        string postTime = DateTime.Now.ToString();
-        string postPic = this.ViewState["postPic"].ToString();
-        string oo = "";
-        string nn = "";
-        string qq = "";
-        string ww = "";
-        string tt = "";
+        string postTime = DateTime.Now.ToLocalTime().ToString();
+        string postPic = "0";
+        string oo = "0";
+        string nn = "0";
+        string qq = "0";
+        string ww = "0";
+        string tt = "0";
         Post post = new Post(barID, userID, postName, postContent, postTime, postPic, oo, nn, qq, ww, tt);
         PostBll bll = new PostBll();
         OperationResult postAdd = bll.postAdd(post);
@@ -80,6 +87,9 @@ public partial class chat : System.Web.UI.UserControl
         if (postAdd.ToString() == "success")
         {
             tiShi2.Text = "发表成功";
+            this.txtPostTitle.Text = "";
+            this.txtContent.Text = "";
+            Response.AddHeader("Refresh", "0");
         }
         else if (postAdd.ToString() == "failure")
         {

@@ -1,6 +1,8 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Head.master" AutoEventWireup="true" MaintainScrollPositionOnPostback="true" CodeFile="Bar.aspx.cs" Inherits="_Default" %>
 
 <%@ Register Src="~/control/chartsPanel.ascx" TagPrefix="uc1" TagName="chartsPanel" %>
+<%@ Register Src="~/control/chat.ascx" TagPrefix="uc1" TagName="chat" %>
+
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
@@ -95,13 +97,12 @@
                                                 </table>
                                             </div>
                                             <div id="right-topDiv">
-                                                <%--<asp:Label ID="postName" runat="server" Text='<%# Eval("postName") %>'></asp:Label>--%>
                                                 <asp:Button ID="postName" runat="server" Text='<%# Eval("postName") %>' CssClass="btn-link" OnClick="postName_Click" style="font-size:16px;"/><br /><br />
-                                                <%--<asp:Label ID="postContent" runat="server" Text='<%# Eval("postContent") %>'></asp:Label>--%>
                                                 <asp:Button ID="postContent" runat="server" Text='<%# Eval("postContent") %>' CssClass="btn-link" style="color:black;font-size:14px;" OnClick="postContent_Click" />
                                             </div>
                                             <div id="right-centerDiv">
-                                                <button id="btnReport">举报</button>
+                                                <%--<button id="btnReport">举报</button>--%>
+                                                <asp:Button ID="btnReport" runat="server" Text="举报" Style="color: #999999; background: none; border: none; font-size: 12px; position: absolute; top: 8px; right: 230px;" OnClick="btnReport_Click" />
                                                 <label id="labL">楼数</label>
                                                 <%--<label id="labTime">时间</label>--%>
                                                 <asp:Label ID="labTime" runat="server" Text='<%# Eval("postTime") %>' style="font-size:12px;color:#999999;"></asp:Label>
@@ -116,6 +117,7 @@
                             </asp:TemplateField>
                         </Columns>
                     </asp:GridView>
+                    <uc1:chat runat="server" ID="chat" />
                 </div>
                 <div class="tab-pane fade" id="BarPicture">
                     
