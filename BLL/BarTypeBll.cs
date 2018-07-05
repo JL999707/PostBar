@@ -84,5 +84,20 @@ namespace BLL
             int checkCountBarTypeName = dao.checkCountBarTypeName(barTypeName);
             return checkCountBarTypeName;
         }
+        //根据barTypeName得到barTypeID
+        public Model.BarType getBarTypeID(string barTypeName)
+        {
+            Model.BarType getBarTypeID = dao.getBarTypeID(barTypeName);
+            //int getUserID1 = Convert.ToInt32(getUserID);
+            //不需要访问数据源，直接执行业务逻辑
+            if (getBarTypeID != null)
+            {
+                return getBarTypeID;
+            }
+            else
+            {
+                return getBarTypeID;
+            }
+        }
     }
 }

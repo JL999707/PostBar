@@ -98,5 +98,21 @@ namespace DAL
             object[] valueList = { barTypeID };
             return Convert.ToInt32(db.ExecuteScalar(cmdText, paramList, valueList));
         }
+        //根据barTypeName得到barTypeID
+        public BarType getBarTypeID(string barTypeName)
+        {
+            string cmdText = "select * from T_BarType where barTypeName=@barTypeName";
+            string[] paramList = { "@barTypeName" };
+            object[] valueList = { barTypeName };
+            SqlDataReader reader = db.ExecuteReader(cmdText, paramList, valueList);
+            BarType barType = new BarType();
+            if (reader.Read())
+            {
+                barType.barTypeName = barTypeName;
+                barType.barTypeID = Convert.ToInt32(reader["barTypeID"].ToString());
+            }
+            reader.Close();
+            return barType;
+        }
     }
 }

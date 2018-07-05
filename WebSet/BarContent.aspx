@@ -3,9 +3,6 @@
 <%@ Register Src="~/control/chartsPanel.ascx" TagPrefix="uc1" TagName="chartsPanel" %>
 <%@ Register Src="~/control/chating.ascx" TagPrefix="uc1" TagName="chating" %>
 
-
-
-
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <link rel="stylesheet" type="text/css" href="css/BarContent.css"/>
     <script language="javascript" type="text/javascript">
@@ -73,7 +70,6 @@
                                 <asp:Label ID="postContent" runat="server" Text="" style="color:black;font-size:14px;"></asp:Label>
                             </div>
                             <div id="right-centerDiv">
-                                <%--<button id="btnReport">举报</button>--%>
                                 <asp:Button ID="btnReport" runat="server" Text="举报" Style="color: #999999; background: none; border: none; font-size: 12px; margin-left: 400px;" OnClick="btnReport_Click" />
                                 <label id="labL">楼数 1</label>
                                 <asp:Label ID="labTime" runat="server" Text="" style="font-size:12px;color:#999999;"></asp:Label>
@@ -83,6 +79,9 @@
                             </div>
                         </div>
                     </div>
+                    <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+                    <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                        <ContentTemplate>
                     <asp:GridView ID="GridView1" runat="server" BorderColor="#CCCCCC" GridLines="None" ShowHeader="False" AutoGenerateColumns="False">
                         <Columns>
                             <asp:TemplateField>
@@ -119,7 +118,6 @@
                                                 <asp:Label ID="replyContent" runat="server" Text='<%# Eval("replyContent") %>'></asp:Label>
                                             </div>
                                             <div id="right-centerDiv">
-                                                <%--<button id="btnReport">举报</button>--%>
                                                 <asp:Button ID="btnReport" runat="server" Text="举报" Style="color: #999999; background: none; border: none; font-size: 12px; margin-left: 400px;" OnClick="btnReport_Click1"/>
                                                 <label id="labL">楼数 <asp:Label ID="Label1" runat="server" Text='<%# this.GridView1.PageIndex * this.GridView1.PageSize + this.GridView1.Rows.Count + 1%>'></asp:Label></label>
                                                 <asp:Label ID="labTime" runat="server" Text='<%# Eval("replyTime") %>' style="font-size:12px;color:#999999;"></asp:Label>
@@ -136,7 +134,6 @@
                                                                         <a id="aNameSon" href="#">
                                                                             <asp:Label ID="replyUserName" runat="server" Text=""></asp:Label></a>
                                                                         <asp:Label ID="replyContent" runat="server" Text="" style="position:absolute;margin-top:20px;margin-left:30px;"></asp:Label>
-                                                                        <%--<button id="btnReportSon">举报</button>--%>
                                                                         <asp:Button ID="btnReportSon" runat="server" Text="举报" Style="color: #999999; background: none; border: none; font-size: 12px; position: absolute; margin-left: 350px; margin-top: 48px;" OnClick="btnReportSon_Click" />
                                                                         <label id="labLSon">楼数</label>
                                                                         <label id="labTimeSon">
@@ -167,6 +164,8 @@
                             </asp:TemplateField>
                         </Columns>
                     </asp:GridView>
+                   </ContentTemplate>
+                  </asp:UpdatePanel>
                     <uc1:chating runat="server" ID="chating" />
                     <a name="bookmark"></a>
                 </div>

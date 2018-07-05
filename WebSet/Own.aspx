@@ -44,7 +44,6 @@
                                                     </tr>
                                                     <tr>
                                                         <td><a id="aName" href="#">
-                                                           <%-- <asp:Label ID="userName" runat="server" Text=""></asp:Label>--%>
                                                             <asp:Button ID="userName" runat="server" Text="" CssClass="btn-link" />
                                                             </a></td>
                                                     </tr>
@@ -61,18 +60,11 @@
                                                 </table>
                                             </div>
                                             <div id="right-topDiv">
-                                                <%--<asp:Label ID="postName" runat="server" Text='<%# Eval("postName") %>'></asp:Label>--%>
                                                 <asp:Button ID="postName" runat="server" Text='<%# Eval("postName") %>' CssClass="btn-link" OnClick="postName_Click" style="font-size:16px;"/><br /><br />
-                                                <%--<asp:Label ID="postContent" runat="server" Text='<%# Eval("postContent") %>'></asp:Label>--%>
                                                 <asp:Button ID="postContent" runat="server" Text='<%# Eval("postContent") %>' CssClass="btn-link" style="color:black;font-size:14px;" OnClick="postContent_Click" />
                                             </div>
                                             <div id="right-centerDiv">
-                                                <%--<button id="btnReport">举报</button>
-                                                <label id="labL">楼数</label>--%>
-                                                <%--<label id="labTime">时间</label>--%>
                                                 <asp:Label ID="labTime" runat="server" Text='<%# Eval("postTime") %>' style="font-size:12px;color:#999999;"></asp:Label>
-                                                <%--<button id="btnReply">回复</button>--%>
-                                                <%--<asp:Button ID="btnReply" runat="server" Text="回复" OnClick="btnReply_Click" CssClass="btn-link" style="color: #999999;background: none;border: none;font-size: 12px;position: absolute;top: 8px;right: 20px;"/>--%>
                                             </div>
                                             <div id="right-bottomDiv">
                                             </div>
@@ -100,7 +92,6 @@
                                                     </tr>
                                                     <tr>
                                                         <td><a id="aName" href="#">
-                                                           <%-- <asp:Label ID="userName" runat="server" Text=""></asp:Label>--%>
                                                             <asp:Button ID="userName" runat="server" Text="" CssClass="btn-link" />
                                                             </a></td>
                                                     </tr>
@@ -117,18 +108,11 @@
                                                 </table>
                                             </div>
                                             <div id="right-topDiv">
-                                                <%--<asp:Label ID="postName" runat="server" Text='<%# Eval("postName") %>'></asp:Label>--%>
                                                 <asp:Button ID="postName" runat="server" Text='<%# Eval("postName") %>' CssClass="btn-link" OnClick="postName_Click" style="font-size:16px;"/><br /><br />
-                                                <%--<asp:Label ID="postContent" runat="server" Text='<%# Eval("postContent") %>'></asp:Label>--%>
                                                 <asp:Button ID="postContent" runat="server" Text='<%# Eval("postContent") %>' CssClass="btn-link" style="color:black;font-size:14px;" OnClick="postContent_Click" />
                                             </div>
                                             <div id="right-centerDiv">
-                                                <%--<button id="btnReport">举报</button>
-                                                <label id="labL">楼数</label>--%>
-                                                <%--<label id="labTime">时间</label>--%>
                                                 <asp:Label ID="labTime" runat="server" Text='<%# Eval("postTime") %>' style="font-size:12px;color:#999999;"></asp:Label>
-                                                <%--<button id="btnReply">回复</button>--%>
-                                                <%--<asp:Button ID="btnReply" runat="server" Text="回复" OnClick="btnReply_Click" CssClass="btn-link" style="color: #999999;background: none;border: none;font-size: 12px;position: absolute;top: 8px;right: 20px;"/>--%>
                                             </div>
                                             <div id="right-bottomDiv">
                                             </div>

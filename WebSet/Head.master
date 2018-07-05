@@ -23,25 +23,20 @@
             <div class="login_img"></div>
             <p>用户名·密码登录</p>
             <div class="login_content">
-                <%--<input type="text" class="userName" placeholder="手机/邮箱/用户名"/>--%>
                 <asp:TextBox ID="userName_txt" runat="server" class="userName" placeholder="手机/邮箱/用户名"></asp:TextBox>
-                <%--<input type="password" class="pwd" placeholder="密码"/>--%>
                 <asp:TextBox ID="pwd_txt" type="password" runat="server" class="pwd" placeholder="密码"></asp:TextBox>
                 <input type="checkbox" class="remember"/>下次自动登录
-                <%--<button type="button" class="btn btn-primary sure">登录</button>--%>
                 <asp:Button ID="Login_btn" runat="server" class="btn btn-primary sure" Text="登录" OnClick="Login_btn_Click"/>
                 <asp:Label ID="tishi" runat="server" Text=""></asp:Label>
             </div>
         </div>
         <div class="register">
             <button class="btn btn-link forget">忘记密码?</button>
-            <%--<button class="btn btn-link enroll">立即注册</button>--%>
             <asp:Button ID="registerOn" runat="server" class="btn btn-link enroll" Text="立即注册" OnClick="registerOn_Click" />
         </div>
     </div>
     <div class="body">
         <div class="top">
-            <%--<button class="btn btn-link top_login">登录</button>--%>
             <asp:LinkButton ID="Login_link" runat="server"  class="btn btn-link top_login">登录</asp:LinkButton>
             <button class="btn btn-link">消息</button>
             <button class="btn btn-link">更多</button>
@@ -52,12 +47,9 @@
                     <span class="input-group-btn">
                         <a href="Main.aspx"><img src="imgs/search_logo.png"/></a>
                     </span>
-                    <%--<input type="text" class="form-control"/>--%>
                     <asp:TextBox ID="textCheck" runat="server" class="form-control"></asp:TextBox>
                     <span class="input-group-btn">
-	                    <%--<button type="button" class="btn btn-primary">进入贴吧</button>--%>
                         <asp:Button ID="check" runat="server" Text="进入贴吧" class="btn btn-primary" OnClick="check_Click"/>
-                        <%--<button type="button" class="ssbtn btn btn-default">搜索</button>--%>
                         <asp:Button ID="likeCheck" runat="server" Text="搜索" class="ssbtn btn btn-default" OnClick="likeCheck_Click"/>
                     </span>
                 </div>

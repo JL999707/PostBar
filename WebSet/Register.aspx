@@ -18,8 +18,7 @@
         </div>
         <div class="head-right">
             我已注册,现在就
-            <%--<input type="button" value="登录" />--%>
-            <%--<asp:Button ID="login" runat="server" class="btn btn-default" Text="登录" href="Main.aspx" OnClick="login_Click"/>--%>
+            <a href="Main.aspx"><input type="button" value="登录" /></a>
         </div>
     </div>
     <hr />
@@ -74,13 +73,15 @@
                                 <p style="position:absolute">验证码看不清请点击图片换一张</p>
                         </div>  
                         <div class="form-group" style="margin-left: -360px;margin-top:40px;">
-                            <input type="submit" class="btn btn-info pull-left" id="back_btn" value="返回" style="width: 100px;" />
+                            <a href="Main.aspx"><input type="button" class="btn btn-info pull-left" id="back_btn" value="返回" style="width: 100px;" /></a>
                             <asp:Button ID="btnZhuCe" runat="server" OnClick="btnZhuCe_Click" Text="注册" class="btn btn-success pull-right" Style="width: 100px" />
                         </div>
                     </div>
                 </form>
             </div>
-            <div class="picture-mobilephone"></div>
+            <div class="picture-mobilephone">
+                <img src="imgs/tephone.PNG" />
+            </div>
         </div>
     </div>
     <hr />

@@ -144,7 +144,7 @@
             <div id="myTabContent" class="tab-content">
 	            <div class="tab-pane fade in active" id="hotdoor">
 		            <div class="dynamic_hot">
-                        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" GridLines="None" AllowSorting="True">
+                        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" GridLines="Both" AllowSorting="True" BorderColor="#CCCCCC" ShowHeader="False" BorderStyle="Solid" AllowPaging="False" PageSize="8">
                             <Columns>
                                 <asp:TemplateField>
                                     <ItemTemplate>
@@ -168,7 +168,7 @@
 	            </div>
 	            <div class="tab-pane fade" id="owndor">
 		            <div class="dynamic_own">
-                        <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" GridLines="None" AllowSorting="True">
+                        <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" GridLines="None" AllowSorting="True" BorderStyle="NotSet" BorderColor="#CCCCCC" ShowHeader="False">
                             <Columns>
                                 <asp:TemplateField>
                                     <ItemTemplate>

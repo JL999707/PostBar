@@ -57,15 +57,23 @@ public partial class Head : System.Web.UI.MasterPage
     {
         string search = this.textCheck.Text;
         BLL.BarBll bll = new BarBll();
-        bool isAccurate = false;
-        List<Bar> barList = bll.likeCheckBar(search, isAccurate);
+        Model.Bar result = bll.checkAllBar(search);
+        if (result != null && result.barID != 0)
+        {
+            this.Session["barName"] = search;
+            Response.Redirect("Search.aspx");
+        }
+        else
+        {
+            Response.Write("<script>alert('无相关内容')</script>");
+        }
     }
 
     protected void Login_btn_Click(object sender, EventArgs e)
     {
-        //string MD5pwd = GetMD5(this.pwd_txt.Text);
+        string MD5pwd = GetMD5(this.pwd_txt.Text);
         BLL.UserBll bll = new UserBll();
-        UserInfo user = new UserInfo(this.userName_txt.Text, this.pwd_txt.Text);
+        UserInfo user = new UserInfo(this.userName_txt.Text, MD5pwd);
         user = bll.userLogin(user);
         if (user == null)
         {

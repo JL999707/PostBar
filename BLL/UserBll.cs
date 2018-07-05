@@ -147,5 +147,20 @@ namespace BLL
                 return getUserName;
             }
         }
+        //根据userName得到userID
+        public Model.UserInfo getUserID(string userName)
+        {
+            Model.UserInfo getUserID = dao.getUserID(userName);
+            //int getUserID1 = Convert.ToInt32(getUserID);
+            //不需要访问数据源，直接执行业务逻辑
+            if (getUserID != null)
+            {
+                return getUserID;
+            }
+            else
+            {
+                return getUserID;
+            }
+        }
     }
 }

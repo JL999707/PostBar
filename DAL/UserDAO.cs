@@ -170,7 +170,22 @@ namespace DAL
             reader.Close();
             return user;
         }
-
+        //根据userName得到userID
+        public UserInfo getUserID(string userName)
+        {
+            string cmdText = "select * from T_User where userName=@userName";
+            string[] paramList = { "@userName" };
+            object[] valueList = { userName };
+            SqlDataReader reader = db.ExecuteReader(cmdText, paramList, valueList);
+            UserInfo user = new UserInfo();
+            if (reader.Read())
+            {
+                user.userName = userName;
+                user.userID = Convert.ToInt32(reader["userID"].ToString());
+            }
+            reader.Close();
+            return user;
+        }
         //public UserInfo checkAllUser(int T_UserID, string userName, string pwd, string userSex, string userContactInfo, string autoGraph, string userHeadPho, string userTopImg, string userBGImg)
         //{
         //    //建立数据库连接

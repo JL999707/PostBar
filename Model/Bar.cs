@@ -56,7 +56,14 @@ namespace Model
             this.barTopImg = barTopImg;
             this.barBGImg = barBGImg;
         }
-
+        public Bar(int barTypeID, int userID, string barName, string barAutoGraph, string barHeadImg)
+        {
+            this.barTypeID = barTypeID;
+            this.userID = userID;
+            this.barName = barName;
+            this.barAutoGraph = barAutoGraph;
+            this.barHeadImg = barHeadImg;
+        }
         //查询
         public Bar(int barID, int barTypeID, int userID, string barName, string barTime, string barAutoGraph, string barHeadImg, string barTopImg, string barBGImg)
         {

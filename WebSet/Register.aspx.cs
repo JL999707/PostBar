@@ -55,9 +55,10 @@ public partial class Register : System.Web.UI.Page
             string MD5repwd = System.Web.Security.FormsAuthentication.HashPasswordForStoringInConfigFile(pwd, "MD5");
 
             UserInfo user = new UserInfo(name, MD5pwd, sex, time, telNum, graph, headimg, topimg, bgimg);
-            OperationResult userRegist = bll.userRegist(user);
+            
             if (this.TextBox1.Text.Trim() == Session["chkCode"].ToString())
             {
+                OperationResult userRegist = bll.userRegist(user);
                 if (userRegist.ToString() == "success")
                 {
                     Response.Redirect("Main.aspx");

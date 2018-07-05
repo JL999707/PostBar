@@ -3,11 +3,15 @@
     width: 150px;
     background-image: url(../imgs/20160516220714_AeHNF.png);
     background-size:150px 150px;
-    float:left;
     margin-top: -75px;
     margin-left: 40px;
+    position:absolute;
 }
-        
+
+.lieBiao{
+    margin-left:190px;
+}
+      
 .functionbar1{
     width: 1000px;
     height: 75px;
@@ -29,6 +33,7 @@
 .lunimg{
     height:250px;
     width: 1000px;
+    z-index:1;
 }
     
 .deliver{

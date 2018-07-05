@@ -20,13 +20,13 @@
             <!-- 轮播（Carousel）项目 -->
             <div class="carousel-inner">
                 <div class="item active">
-                    <img src="../images/bgimg1.jpeg" style="width: 1200px; height: 250px;" alt="First slide" class="img-responsive center-block">
+                    <img src="imgs/one.jpg" style="width: 1200px; height: 250px;" alt="First slide" class="img-responsive center-block">
                 </div>
                 <div class="item">
-                    <img src="../images/bgimg2.png" style="width: 1200px; height: 250px;" alt="Second slide">
+                    <img src="imgs/two.jpg" style="width: 1200px; height: 250px;" alt="Second slide">
                 </div>
                 <div class="item">
-                    <img src="../images/bgimg5.png" style="width: 1200px; height: 250px;" alt="Third slide">
+                    <img src="imgs/three.jpg" style="width: 1200px; height: 250px;" alt="Third slide">
                 </div>
             </div>
             <!-- 轮播（Carousel）导航 -->
@@ -42,7 +42,7 @@
     </div>
     <div class="functionbar1">
         <div class="fakeimg"></div>
-        <ul class="nav navbar-nav">
+        <ul class="nav navbar-nav lieBiao">
             <li class="active"><a href="#"><asp:Label ID="barName" runat="server" Text=""></asp:Label></a></li>
             <li class="active"><a href="#">关注／取关</a></li>
             <li class="active"><a href="#">
@@ -80,7 +80,6 @@
                                                     </tr>
                                                     <tr>
                                                         <td><a id="aName" href="#">
-                                                           <%-- <asp:Label ID="userName" runat="server" Text=""></asp:Label>--%>
                                                             <asp:Button ID="userName" runat="server" Text="" CssClass="btn-link" />
                                                             </a></td>
                                                     </tr>
@@ -101,12 +100,9 @@
                                                 <asp:Button ID="postContent" runat="server" Text='<%# Eval("postContent") %>' CssClass="btn-link" style="color:black;font-size:14px;" OnClick="postContent_Click" />
                                             </div>
                                             <div id="right-centerDiv">
-                                                <%--<button id="btnReport">举报</button>--%>
                                                 <asp:Button ID="btnReport" runat="server" Text="举报" Style="color: #999999; background: none; border: none; font-size: 12px; position: absolute; top: 8px; right: 230px;" OnClick="btnReport_Click" />
                                                 <label id="labL">楼数</label>
-                                                <%--<label id="labTime">时间</label>--%>
                                                 <asp:Label ID="labTime" runat="server" Text='<%# Eval("postTime") %>' style="font-size:12px;color:#999999;"></asp:Label>
-                                                <%--<button id="btnReply">回复</button>--%>
                                                 <asp:Button ID="btnReply" runat="server" Text="回复" OnClick="btnReply_Click" CssClass="btn-link" style="color: #999999;background: none;border: none;font-size: 12px;position: absolute;top: 8px;right: 20px;"/>
                                             </div>
                                             <div id="right-bottomDiv">

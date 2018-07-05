@@ -79,7 +79,7 @@ public partial class Default2 : System.Web.UI.Page
 
         Model.Reply reply = replyBll.checkAllReply(userName.Text);
 
-        if (reply.postID == Convert.ToInt32(this.Session["postID"]) )
+        if (reply.postID == Convert.ToInt32(this.Session["postID"]))
         {
             bool isAccurate = false;
             List<Reply> replyList = replyBll.likeCheckReply(userName.Text, isAccurate);
@@ -101,7 +101,7 @@ public partial class Default2 : System.Web.UI.Page
             }
         }
         Panel addReplySon = (Panel)this.GridView1.Rows[row].FindControl("addReplySon");
-        
+
         addReplySon.Visible = true;
     }
 
@@ -128,7 +128,7 @@ public partial class Default2 : System.Web.UI.Page
         string replyContent = txtContent.Text;
         string replyTime = DateTime.Now.ToLocalTime().ToString();
         string replyPic = "1";
-        Reply reply = new Reply(userID,postID, replyName,replyContent, replyTime, replyPic);
+        Reply reply = new Reply(userID, postID, replyName, replyContent, replyTime, replyPic);
         OperationResult replyadd = replyBll.replyAdd(reply);
 
         if (replyadd.ToString() == "success")
@@ -178,7 +178,7 @@ public partial class Default2 : System.Web.UI.Page
         int row = ((GridViewRow)((Button)sender).NamingContainer).RowIndex;
 
         GridView GridView2 = (GridView)this.GridView1.Rows[row].FindControl("GridView2");
-        
+
         Button userName = (Button)GridView2.Rows[row].FindControl("replyUserName");
         Label postContent = (Label)GridView2.Rows[row].FindControl("replyContent");
         Label postTime = (Label)GridView2.Rows[row].FindControl("replyTime");
